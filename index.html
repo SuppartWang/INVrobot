@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>技术文档中心</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' },
+            brand: '#2563eb'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { --bg-body: #ffffff; --bg-card: #ffffff; --text-main: #111827; --text-muted: #6b7280; --border: #e5e7eb; --sidebar-bg: #f9fafb; --nav-bg: rgba(255,255,255,0.8); }
+    .dark { --bg-body: #0f172a; --bg-card: #1e293b; --text-main: #f1f5f9; --text-muted: #94a3b8; --border: #334155; --sidebar-bg: #0f172a; --nav-bg: rgba(15,23,42,0.8); }
+    body { background: var(--bg-body); color: var(--text-main); transition: background .2s, color .2s; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); transition: transform .2s, box-shadow .2s, background .2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+    .dark .card:hover { box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4); }
+    .sidebar { background: var(--sidebar-bg); border-right: 1px solid var(--border); }
+    .nav-glass { background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .search-input { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); }
+    .module-tag { background: var(--sidebar-bg); border: 1px solid var(--border); }
+    .active-nav { background: rgba(37,99,235,0.1); color: #2563eb; border-right: 3px solid #2563eb; }
+    .dark .active-nav { background: rgba(37,99,235,0.2); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    .fade-in { animation: fadeIn .3s ease-in; }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+
+<!-- Top Navigation -->
+<header class="nav-glass fixed top-0 left-0 right-0 z-50 border-b" style="border-color: var(--border);">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-2 font-bold text-xl tracking-tight" style="color: var(--text-main);">
+      <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L18.8 14.5M18.8 14.5l-2.808 2.808M18.8 14.5l-2.808-2.808M5 14.5l2.808 2.808M5 14.5l2.808-2.808M12 21a9 9 0 100-18 9 9 0 000 18z"/></svg>
+      <span id="nav-title">技术文档中心</span>
+    </a>
+    <div class="flex items-center gap-3">
+      <button onclick="toggleSearch()" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm search-input hover:border-blue-400 transition">
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <span class="text-gray-400" id="search-placeholder">搜索文档...</span>
+        <kbd class="hidden lg:inline-block px-1.5 py-0.5 text-xs rounded border" style="border-color: var(--border); color: var(--text-muted);">⌘K</kbd>
+      </button>
+      <a href="https://github.com/SuppartWang" target="_blank" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition" title="GitHub">
+        <svg class="w-5 h-5" style="color: var(--text-main);" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      </a>
+      <button onclick="toggleLang()" class="px-2 py-1 text-sm font-medium rounded-md border transition hover:border-blue-400" style="border-color: var(--border); color: var(--text-muted);" id="lang-btn">EN</button>
+      <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition" title="切换主题">
+        <svg id="theme-icon" class="w-5 h-5" style="color: var(--text-main);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.751A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Toggle -->
+<button onclick="toggleMobileSidebar()" class="md:hidden fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-blue-600 text-white shadow-lg flex items-center justify-center">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+</button>
+
+<!-- Layout -->
+<div class="flex pt-16 min-h-screen">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar fixed md:sticky top-16 left-0 w-64 h-[calc(100vh-4rem)] overflow-y-auto z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-200">
+    <nav class="p-4 space-y-1" id="sidebar-nav"></nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="main" class="flex-1 min-w-0 px-4 md:px-8 py-8 max-w-5xl mx-auto w-full"></main>
+</div>
+
+<!-- Search Modal -->
+<div id="search-modal" class="fixed inset-0 z-[60] hidden">
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleSearch()"></div>
+  <div class="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-xl px-4">
+    <div class="rounded-xl shadow-2xl overflow-hidden" style="background: var(--bg-card); border: 1px solid var(--border);">
+      <div class="flex items-center gap-3 px-4 py-3 border-b" style="border-color: var(--border);">
+        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="search-input" type="text" class="flex-1 bg-transparent outline-none text-base" style="color: var(--text-main);" placeholder="搜索仓库、模块..." oninput="doSearch(this.value)">
+        <kbd class="px-2 py-0.5 text-xs rounded border" style="border-color: var(--border); color: var(--text-muted);">ESC</kbd>
+      </div>
+      <div id="search-results" class="max-h-[60vh] overflow-y-auto p-2"></div>
+    </div>
+  </div>
+</div>
+
+<script src="data/repos.js"></script>
+<script>
+/* ========== State ========== */
+let lang = 'zh';
+let theme = localStorage.getItem('theme') || 'light';
+let currentView = 'home';
+let currentCategory = '';
+
+const I18N = {
+  zh: {
+    welcome: '欢迎来到技术文档中心',
+    subtitle: '查找您需要的技术文档、指南和参考资料',
+    search: '搜索文档...',
+    quickStart: '快速开始',
+    quickStartDesc: '从这里开始您的开发之旅',
+    categories: { software:'软件', integration:'集成', public:'公开', delivery:'交付', hardware:'硬件', company:'公司', product:'产品' },
+    allRepos: '全部仓库',
+    modules: '模块',
+    viewGithub: '查看 GitHub',
+    backHome: '返回首页',
+  },
+  en: {
+    welcome: 'Welcome to Technical Docs Center',
+    subtitle: 'Find the technical docs, guides and references you need',
+    search: 'Search docs...',
+    quickStart: 'Quick Start',
+    quickStartDesc: 'Start your development journey here',
+    categories: { software:'Software', integration:'Integration', public:'Public', delivery:'Delivery', hardware:'Hardware', company:'Company', product:'Product' },
+    allRepos: 'All Repositories',
+    modules: 'Modules',
+    viewGithub: 'View on GitHub',
+    backHome: 'Back to Home',
+  }
+};
+
+/* ========== Theme ========== */
+function applyTheme() {
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+  localStorage.setItem('theme', theme);
+  document.getElementById('theme-icon').innerHTML = theme === 'dark'
+    ? '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>'
+    : '<path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.751A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>';
+}
+function toggleTheme() { theme = theme === 'light' ? 'dark' : 'light'; applyTheme(); }
+
+/* ========== Lang ========== */
+function applyLang() {
+  const t = I18N[lang];
+  document.getElementById('nav-title').textContent = lang === 'zh' ? '技术文档中心' : 'Tech Docs Center';
+  document.getElementById('search-placeholder').textContent = t.search;
+  document.getElementById('lang-btn').textContent = lang === 'zh' ? 'EN' : 'ZH';
+  renderSidebar();
+  if (currentView === 'home') renderHome();
+  else if (currentView === 'category') renderCategory(currentCategory);
+}
+function toggleLang() { lang = lang === 'zh' ? 'en' : 'zh'; applyLang(); }
+
+/* ========== Routing ========== */
+function navigate(view, cat) {
+  currentView = view;
+  currentCategory = cat || '';
+  window.location.hash = view === 'home' ? '' : (cat ? `category/${cat}` : view);
+  render();
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange', () => { parseHash(); render(); });
+function parseHash() {
+  const h = window.location.hash.replace('#','');
+  if (h.startsWith('category/')) { currentView='category'; currentCategory=h.replace('category/',''); }
+  else if (h === 'home' || !h) { currentView='home'; currentCategory=''; }
+  else { currentView='home'; currentCategory=''; }
+}
+
+/* ========== Sidebar ========== */
+function renderSidebar() {
+  const t = I18N[lang];
+  const nav = document.getElementById('sidebar-nav');
+  let html = '';
+
+  // Home
+  html += `<a href="#home" onclick="navigate('home'); return false;" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition ${currentView==='home'?'active-nav':'hover:bg-gray-100 dark:hover:bg-gray-800'}" style="color:${currentView==='home'?'':'var(--text-muted)'};">`;
+  html += `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`;
+  html += lang==='zh'?'首页':'Home';
+  html += `</a>`;
+
+  // Categories
+  CATEGORIES.forEach(cat => {
+    const data = REPO_DATA[cat];
+    const isActive = currentView === 'category' && currentCategory === cat;
+    html += `<a href="#category/${cat}" onclick="navigate('category','${cat}'); return false;" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition ${isActive?'active-nav':'hover:bg-gray-100 dark:hover:bg-gray-800'}" style="color:${isActive?'':'var(--text-muted)'};">`;
+    html += `<span class="w-4 h-4 flex items-center justify-center text-xs">${data.repos.length}</span>`;
+    html += t.categories[cat];
+    html += `</a>`;
+  });
+
+  nav.innerHTML = html;
+}
+
+/* ========== Home ========== */
+function renderHome() {
+  const t = I18N[lang];
+  const main = document.getElementById('main');
+  let html = `<div class="fade-in text-center py-12 md:py-20">`;
+  html += `<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4" style="color: var(--text-main);">${t.welcome}</h1>`;
+  html += `<p class="text-lg md:text-xl mb-8" style="color: var(--text-muted);">${t.subtitle}</p>`;
+  html += `<button onclick="toggleSearch()" class="inline-flex items-center gap-3 px-6 py-3 rounded-xl search-input hover:border-blue-400 transition text-left w-full max-w-md mx-auto">`;
+  html += `<svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>`;
+  html += `<span class="text-gray-400">${t.search}</span>`;
+  html += `<kbd class="ml-auto px-2 py-0.5 text-xs rounded border" style="border-color: var(--border); color: var(--text-muted);">⌘K</kbd>`;
+  html += `</button>`;
+  html += `</div>`;
+
+  // Category cards
+  CATEGORIES.forEach(cat => {
+    const data = REPO_DATA[cat];
+    html += `<div class="mb-12 fade-in">`;
+    html += `<div class="flex items-center gap-4 mb-6">`;
+    html += `<div class="h-px flex-1" style="background: var(--border);"></div>`;
+    html += `<h2 class="text-sm font-semibold uppercase tracking-wider" style="color: var(--text-muted);">${t.categories[cat]}</h2>`;
+    html += `<div class="h-px flex-1" style="background: var(--border);"></div>`;
+    html += `</div>`;
+
+    html += `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
+    data.repos.forEach(repo => {
+      html += `<a href="https://github.com/SuppartWang/${repo.name}" target="_blank" class="card rounded-xl p-5 flex items-start gap-4 group">`;
+      html += `<div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">`;
+      html += `<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>`;
+      html += `</div>`;
+      html += `<div class="flex-1 min-w-0">`;
+      html += `<div class="flex items-center gap-2 mb-1">`;
+      html += `<h3 class="font-semibold text-base group-hover:text-blue-600 transition" style="color: var(--text-main);">${lang==='zh'?repo.title:repo.titleEn}</h3>`;
+      html += `<svg class="w-4 h-4 text-gray-300 group-hover:text-blue-400 transition flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>`;
+      html += `</div>`;
+      html += `<p class="text-sm line-clamp-2" style="color: var(--text-muted);">${lang==='zh'?repo.desc:repo.descEn}</p>`;
+      html += `</div>`;
+      html += `</a>`;
+    });
+    html += `</div>`;
+    html += `</div>`;
+  });
+
+  // Quick start
+  html += `<div class="mt-16 mb-8 fade-in">`;
+  html += `<div class="text-center mb-8">`;
+  html += `<h2 class="text-2xl font-bold mb-2" style="color: var(--text-main);">${t.quickStart}</h2>`;
+  html += `<p style="color: var(--text-muted);">${t.quickStartDesc}</p>`;
+  html += `</div>`;
+
+  const quickLinks = [
+    { cat:'software', repo:'software-perception', label:'感知系统', labelEn:'Perception System', sub:'视觉、点云、力觉' },
+    { cat:'product', repo:'product-dualArmRobot', label:'双臂机器人', labelEn:'Dual-Arm Robot', sub:'机械臂资料与代码' },
+    { cat:'hardware', repo:'hardware-sensor', label:'传感器选型', labelEn:'Sensor Selection', sub:'相机、力矩、IMU' },
+    { cat:'integration', repo:'integration-test', label:'测试平台', labelEn:'Test Platform', sub:'HIL/SIL/PIL测试' },
+  ];
+
+  html += `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
+  quickLinks.forEach(item => {
+    html += `<a href="https://github.com/SuppartWang/${item.repo}" target="_blank" class="card rounded-xl p-4 flex items-center gap-4 hover:border-blue-300 transition">`;
+    html += `<div class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">`;
+    html += `<svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"/></svg>`;
+    html += `</div>`;
+    html += `<div>`;
+    html += `<div class="font-medium" style="color: var(--text-main);">${lang==='zh'?item.label:item.labelEn}</div>`;
+    html += `<div class="text-sm" style="color: var(--text-muted);">${item.sub}</div>`;
+    html += `</div>`;
+    html += `</a>`;
+  });
+  html += `</div>`;
+  html += `</div>`;
+
+  // Footer
+  html += `<footer class="mt-16 pt-8 border-t text-center text-sm" style="border-color: var(--border); color: var(--text-muted);">`;
+  html += `<p>Copyright &copy; 2026. Commercial use is strictly prohibited.</p>`;
+  html += `<div class="flex items-center justify-center gap-4 mt-2">`;
+  html += `<a href="https://github.com/SuppartWang" target="_blank" class="hover:text-blue-600 transition">GitHub</a>`;
+  html += `</div>`;
+  html += `</footer>`;
+
+  main.innerHTML = html;
+}
+
+/* ========== Category ========== */
+function renderCategory(cat) {
+  const t = I18N[lang];
+  const data = REPO_DATA[cat];
+  const main = document.getElementById('main');
+  if (!data) { renderHome(); return; }
+
+  let html = `<div class="fade-in">`;
+
+  // Breadcrumb
+  html += `<div class="flex items-center gap-2 text-sm mb-6" style="color: var(--text-muted);">`;
+  html += `<a href="#home" onclick="navigate('home'); return false;" class="hover:text-blue-600 transition">${t.categories[cat]}</a>`;
+  html += `<span>/</span>`;
+  html += `<span style="color: var(--text-main);">${t.allRepos}</span>`;
+  html += `</div>`;
+
+  // Title
+  html += `<h1 class="text-3xl font-bold mb-2" style="color: var(--text-main);">${lang==='zh'?data.name:data.nameEn}</h1>`;
+  html += `<p class="mb-8" style="color: var(--text-muted);">${lang==='zh'?data.desc:data.descEn}</p>`;
+
+  // Repo table
+  html += `<div class="rounded-xl overflow-hidden border mb-8" style="border-color: var(--border);">`;
+  html += `<table class="w-full text-sm">`;
+  html += `<thead><tr style="background: var(--sidebar-bg); border-bottom: 1px solid var(--border);">`;
+  html += `<th class="text-left px-4 py-3 font-semibold" style="color: var(--text-muted);">${lang==='zh'?'仓库':'Repository'}</th>`;
+  html += `<th class="text-left px-4 py-3 font-semibold" style="color: var(--text-muted);">${lang==='zh'?'说明':'Description'}</th>`;
+  html += `<th class="text-left px-4 py-3 font-semibold" style="color: var(--text-muted);">${t.modules}</th>`;
+  html += `<th class="text-left px-4 py-3 font-semibold" style="color: var(--text-muted);">GitHub</th>`;
+  html += `</tr></thead><tbody>`;
+
+  data.repos.forEach((repo, idx) => {
+    html += `<tr class="border-t transition hover:bg-gray-50 dark:hover:bg-gray-800/50" style="border-color: var(--border);">`;
+    html += `<td class="px-4 py-3 font-medium" style="color: var(--text-main);">${lang==='zh'?repo.title:repo.titleEn}</td>`;
+    html += `<td class="px-4 py-3" style="color: var(--text-muted);">${lang==='zh'?repo.desc:repo.descEn}</td>`;
+    html += `<td class="px-4 py-3"><div class="flex flex-wrap gap-1">`;
+    repo.modules.forEach(m => {
+      html += `<span class="module-tag px-2 py-0.5 rounded text-xs">${m}</span>`;
+    });
+    html += `</div></td>`;
+    html += `<td class="px-4 py-3"><a href="https://github.com/SuppartWang/${repo.name}" target="_blank" class="text-blue-600 hover:underline flex items-center gap-1"><span class="hidden lg:inline">${t.viewGithub}</span><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg></a></td>`;
+    html += `</tr>`;
+  });
+
+  html += `</tbody></table></div>`;
+
+  html += `</div>`;
+  main.innerHTML = html;
+}
+
+/* ========== Search ========== */
+function toggleSearch() {
+  const modal = document.getElementById('search-modal');
+  const isHidden = modal.classList.contains('hidden');
+  if (isHidden) {
+    modal.classList.remove('hidden');
+    setTimeout(() => document.getElementById('search-input').focus(), 50);
+  } else {
+    modal.classList.add('hidden');
+    document.getElementById('search-results').innerHTML = '';
+    document.getElementById('search-input').value = '';
+  }
+}
+function doSearch(q) {
+  const results = document.getElementById('search-results');
+  if (!q.trim()) { results.innerHTML = ''; return; }
+  const qlow = q.toLowerCase();
+  let items = [];
+  CATEGORIES.forEach(cat => {
+    const data = REPO_DATA[cat];
+    data.repos.forEach(repo => {
+      const texts = [repo.name, repo.title, repo.titleEn, repo.desc, repo.descEn, ...repo.modules];
+      if (texts.some(t => t.toLowerCase().includes(qlow))) {
+        items.push({ cat, repo });
+      }
+    });
+  });
+
+  if (!items.length) {
+    results.innerHTML = `<div class="p-4 text-center text-sm" style="color: var(--text-muted);">${lang==='zh'?'未找到结果':'No results found'}</div>`;
+    return;
+  }
+
+  let html = '';
+  items.slice(0, 10).forEach(item => {
+    const r = item.repo;
+    html += `<a href="https://github.com/SuppartWang/${r.name}" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition">`;
+    html += `<div class="w-8 h-8 rounded bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg></div>`;
+    html += `<div class="flex-1 min-w-0">`;
+    html += `<div class="font-medium text-sm" style="color: var(--text-main);">${lang==='zh'?r.title:r.titleEn}</div>`;
+    html += `<div class="text-xs truncate" style="color: var(--text-muted);">${r.name} · ${lang==='zh'?r.desc:r.descEn}</div>`;
+    html += `</div>`;
+    html += `</a>`;
+  });
+  results.innerHTML = html;
+}
+
+/* ========== Mobile Sidebar ========== */
+function toggleMobileSidebar() {
+  const sb = document.getElementById('sidebar');
+  sb.classList.toggle('-translate-x-full');
+}
+
+/* ========== Keyboard shortcuts ========== */
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); toggleSearch(); }
+  if (e.key === 'Escape') { document.getElementById('search-modal').classList.add('hidden'); }
+});
+
+/* ========== Render ========== */
+function render() {
+  renderSidebar();
+  if (currentView === 'home') renderHome();
+  else if (currentView === 'category') renderCategory(currentCategory);
+}
+
+/* ========== Init ========== */
+applyTheme();
+parseHash();
+render();
+</script>
+</body>
+</html>
