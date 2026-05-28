@@ -51,97 +51,929 @@
 </head>
 <body class="min-h-screen antialiased">
 <script>
-const MD_SoftEmbodiedPolicy = `# SoftEmbodiedPolicy
+const MD_SoftEmbodiedPolicy = `# 项目简介
 
-> SoftEmbodiedPolicy — 模块资料归档
+本项目面向**柔性布料操作**（如抓取、平移、折叠等）的机器人学习任务，提供了一套完整的算法模型训练与部署流程。核心包括：
+
+- **数据采集**：支持遥操作（Teleop）、纯策略推理（Policy）和混合模式（Mixed + DAgger），可同时采集专家数据、推理数据和人工干预数据，输出符合 LeRobot 格式的数据集。
+- **策略模型微调**：基于 **π0.5** 视觉‑语言‑动作（VLA）模型进行微调，支持带/不带 Advantage 条件的训练，适配双臂 14 维动作空间。
+- **价值模型与 Advantage 标注**：在 π0.5 骨架上附加价值头，分两阶段（Progress Loss + TD Learning）训练，为数据集中的每个动作块计算 **action_advantage**，用于后续优势条件化策略训练。
+- **世界模型训练**：基于 LTX‑Video 的扩散式世界模型，学习在给定动作条件下预测未来多视角视频帧，为在线强化学习提供想象环境。
+- **在线策略自提升**：参考 **RISE** 框架，利用世界模型（WM）和奖励模型（RM）生成想象 rollout，通过优势信号（GAE）对策略进行在线 RL 微调，实现无需真实试错的策略自我提升。
+
+|   |   |
+|---|---|
+|**阶段**|**所需资源**|
+|数据采集|机械臂|
+|π0.5 V0模型训练|GPU服务器|
+|Policy WebSocket 远程服务|Jetson Orin NX Super客户端|
+|DAgger人工干预数据采集|机械臂、GPU服务器|
+|价值模型训练|GPU服务器|
+|Advantage策略模型训练|GPU服务器|
+|世界动力学模型训练|GPU服务器|
+|基于世界模型的在线强化|GPU服务器|
+
+本仓库所使用的框架基于Lerobot框架，使用的机械臂为非官方提供；
+
+如需更换其它机械臂，需自己手动集成到本仓库提供的框架。
 
 ---
 
-## 概述
+# 在自己的数据上使用模型
 
-- **功能**：模块资料归档
-- **适用场景**：柔性操作工业机器人系统的相关子系统。
-- **使用建议**：本页汇总了国内外相关优质开源项目，供设计与开发参考。
+### ### 最低硬件配置要求
+
+要运行本仓库中的模型，需要至少符合以下规格的NVIDIA显卡。
+
+|   |   |   |
+|---|---|---|
+|**模式**|**所需显存（近似值）**|**示例GPU型号**|
+|**推理 (Inference)**|**> 8 GB**|RTX 4090 (48G)|
+|**全参数微调 (Fine-Tuning, Full)**|**> 70 GB**|RTX 4090 (48G) × 2|
+
+> **注意**：本仓库暂未进行 LoRA 微调，如有需要，需自行测试。
+
+---
+
+## 0、环境安装
+
+\`\`\`bash
+# 仓库克隆
+git 
+
+# 一键安装所有子模块
+cd INV
+bash install.sh
+\`\`\`
+
+---
+
+## 1. 数据采集 (\`robodeploy/\`)
+
+**使用** **\`robodeploy\`** **包进行遥操作录制和策略推理数据采集。**
+
+\`\`\`bash
+cd robodeploy
+
+# 推荐方式：Shell 脚本启动（交互式菜单选择控制模式）
+bash scripts/record_hybrid.sh
+\`\`\`
+
+**Shell 脚本快速配置区** (\`scripts/record_hybrid.sh\` 顶部)：
+
+（这里我们使用的示例双臂机器人名称为**bi_s1，**实际使用过程中需要配置自己的双臂机器人）
+
+|   |   |   |
+|---|---|---|
+|**变量**|**说明**|**bi_s1 示例值**|
+|\`ROBOT_TYPE\`|机器人类型|\`bi_s1_follower\`|
+|\`TELEOP_TYPE\`|遥操作主端类型|\`bi_s1_leader\`|
+|\`LEFT_FOLLOWER_PORT\`|左臂从端串口|\`/dev/left_follower\`|
+|\`RIGHT_FOLLOWER_PORT\`|右臂从端串口|\`/dev/right_follower\`|
+|\`LEFT_LEADER_PORT\`|左臂主端串口|\`/dev/left_leader\`|
+|\`RIGHT_LEADER_PORT\`|右臂主端串口|\`/dev/right_leader\`|
+|\`POLICY_TYPE\`|策略客户端类型|\`openpi\`|
+|\`OPENPI_HOST\` / \`OPENPI_PORT\`|策略服务地址|\`localhost\` / \`8000\`|
+|\`CAMERA_CONFIG\`|摄像头 JSON 配置|见脚本内示例|
+|\`OUTPUT_DIR\`|数据输出目录|\`./s1_data\`|
+|\`REPO_ID\`|数据集标识|\`lerobot/bi_s1_0522_2\`|
+|\`TASK\`|任务描述|\`hang cloths\`|
+|\`FPS\`|采集帧率|\`30\`|
+|\`EPISODE_TIME_S\`|单 episode 最大时长|\`6000\`|
+|\`CONTROL_MODE\`|运行时交互选择|\`teleop\` / \`policy\` / \`mixed\`|
+|\`USE_TEMPORAL_SMOOTHING\`|策略推理时序平滑|\`true\`|
+|\`INFERENCE_RATE\`|推理频率 (Hz)|\`2.6\`|
+|\`LATENCY_K\`|丢弃旧块步数|\`12\`|
+|\`MIN_SMOOTH_STEPS\`|重叠区最小长度|\`8\`|
+
+**三种控制模式**：
+
+|   |   |   |
+|---|---|---|
+|**模式**|**说明**|**需要 Policy 服务**|
+|\`teleop\`|纯遥操作录制（专家数据）|否|
+|\`policy\`|纯策略推理（推理数据）|是|
+|\`mixed\`|混合模式（P 键实时切换，进行人工干预）|是|
+
+**键盘操作**：
+
+|   |   |
+|---|---|
+|**按键**|**功能**|
+|\`R\`|开始/停止录像|
+|\`S\`|保存 episode + 成功/失败标注 (1=失败, 0=成功, 2=丢弃)|
+|\`P\` / \`Tab\`|切换 Teleop ↔ Policy（仅 mixed 模式）|
+|\`Z\`|机械臂归零复位|
+|\`Esc\`|退出|
+
+**输出目录结构** (LeRobot 格式)：
+
+\`\`\`text
+output_dir/
+├── meta/
+│   ├── info.json          # 数据集元信息
+│   ├── episodes.jsonl     # episode 摘要
+│   └── tasks.jsonl        # 任务索引
+├── data/
+│   └── chunk-000/
+│       └── episode_000000.parquet
+└── videos/
+    └── chunk-000/
+        ├── front/
+        ├── left_wrist/
+        └── right_wrist/
+\`\`\`
+
+**合并多个数据集**：
+
+\`\`\`bash
+python scripts/merge_lerobot_datasets.py --input-dirs <dir1> <dir2> --output-dir <merged_dir>
+\`\`\`
+
+---
+
+## 2. Policy 训练统计值计算 (\`policy_and_value/policy_offline_and_value/\`)
+
+在训练前需要计算数据集的归一化统计量 (mean/std)。
+
+\`\`\`bash
+cd policy_and_value/policy_offline_and_value
+
+# 使用 Compute_norm 配置计算统计量（不需要 GPU）
+python scripts/compute_norm_stats_fast.py --config-name Compute_norm
+\`\`\`
+
+> **注意**：运行前需确认 \`config.py\` 中 \`Compute_norm\` 配置的 \`repo_id\` 指向正确的数据集路径。 bi_s1 默认数据集路径：\`/home/kemove/RISE/deploy/data_collection/s1_data/lerobot/bi_s1_full_merged\`统计量输出到：\`data/norms/bi_s1_full_merged/\`
+
+---
+
+## 3. 离线 Policy 训练（π0.5）
+
+\`\`\`bash
+cd policy_and_value/policy_offline_and_value
+
+# 训练（PyTorch DDP）
+bash train.sh <CONFIG> <GPU数> [EXP_NAME]
+
+# bi_s1 示例：不带 advantage 条件的 π0.5 策略
+bash train.sh BiS1_Pi05_style_training 8
+\`\`\`
+
+**bi_s1 相关 Config**：
+
+|   |   |   |   |
+|---|---|---|---|
+|**Config 名称**|**用途**|**数据集**|**训练步数**|
+|\`Compute_norm\`|计算归一化统计量|\`bi_s1_full_merged\`|-|
+|\`BiS1_Pi05_style_training\`|π0.5 策略 (无 advantage)|\`s1_bimanual_0422_mixed\`|100k|
+|\`BiS1_Policy_offline_release\`|π0.5 策略 (带 advantage 条件)|\`bi_s1_full_mixed_w_adv\`|30k|
+
+**关键训练参数** (在 \`config.py\` 中配置)：
+
+|   |   |   |
+|---|---|---|
+|**参数**|**默认值**|**说明**|
+|\`batch_size\`|32|每 GPU batch size|
+|\`num_train_steps\`|30000|总训练步数|
+|\`save_interval\`|1000|检查点保存间隔|
+|\`num_workers\`|8|数据加载线程数|
+|\`action_dim\`|14|动作维度 (双臂 7×2)|
+
+---
+
+## 4. Policy WebSocket 服务
+
+**我们提供策略推理服务端和部署端分离，使用 WebSocket 实现。**
+
+训练完成后启动策略推理服务，供数据采集端和部署端连接。
+
+\`\`\`bash
+cd policy_and_value/policy_offline_and_value
+
+# 启动 WebSocket 策略服务
+python scripts/serve_policy.py --port 8000 policy:checkpoint \\
+    --policy.config BiS1_Policy_offline_release \\
+    --policy.dir checkpoints/BiS1_Policy_offline_release/mix_failure/18000
+
+# 带动作日志记录（JSONL 格式）
+python scripts/serve_policy.py --port 8000 --log_file actions.jsonl policy:checkpoint \\
+    --policy.config BiS1_Policy_offline_release \\
+    --policy.dir checkpoints/BiS1_Policy_offline_release/mix_failure/18000
+\`\`\`
+
+**serve_policy.py 参数**：
+
+|   |   |
+|---|---|
+|**参数**|**说明**|
+|\`--port\`|服务端口 (默认 8000)|
+|\`--default_prompt\`|当数据中无 prompt 时的默认任务描述|
+|\`--record\`|录制策略行为用于调试|
+|\`--log_file\`|将每次推理的动作/状态写入 JSONL 文件|
+|\`policy:checkpoint --policy.config\`|训练配置名|
+|\`policy:checkpoint --policy.dir\`|检查点目录|
+
+开启上述服务端的策略推理服务之后，开启数据采集端和部署端的连接。注意控制模式模式需要为 \`policy\` 或者 \`mixed\`
+
+\`\`\`bash
+cd robodeploy
+
+# 推荐方式：Shell 脚本启动（交互式菜单选择控制模式）
+bash scripts/record_hybrid.sh
+\`\`\`
+
+> **注意**：选择 \`mixed\` 模式，可以进入混合模式（P 键实时切换，进行人工干预），人工干预保存的数据可加入数据集进行数据集增强
+
+---
+
+## 5. 价值模型训练
+
+价值模型在 Policy backbone 上附加 Value Head (3层 MLP)，分两阶段训练。
+
+\`\`\`bash
+cd policy_and_value/policy_offline_and_value
+
+# 方式一：手动分步训练
+# Stage 1: 仅 Progress Loss（预训练 value head）
+bash train.sh BiS1_value_release_stage1 8
+
+# Stage 2: Progress Loss + TD Learning（微调，从 stage1 的 4000 步 checkpoint 恢复）
+bash train.sh BiS1_value_release 8
+
+# 方式二：自动链式训练（stage1 → stage2 自动衔接）
+bash scripts/train_bis1_value_chain.sh 8
+\`\`\`
+
+**bi_s1 价值模型 Config**：
+
+|   |   |   |   |
+|---|---|---|---|
+|**Config 名称**|**阶段**|**特点**|**训练步数**|
+|\`BiS1_value_release_stage1\`|Stage 1|Progress Loss only, TD disabled|4k|
+|\`BiS1_value_release\`|Stage 2|Progress + TD Loss (γ=0.995, τ=0.01)|20k|
+
+**关键参数**：
+
+|   |   |   |
+|---|---|---|
+|**参数**|**值**|**说明**|
+|\`value_gamma\`|0.995|TD 折扣因子|
+|\`value_TD_TAU\`|0.01|目标网络软更新系数|
+|\`value_failure_reward\`|-1.0|失败 episode 的终端奖励|
+|\`value_terminal_window\`|10|终端奖励窗口大小|
+|\`loss_value_use_bce\`|False|使用 MSE loss|
+|\`p_with_progress_loss\`|1.0|Progress loss 概率|
+
+---
+
+## 6. Advantage 标注与模型训练
+
+用训练好的价值模型对数据集逐帧推理 frame_value，计算 action_advantage。
+
+\`\`\`bash
+cd policy_and_value/policy_offline_and_value
+
+# 一键标注（三步自动完成：推理 frame_value → 写入 parquet → 计算 advantage）
+bash label_value.sh BiS1_value_release checkpoints/BiS1_value_release/BiS1_value_release/18000
+
+# 输出：数据集目录_w_adv/ （parquet 新增 frame_value, frame_value_smooth, action_advantage 列）
+\`\`\`
+
+**三步流水线** (\`examples/label_frame_value.py\`)：
+
+|   |   |
+|---|---|
+|**步骤**|**说明**|
+|1. 模型推理|逐 batch 推理每帧 \`frame_value\`，写入临时 .npy|
+|2. 写入列|\`add_column_from_disk()\` 将 \`frame_value\` 追加到 parquet|
+|3. 计算 advantage|\`smooth_value_and_compute_advantage()\` 计算 \`frame_value_smooth\` 和 \`action_advantage\`|
+
+**advantage 计算公式** (MODE=v1)：
+
+\`\`\`
+action_advantage[t] = avg(V[t+1], ..., V[t+CHUNK_SIZE]) - V[t]
+然后 × ADVANTAGE_SCALER
+\`\`\`
+
+**专家/推理数据混合处理**（数据集含 \`is_infer_data\` 字段时自动区分）：
+
+- 专家数据 (\`is_infer_data=0\`)：\`action_advantage = 1.0\`（恒定，完全模仿专家）
+- 推理数据 (\`is_infer_data=1\`)：从 frame_value 计算 advantage
+
+**关键参数** (对齐 RL 配置 \`rl_release_bi_s1_wm_rm.yaml\`)：
+
+|   |   |   |   |
+|---|---|---|---|
+|**参数**|**脚本变量**|**默认值**|**RL 配置对应**|
+|前瞻步数|\`CHUNK_SIZE\`|50|\`num_action_chunks: 50\`|
+|放大因子|\`ADVANTAGE_SCALER\`|5.0|\`advantage_scale: 5\`|
+|平滑窗口|\`N_SMOOTH\`|3 (当前关闭)|-|
+
+**纯专家数据快速标注**（不经过价值模型）：
+
+\`\`\`bash
+# 直接给所有帧赋 action_advantage = 1.0
+python examples/aloha_real/add_reward_quality_label.py
+# 修改脚本中的 data_roots 为数据集路径，输出 _w_adv_expert/
+\`\`\`
+
+**可视化已标注数据**（离线，不跑模型）：
+
+\`\`\`bash
+python examples/visualize_frame_value_and_advantage.py \\
+    --dataset_root <数据集>_w_adv \\
+    --chunk chunk-000 \\
+    --output_dir ./visual_labeled
+# 输出: visual_labeled/<数据集名>/episode_000000_vis.mp4
+\`\`\`
+
+**可视化价值模型预测**（在线，加载模型推理）：
+
+\`\`\`bash
+python examples/visualize_value_only.py \\
+    --config_name BiS1_value_release \\
+    --ckpt_dir path/to/checkpoint \\
+    --output_dir ./value_vis \\
+    --max_vis_episodes 5 \\
+    --split all \\
+    --headview_only
+\`\`\`
+
+**标注脚本可选参数**：
+
+|   |   |   |
+|---|---|---|
+|**参数**|**默认值**|**作用**|
+|\`--split\`|\`all\`|数据集分片 (\`all\` / \`val_tasks\` / \`heldout_tasks\`)|
+|\`--batch_size\`|\`64\`|推理 batch size|
+|\`--with_vis\` / \`--no-with_vis\`|默认开|推理时是否同步生成可视化|
+|\`--max_vis_episodes\`|\`3\`|最多可视化 episode 数|
+|\`--headview_only\`|False|只显示 front 视角|
+|\`--metric_only\`|False|只统计数值，跳过所有视频渲染|
+
+**标注完成后，训练****带 advantage 条件的** π**0.5 策略**
+
+\`\`\`bash
+cd policy_and_value/policy_offline_and_value
+
+# bi_s1 示例：不带 advantage 条件的 π0.5 策略
+bash train.sh BiS1_Policy_offline_release 8
+\`\`\`
+
+---
+
+## 7. 世界模型训练 (\`dynamics/dynamics_model/\`)
+
+基于 LTX-Video 的扩散世界模型，用于预测动作条件下的未来视频帧。
+
+### 7.1 下载预训练权重
+
+\`\`\`bash
+cd dynamics/dynamics_model
+bash download.sh
+\`\`\`
+
+### 7.2 视频预处理
+
+将数据集视频缩放到 256×192（动力学模型所需尺寸）。
+
+\`\`\`bash
+# 预处理指定数据集（支持绝对路径或相对 dataset/ 下的目录名）
+bash preprocess.sh bi_s1_full_merged
+
+# 或指定绝对路径
+bash preprocess.sh /path/to/dataset
+\`\`\`
+
+### 7.3 计算动作归一化统计量
+
+\`\`\`bash
+# 计算动作统计量并保存到 JSON 配置文件
+python norm.py \\
+    --dataset-dir /home/kemove/RISE/deploy/data_collection/s1_data/lerobot/ \\
+    --datasets bi_s1_full_merged \\
+    --save-config /home/kemove/RISE/deploy/data_collection/s1_data/lerobot/bi_s1_full_merged/norm_stats.json
+\`\`\`
+
+### 7.4 微调训练
+
+\`\`\`bash
+# 使用 torchrun 启动训练
+bash scripts/train.sh main.py configs/ltx_model/finetune.yaml
+\`\`\`
+
+**训练前需确认** **\`finetune.yaml\`** **中的路径**：
+
+|   |   |   |
+|---|---|---|
+|**配置项**|**说明**|**bi_s1 示例值**|
+|\`pretrained_model_name_or_path\`|LTX backbone 权重路径|\`.../checkpoints/\`|
+|\`diffusion_model.model_path\`|扩散模型权重路径|\`.../checkpoints/dynamics_model/pretrained/\`|
+|\`data.train.data_roots\`|训练数据根目录|\`[.../s1_data/lerobot/]\`|
+|\`data.train.domains\`|数据集名称|\`['bi_s1_full_merged']\`|
+|\`data.train.norm_config_path\`|归一化统计量路径|\`.../bi_s1_full_merged/norm_stats.json\`|
+|\`data.val.*\`|验证集配置（同训练集结构）|同上|
+
+**关键训练参数**：
+
+|   |   |   |
+|---|---|---|
+|**参数**|**默认值**|**说明**|
+|\`train_steps\`|50000|总训练步数|
+|\`batch_size\`|32|每 GPU batch size|
+|\`lr\`|1e-4|学习率|
+|\`chunk\`|25|预测帧数 (25帧 @ 15Hz = 1.67s)|
+|\`action_chunk\`|50|动作块大小 (stride 2 → 15Hz)|
+|\`n_previous\`|4|输入帧数|
+|\`sample_size\`|[192, 256]|视频尺寸 (H×W)|
+|\`action_in_channels\`|14|动作维度|
+|\`valid_cam\`|3 个视角|front, left_wrist, right_wrist|
+|\`steps_to_save\`|1000|检查点保存间隔|
+
+---
+
+## 8. 基于在线 RL 策略自提升 (\`policy_and_value/policy_online/\`)
+
+在线强化学习微调策略，支持世界模型 (WM) + 奖励模型 (RM) 生成 imagined rollouts。
+
+\`\`\`bash
+cd policy_and_value/policy_online
+
+# 启动在线 RL 训练（使用 bi_s1 WM+RM 配置）
+bash examples/embodiment/run_embodiment.sh rl_release_bi_s1_wm_rm
+\`\`\`
+
+**bi_s1 RL 配置** (\`examples/embodiment/config/rl_release_bi_s1_wm_rm.yaml\`)：
+
+|   |   |   |
+|---|---|---|
+|**参数**|**值**|**说明**|
+|\`experiment_name\`|\`bi_s1_rl_wm_rm_mixed\`|实验名称|
+|\`algorithm.policy_config_name\`|\`BiS1_Policy_offline_release\`|基础策略配置|
+|\`algorithm.adv_type\`|\`gae\`|优势估计算法|
+|\`algorithm.loss_type\`|\`actor_critic\`|损失类型|
+|\`algorithm.gamma\`|0.99|RL 折扣因子|
+|\`algorithm.gae_lambda\`|0.95|GAE λ 参数|
+|\`algorithm.with_advantage_condition\`|True|启用 advantage 条件|
+|\`algorithm.wm_action_interval\`|2|WM 动作间隔|
+
+**Actor 关键配置**：
+
+|   |   |   |
+|---|---|---|
+|**参数**|**值**|**说明**|
+|\`model.model_type\`|\`openpi\`|模型类型|
+|\`model.action_dim\`|14|动作维度|
+|\`model.num_action_chunks\`|50|动作块大小|
+|\`model.add_value_head\`|True|启用 value head|
+|\`openpi.add_dynamics_model\`|True|启用世界模型|
+|\`openpi.dynamics_model_config\`|\`...infer_s1.yaml\`|WM 推理配置|
+|\`openpi.add_reward_model\`|True|启用奖励模型|
+|\`openpi.reward_model_config\`|\`BiS1_value_release\`|RM 配置|
+|\`openpi.train_mode\`|\`IL\`|训练模式 (Imitation Learning + RL)|
+|\`openpi.advantage_scale\`|5|Advantage 缩放因子|
+|\`optim.lr\`|1e-6|策略学习率|
+|\`optim.value_lr\`|2e-4|Value head 学习率|
+|\`fsdp_config.sharding_strategy\`|\`full_shard\`|FSDP 分片策略|
+
+> **注意**：在线 RL 的 checkpoint 为 DCP (Distributed Checkpoint) 格式，部署前需用 \`convert_dcp_to_state_dict.py\` 转为 PyTorch state dict。
+
+---
+
+## 重要提醒
+
+- \`install.sh\` 会 patch \`transformers\` 包（第 18 行）
+- 在线 RL 的 checkpoint (DCP 格式) 需先 \`convert_dcp_to_state_dict.py\` 转为 PyTorch state dict 才能部署
+- 动作归一化常量为数据集特定，定义在 \`dynamics/dynamics_model/data/utils/constants.py\`
+- 世界模型训练前需先运行 \`norm.py\` 生成 \`norm_stats.json\`
+- Value model stage2 自动从 stage1 的 4000 步 checkpoint 恢复训练
+- 各训练配置文件中的数据集路径、checkpoint 路径使用绝对路径，迁移环境时需对应修改
+- 数据采集使用 \`robodeploy/scripts/\`，不再使用 \`deploy/data_collection/\`
+- 策略服务器连接错误：检查服务器是否在预期端口运行并监听；检查客户端和服务器之间的网络连接和防火墙设置
+- 数据集下载失败：检查网络连接；对于 HuggingFace 数据集，请确保已登录
+
+---
+
+# 基本概念补充
+
+## 模型架构
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────┐
+│                       数据采集层 (Data Collection)                   │
+├─────────────────────────────────────────────────────────────────────┤
+│ 1. 遥控操作 (Teleop) - 人工远程操控收集示范数据                        │
+│ 2. 策略推理 (Policy) - 使用已有策略进行自主操作                        │
+│ 3. 混合模式 (Mixed) - Teleop与Policy混合模式                          │
+│ 4. DAgger干预 (Correction) - 人工干预和纠错                           │
+│                                                                     │
+│ 产出：LeRobot格式数据集（多视角视频 + 动作序列）                       │
+└─────────────────────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                       离线训练层 (Offline Training)                  │
+├─────────────────────────────────────────────────────────────────────┤
+│ 核心任务：π0.5 策略微调                                              │
+│   - 支持advantage条件                                               │
+│   - 使用Flow matching目标函数                                       │
+│   - 以动作块(chunk=50)为单位处理数据                                 │
+│                                                                    │
+│ 价值模型：                                                          │
+│   - 架构：π0.5 骨干 + MLP头                                         │
+│   - Stage1: Progress Loss                                          │
+│   - Stage2: TD Loss                                                │
+└────────────────────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                优势标注模块 (Advantage Annotation)                   │
+├─────────────────────────────────────────────────────────────────────┤
+│ 计算公式：                                                           │
+│   action_advantage = avg(v[t+1 .. t+50]) - v[t]                     │
+│                                                                     │
+│ 功能：计算50个时间步内价值函数平均值，减去当前价值，衡量动作长期优势      │
+└─────────────────────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                世界模型层 (World Model / Dynamics Model)             │
+├─────────────────────────────────────────────────────────────────────┤
+│ 模型：基于LTX-Video架构的扩散模型                                     │
+│ 输入：历史帧 + 动作序列                                               │
+│ 输出：预测未来25帧多视角视频(256x192, 15Hz)                           │
+└─────────────────────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│             在线强化学习自提升层 (RISE风格)                           │
+├─────────────────────────────────────────────────────────────────────┤
+│ 框架：Actor-Critic架构                                               │
+│ 核心机制：                                                           │
+│   - 世界模型想象推演 (WM imagination rollout)                         │
+│   - 奖励模型计算GAE优势 (RM for GAE)                                  │
+│ 产出：优化后的π0.5策略                                                │
+└─────────────────────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    部署推理(Jetson Orin Nx)                          │
+└─────────────────────────────────────────────────────────────────────┘
+\`\`\`
+
+---
+
+## π0.5
+
+该仓库的具身模型基于**π0.5**进行微调。π0.5 是由 Physical Intelligence 公司发布的视觉-语言-动作（VLA）模型，作为 π0 的迭代升级版本，其核心特点包括：
+
+- **异构数据协同训练**：融合多源异构数据进行联合训练，显著提升模型在陌生环境中的泛化能力，首次实现了端到端机器人在全新家庭环境中执行长时程灵巧操作任务（如叠毛巾、整理床铺等，单次任务持续 10–15 分钟）；
+- **知识绝缘架构（π0.5-KI）**：将动作专家模块模块化“嫁接”至视觉-语言模型，在增强动作生成能力的同时不侵蚀预训练的语义知识，实现“高效训练、强泛化、高精度运动控制”三重目标；
+- **分层推理机制**：先预测高层语义子任务，再执行低层连续动作，实现抽象任务指令到具体关节控制的端到端映射；
+- **GemmaRMSNorm 动态调节**：在 Transformer 每一层动态调节归一化层，使模型在动作生成的不同阶段具有差异化行为，实现更精细的动作控制。
+
+具体细节请参考：
+
+- 参考论文：[https://www.pi.website/blog/pi05](https://www.pi.website/blog/pi05)
+- 参考代码：[https://github.com/Physical-Intelligence/openpi/tree/main](https://github.com/Physical-Intelligence/openpi/tree/main)
+
+---
+
+## Advantage策略模型
+
+Advantage策略模型，取自于 Physical Intelligence发布的 **π*********0.6**。其核心创新在于 RECAP 训练方法——通过“示范学习、纠错指导、自主实践”三阶段闭环，让机器人能够从真实执行中积累经验、从错误中自主成长，突破传统模仿学习的瓶颈。
+
+- **RECAP训练方法**：全称为“基于优势条件策略的经验与纠偏强化学习”，该方法整合演示数据、在线自主收集的实践数据以及人类专家的干预数据，分为“示范学习、纠错指导、自主实践”三个阶段，使机器人能够从真实执行中积累经验、从错误中自主成长，彻底突破了传统模仿学习只能逼近“真值”的局限。
+- **价值函数（Value Function）** ：RECAP的核心组件之一，用于评估任务进展并预测完成某项任务所需的预期时间。该价值函数基于大规模多机器人多任务数据训练，能够为轨迹中的每个动作提供质量评估，从而区分“好动作”与“坏动作”。
+- **优势信号（Advantage）** ：价值函数计算出每个动作的实际回报与预测价值之间的差值，即优势值A(s,a) = Q(s,a)−V(s)。该优势值用于区分当前动作相比“平均表现”的优势程度，并通过二值化处理形成高/低优势指标，作为策略训练的额外输入，使模型能够在推理时强制选择高优势动作，从而直接从数据中提取出比原始数据更优的决策策略。
+
+**具体细节请参考：**
+
+- 参考论文：[https://www.pi.website/blog/pistar06](https://www.pi.website/blog/pistar06)
+
+---
+
+## 基于世界模型的在线强化
+
+该仓库的世界模型，取自于**RISE**（Reinforcement learning via Imagination for Self-Improving robots），面向真实世界机器人操作的**在线强化学习框架**，核心创新在于将物理环境交互迁移至**想象空间**，通过构建**组合式世界模型**实现策略持续自我提升。
+
+**主要特点**：
+
+- **组合式世界模型**：将仿真任务解耦为动态模型（基于高效视频扩散模型，预测多视角未来状态）与价值模型（基于预训练 VLA 骨干，输出稠密进度信号），两者独立优化，兼顾视觉真实性与控制可控性。
+- **想象空间在线强化学习**：无需真实世界的昂贵、串行、需人工重置的试错交互，直接在想象环境中展开动作序列，由价值模型计算优势信号（Advantage） ，驱动策略更新，实现可扩展的在线策略学习。
+- **策略预热与自循环提升**：先通过离线数据（含专家演示、自主 rollout、人工纠正）进行优势条件化策略预热，再利用世界模型不断生成想象轨迹、评估优势、训练策略，形成闭环自提升。
+
+**具体细节请参考：**
+
+- 参考论文：[https://arxiv.org/abs/2602.11075](https://arxiv.org/abs/2602.11075)
+- 代码仓库：[](https://www.pi.website/blog/pistar06)[https://github.com/OpenDriveLab/RISE](https://github.com/OpenDriveLab/RISE)
+
+---
+
+# 致谢
+
+本项目受到开源机器人和机器人学习项目的启发，特别感谢：
+
+- **开源机器人社区。**
+- **π0.5 / π*0.6**：感谢 [Physical Intelligence](https://www.pi.website/) 开源的 VLA 模型及 RECAP 训练方法，为本项目提供了策略基座和优势条件化学习框架。
+- **RISE**：感谢 [OpenDriveLab](https://github.com/OpenDriveLab) 提出的组合式世界模型与想象空间在线强化学习框架（[论文](https://arxiv.org/abs/2602.11075) / [代码](https://github.com/OpenDriveLab/RISE)），本项目中的世界模型训练与在线 RL 自提升模块均参考其设计。
+- **LeRobot**：感谢 [Hugging Face LeRobot](https://github.com/huggingface/lerobot) 提供的标准化数据集格式和数据采集工具，使本项目的多臂数据流程得以高效构建。
+- **Genie Envisioner / LTX‑Video**：感谢相关团队开源的视频生成模型，为本项目世界模型的实现奠定了高效生成基础。`;
+const MD_retargeting_anything = `# Retargeting Anything
+
+> **超强通用运动映射算法与工具** — 将任意一种结构的运动，映射到任意的另一种结构上。
+
+## 核心特性
+
+- **任意结构支持**：通过图/树表示支持任意骨骼拓扑（人形、机械臂、四足、自定义结构）
+- **多种映射算法可切换**：
+  | 映射器 | 适用场景 | 特点 |
+  |--------|---------|------|
+  | \`direct\` | 拓扑相似结构 | 直接关节角度映射，支持缩放/偏移/混合 |
+  | \`ik\` | 不同拓扑 | 任务空间关键点 + 逆运动学求解 |
+  | \`end_effector\` | 拓扑差异大 | 末端执行器6D位姿跟踪（参考 TrajBooster） |
+  | \`optimization\` | 高质量需求 | 带物理/几何约束的全局优化 |
+  | \`composite\` | 复杂需求 | 组合多种映射策略（顺序/混合/分区） |
+  | \`latent\` | 数据驱动 | 基于共享隐空间的神经网络映射（参考 ImitationNet） |
+  | \`skeleton_agnostic\` | 未知对应 | 基于语义分组的自动映射（参考 PALUM） |
+- **用户自定义映射配置**：通过 YAML/JSON 定义任意关节到关节的映射规则
+- **模块化设计**：映射器可自由切换、组合、扩展
+
+---
+
+## 为什么需要 N→M 映射（NtoM Mapping）
+
+### 问题背景
+
+在机器人遥操作（Teleoperation）场景中，操作端（主手/采集设备/动作捕捉服）与执行端（从手/机器人/机械臂）几乎永远**不是同构型**的：
+
+- 人形手套有 **22 个关节**，而目标灵巧手只有 **11 个电机**
+- 动作捕捉服采集全身 **50+ DOF**，而目标机械臂只有 **6 个旋转关节**
+- 主手是 **3 自由度操纵杆**，而目标是需要 **多关节协调** 的软体机器人
+
+传统的 **1:1 关节映射**（N=M 且同构型）在此完全失效。我们必须回答一个问题：**如何用 N 个输入自由度，去控制 M 个输出自由度？**
+
+### NtoM 映射的本质
+
+NtoM 映射系统是一个**通用的自由度转换层**，它不关心两端的具体机械结构是否相同，只关心：
+
+> 输入端的 N 个自由度（关节角度、姿态、力、位移等）→ 通过某种映射规则 → 输出端的 M 个自由度（关节角度、电机转速、位置指令等）
+
+映射方式可以是：
+- **直接映射**：一个输入关节对应一个输出关节（1:1）
+- **线性映射**：多个输入的加权线性组合对应一个输出（n:1）
+- **非线性映射**：通过 IK、优化、神经网络等引入非线性补偿
+- **语义映射**：基于身体部位分组（如"左臂"→"左臂"），忽略具体关节数量差异
+
+### 系统示意图
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────┐
+│                         NtoM 映射系统架构                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   ┌──────────────┐         ┌──────────────┐         ┌─────────────┐ │
+│   │   输入端      │         │   映射层      │         │   输出端     │ │
+│   │  (N DOF)     │  ────►  │ (N→M Mapping)│  ────►  │  (M DOF)    │ │
+│   └──────────────┘         └──────────────┘         └─────────────┘ │
+│          │                        │                      │          │
+│          ▼                        ▼                      ▼          │
+│   ┌──────────────┐         ┌──────────────┐         ┌─────────────┐ │
+│   │ • 数据手套    │         │ • 直接映射    │         │ • 机械臂关节 │ │
+│   │ • 动作捕捉    │         │ • 线性缩放    │         │ • 灵巧手电机 │ │
+│   │ • 主手/操纵杆 │         │ • 非线性优化  │         │ • 移动底盘   │ │
+│   │ • 肌电信号    │         │ • IK 求解     │         │ • 软体驱动器 │ │
+│   │ • 语音/意图   │         │ • 神经网络    │         │ • ...       │ │
+│   └──────────────┘         │ • 语义分组    │         └─────────────┘ │
+│                              └──────────────┘                         │
+│                                                                     │
+│   核心能力：                                                         │
+│   ┌─────────────────────────────────────────────────────────────┐   │
+│   │ 不要求同构型  │  支持 1~n → 1~m 任意对应  │  支持异形结构操控 │   │
+│   └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+\`\`\`
+
+### 典型应用场景
+
+| 场景 | 输入端 (N) | 输出端 (M) | 映射难点 |
+|------|-----------|-----------|---------|
+| **人形→机械臂** | 人体右臂 7-DOF | 工业臂 6-DOF | 肩关节球关节 vs 串联旋转关节，需 IK 补偿 |
+| **手套→灵巧手** | 数据手套 22-DOF | 欠驱动灵巧手 11-DOF | 多输入合并为少输出，需耦合矩阵 |
+| **操纵杆→多机协同** | 3-DOF 摇杆 | 2 台 6-DOF 机械臂 | 1 个输入分配给 12 个输出，需语义分组 |
+| **动作捕捉→四足** | 人体全身 50+ DOF | 四足腿 12-DOF | 完全不同的拓扑结构，需 Skeleton-Agnostic 映射 |
+| **肌电→假肢** | 2~4 通道肌电信号 | 多自由度假手 | 极度欠驱动，需隐空间/神经网络映射 |
+
+### 为什么这是遥操作的"刚需"
+
+1. **异构是常态，同构是例外**  
+   商业遥操作设备（如 SenseGlove、Leap Motion）与目标机器人的自由度几乎不可能一一对应。
+
+2. **自由度冗余/欠缺的天然矛盾**  
+   人手臂有 7-DOF（冗余），工业臂通常 6-DOF（正好），欠驱动灵巧手可能只有 4-DOF（不足）。N≠M 是普遍情况。
+
+3. **任务空间 vs 关节空间的鸿沟**  
+   操作者关心的是"末端去哪里"（任务空间），但机器人接收的是"电机转多少"（关节空间）。NtoM 映射系统正是架在这两者之间的转换层。
+
+4. **灵活性的工程需求**  
+   遥操作场景经常变化（今天控机械臂，明天控灵巧手），需要一套**与具体构型解耦**的通用映射框架，而不是为每一对设备写硬编码。
 
 ---
 
 ## 快速开始
 
-\`\`\`bash
-# 进入本模块目录
-cd SoftEmbodiedPolicy
-
-\`\`\`
-
----
-
-## 文件结构
-
-\`\`\`
-SoftEmbodiedPolicy/
-├── README.md          # 本文件
-├── src/               # 核心实现（待补充）
-├── examples/          # 示例代码（待补充）
-└── reference/         # 参考开源项目（可选 submodule）
-\`\`\`
-
----
-
-## 状态
-
-- ZH: 主版入口
-- EN: Translation pending
-- TBD: 待补充参考开源项目搜索（当前无匹配结果）。
-
----
-
-*License: [LICENSE](https://github.com/SuppartWang/software-algorithm/blob/main/LICENSE). Commercial use is strictly prohibited.*
-`;
-const MD_retargeting_anything = `# retargeting_anything
-
-> retargeting_anything — 模块资料归档
-
----
-
-## 概述
-
-- **功能**：模块资料归档
-- **适用场景**：柔性操作工业机器人系统的相关子系统。
-- **使用建议**：本页汇总了国内外相关优质开源项目，供设计与开发参考。
-
----
-
-## 快速开始
+### 安装
 
 \`\`\`bash
-# 进入本模块目录
-cd retargeting_anything
-
+pip install -e .
+# 或安装可视化依赖
+pip install -e ".[viz]"
 \`\`\`
 
----
+### Python API
 
-## 文件结构
+\`\`\`python
+from retargeting_anything import create_humanoid_skeleton, create_robot_arm_skeleton
+from retargeting_anything.mappers import create_mapper
+
+# 创建结构
+source = create_humanoid_skeleton(scale=1.0)
+target = create_robot_arm_skeleton()
+
+# 加载/创建运动数据
+source_motion = ...
+
+# 创建映射器并执行映射
+mapper = create_mapper("ik", source, target, position_scale=1.5)
+target_motion = mapper.map_motion(source_motion)
+\`\`\`
+
+### CLI 工具
+
+\`\`\`bash
+# 生成示例骨骼
+retarget generate-skeleton --type humanoid --output human.json
+retarget generate-skeleton --type robot_arm --output robot.json
+
+# 执行映射
+retarget map \\
+    --source-skeleton human.json \\
+    --target-skeleton robot.json \\
+    --source-motion motion.npz \\
+    --mapper ik \\
+    --output result.npz
+
+# 可视化
+retarget visualize --motion result.npz --frame 0 --output frame.png
+
+# 查看所有映射器
+retarget list-mappers
+\`\`\`
+
+### 自定义映射配置
+
+\`\`\`yaml
+name: my_custom_mapping
+source_skeleton: human
+target_skeleton: robot
+
+global_settings:
+  position_scale: 1.5
+
+mappings:
+  # 一对一映射
+  - source: right_shoulder
+    target: joint1
+    type: direct
+  
+  # 带缩放映射
+  - source: right_elbow
+    target: joint2
+    type: scaled
+    scale: 1.2
+  
+  # 多对一混合
+  - source: [left_shoulder, right_shoulder]
+    target: torso
+    type: multi_source
+    weights: [0.5, 0.5]
+  
+  # 末端执行器映射
+  - source: right_wrist
+    target: end_effector
+    type: end_effector
+\`\`\`
+
+## 技术背景
+
+本项目基于以下机器人运动控制领域的映射算法研究：
+
+- **Configuration Space Retargeting**：关节空间直接映射 [1]
+- **Task Space Retargeting + IK**：任务空间映射 + 逆运动学 [2]
+- **Shared Latent Space** (ImitationNet, Neural Latent Optimization)：跨结构共享隐空间 [3,4]
+- **Skeleton-Agnostic Networks** (PALUM, SAN)：Transformer/GNN 处理任意拓扑 [5,6]
+- **End-Effector Trajectory Mapping** (TrajBooster)：末端执行器作为共享接口 [7]
+- **Contact-Aware Retargeting**：接触约束保持 [8]
+
+## 项目结构
 
 \`\`\`
 retargeting_anything/
-├── README.md          # 本文件
-├── src/               # 核心实现（待补充）
-├── examples/          # 示例代码（待补充）
-└── reference/         # 参考开源项目（可选 submodule）
+├── core/              # 核心库（骨骼、运动、FK/IK、旋转表示）
+├── mappers/           # 映射算法插件
+├── config/            # 映射配置系统
+├── utils/             # IO与可视化工具
+├── cli.py             # 命令行工具
+└── tests/             # 测试
 \`\`\`
 
----
+## 测试
 
-## 状态
+\`\`\`bash
+python retargeting_anything/tests/test_basic.py
+# 或
+pytest retargeting_anything/tests/
+\`\`\`
 
-- ZH: 主版入口
-- EN: Translation pending
-- TBD: 待补充参考开源项目搜索（当前无匹配结果）。
+## 示例
 
----
+\`\`\`bash
+# 运行完整演示
+python examples/demo_basic.py
+bash examples/demo_cli.sh
+\`\`\`
 
-*License: [LICENSE](https://github.com/SuppartWang/software-algorithm/blob/main/LICENSE). Commercial use is strictly prohibited.*
+## 参考文献
+
+1. Ayusawa & Yoshida, "Motion retargeting for humanoid robots based on simultaneous morphing parameter identification and motion optimization", 2017
+2. Elobaid et al., "Human-Robot Collaboration via Holistic Human Perception and Partner-Aware Control", 2020
+3. ImitationNet, "Unsupervised Human-to-Robot Motion Retargeting via Shared Latent Space", 2024
+4. "Efficient Human-Robot Motion Retargeting via Neural Latent Optimization", 2021
+5. PALUM, "Part-based Attention Learning for Unified Motion Retargeting", 2026
+6. SAN, "Skeleton-Aware Networks for Deep Motion Retargeting", 2020
+7. TrajBooster, "Cross-embodiment framework leveraging end-effector trajectories", 2025
+8. Contact-Aware Retargeting, "Contact-Aware Retargeting of Skinned Motion", ICCV 2021
+
+## License
+
+MIT
+
+## 多格式结构支持
+
+### 支持的骨骼/结构格式（8种）
+
+| 格式 | 扩展名 | 说明 |
+|------|--------|------|
+| JSON |  | 自定义格式（原生） |
+| URDF |  | ROS机器人标准 |
+| MJCF |  | MuJoCo仿真 |
+| SDF | ,  | Gazebo仿真 |
+| BVH |  | 动作捕捉 |
+| FBX |  | 3D动画（ASCII） |
+| glTF/GLB | ,  | Web3D标准 |
+| C3D |  | 生物力学 |
+
+### 自动格式检测
+
+上传时自动根据扩展名和内容检测格式：
+-  → URDF解析
+-  → 自动区分MJCF/SDF/URDF
+-  → BVH解析（含运动数据）
+-  → FBX ASCII解析
+- / → glTF解析
+-  → C3D解析
+
+## Web 可视化界面
+
+项目包含一个完整的 Web 可视化平台，支持浏览器中直接进行运动映射和3D仿真展示。
+
+### 启动 Web 服务
+
+\`\`\`bash
+cd web
+python app.py
+# 或指定端口
+python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
+\`\`\`
+
+然后打开浏览器访问 \`http://localhost:5001\`
+
+### Web 界面功能
+
+- **上传结构**：支持上传 JSON 格式的骨骼定义文件
+- **生成示例**：一键生成人形/机械臂骨骼，挥手/行走示例运动
+- **11种映射算法**：下拉选择，即时切换
+- **3D 并排仿真**：左侧源结构，右侧目标结构，Three.js 实时渲染
+- **动画播放控制**：播放/暂停/进度条/帧跳转
+- **末端执行器轨迹**：彩色轨迹线显示运动路径
+- **关节 Hover 提示**：鼠标悬停显示关节名称和坐标
+- **导出结果**：支持 NPZ / CSV 格式下载
+
+### Web 界面截图
+
+![Web界面](web/screenshot_final_demo.png)
+
 `;
 const MD_product_dualArmRobot = `# DM-Robot 双臂机器人产品资料
 
