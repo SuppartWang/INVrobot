@@ -342,7 +342,7 @@
 <p>本节介绍 INV Hand 的整体结构设计、通信与电源接口排布，说明各自由度命名规范及运动参数，帮助用户了解产品机械构造与使用准则。</p>
 <h3>3.1. 结构示意图</h3>
 <p>INV Hand 采用五指仿生结构设计，每个手指包含4个关节，实现20自由度的灵活运动。下图展示整体结构及主要组成部分：</p>
-<p><img alt="image1" src="./assets/fiveFingerDexterousHand_image1.png"/></p>
+<p><img alt="image1" src="https://github.com/SuppartWang/product-fiveFingerDexterousHand/blob/main/./media/image1.png"/></p>
 <p>A~E分别对应不同手指：</p>
 <p>A、拇指 (Thumb)</p>
 <p>B、食指 (Index)</p>
@@ -357,7 +357,7 @@
 <p>5、腕骨 (Carpals)</p>
 <h3>3.2. INV Hand 自由度配置</h3>
 <p>下图为 INV Hand 各关节的解剖学命名与对应位置关系，便于理解各自由度的定位。</p>
-<p><img alt="image2" src="./assets/fiveFingerDexterousHand_image2.png"/></p>
+<p><img alt="image2" src="https://github.com/SuppartWang/product-fiveFingerDexterousHand/blob/main/./media/image2.png"/></p>
 <p>图中 1~6 分别对应：</p>
 <p>1、CMC1</p>
 <p>2、CMC2</p>
@@ -368,7 +368,7 @@
 <p>7、DIP2</p>
 <h3>3.3. 各自由度运动方向及角度范围</h3>
 <p>食指 、中指、无名指、小指结构一致，单指全长约 150mm；拇指模块结构略有差异，单指全长约 140 mm。下图以拇指和小指为例，说明各自由度的运动方向及角度范围：</p>
-<p><img alt="image3" src="./assets/fiveFingerDexterousHand_image3.png"/></p>
+<p><img alt="image3" src="https://github.com/SuppartWang/product-fiveFingerDexterousHand/blob/main/./media/image3.png"/></p>
 <table style="width:62%;">
 <colgroup>
 <col style="width: 15%"/>
@@ -506,22 +506,22 @@
 </thead>
 <tbody>
 <tr>
-<td><img alt="image4" src="./assets/fiveFingerDexterousHand_image4.png"><img alt="image5" src="./assets/fiveFingerDexterousHand_image5.png"/></img></td>
+<td><img alt="image4" src="./media/image4.png"><img alt="image5" src="./media/image5.png"/></img></td>
 <td>电源适配器及AC 线</td>
 <td>供电</td>
 </tr>
 <tr>
-<td><img alt="image6" src="./assets/fiveFingerDexterousHand_image6.png"/></td>
+<td><img alt="image6" src="./assets/fiveFingerDexterousHand_._media_image6.png"/></td>
 <td>抗冲击转接座</td>
 <td>异常情况剧烈冲击时主动分离</td>
 </tr>
 <tr>
-<td><img alt="image7" src="./assets/fiveFingerDexterousHand_image7.png"/></td>
+<td><img alt="image7" src="./media/image7.png"/></td>
 <td>直连转接座</td>
 <td>连接 INV Hand 与用户设备</td>
 </tr>
 <tr>
-<td><img alt="image8" src="./assets/fiveFingerDexterousHand_image8.png"/></td>
+<td><img alt="image8" src="./assets/fiveFingerDexterousHand_._media_image8.png"/></td>
 <td>配件工具包</td>
 <td><p>撬棒×1</p>
 <p>六角扳手×5</p>
@@ -531,7 +531,7 @@
 <p>母头×4</p></td>
 </tr>
 <tr>
-<td><img alt="image9" src="./assets/fiveFingerDexterousHand_image9.png"/></td>
+<td><img alt="image9" src="./assets/fiveFingerDexterousHand_._media_image9.png"/></td>
 <td>USB A to USB C 线</td>
 <td>用于主机设备与 INV Hand 通信</td>
 </tr>
@@ -561,652 +561,1927 @@
 <a href="https://suppartwang.github.io/INVrobot/">🏠 INVrobot 产品文档中心</a>
 </p>
 </div>
-    <div id="content-specialDexterousHand" class="project-content markdown-body " style="color: var(--text-main);"><h1>具身智能灵巧操作终端 —— 产品技术白皮书</h1>
+    <div id="content-specialDexterousHand" class="project-content markdown-body " style="color: var(--text-main);"><h1>特异型灵巧手产品文档</h1>
 <blockquote>
-<p>本文档为英诺维信机器人具身智能灵巧操作终端全系产品的技术白皮书，涵盖多特异型灵巧手指安装手掌基座、多构型可替换智能手指及配套生态模块。全系产品以具身智能（Embodied AI）理念为设计核心，支持多模态感知融合、端到端智能决策与持续进化学习，面向下一代柔性制造与智能服务场景。</p>
-<p>文档版本：V2.0 ｜ 发布日期：2026-05-26 ｜ 编制单位：英诺维信机器人具身智能实验室</p>
+<p><strong>文档版本</strong>：V1.0
+<strong>发布日期</strong>：2026.05.25
+<strong>公司名称</strong>：英诺维信机器人
+<strong>适用产品</strong>：特异型灵巧手系列产品（无动力夹取手指 / 有动力夹取手指 / 手指安装平台）</p>
 </blockquote>
 <hr/>
-<h2>一、具身智能灵巧操作终端概览</h2>
-<h3>1.1 系统定位</h3>
-<p>英诺维信具身智能灵巧操作终端是一套面向<strong>下一代柔性制造与智能服务场景</strong>的模块化末端执行器智能系统。该系统以<strong>具身智能（Embodied AI）<strong>范式为设计核心，将多模态感知、智能决策与精密执行深度融合，打破传统末端执行器"刚性-单一-开环"的技术瓶颈，实现面向非结构化环境的</strong>自适应、自学习、自进化</strong>灵巧操作能力。</p>
-<p>系统采用"<strong>一手掌基座 + 多构型智能手指</strong>"的模块化架构，同一多特异型灵巧手指安装手掌基座可兼容六种不同构型的可替换智能手指，通过<strong>秒级热插拔</strong>实现任务级重构，使单一机械臂末端具备应对复杂 heterogeneous 任务场景的泛化能力。</p>
-<h3>1.2 可替换智能手指矩阵（A-F）</h3>
-<p>全系可替换智能手指覆盖从<strong>被动自适应</strong>到<strong>主动智能驱动</strong>、从<strong>刚性抓持</strong>到<strong>柔性协同搬运</strong>的全谱系操作需求：</p>
+<h2>1. 项目总览</h2>
+<h3>1.1 产品系列介绍</h3>
+<p>特异型灵巧手系列产品是英诺维信机器人面向柔性抓取、精密装配及人机协作场景推出的模块化机器人末端执行器解决方案。本系列包含三大核心模块：</p>
 <table>
 <thead>
 <tr>
-<th align="left">代号</th>
-<th align="left">智能手指名称</th>
-<th align="left">技术路线</th>
-<th align="left">开发状态</th>
-<th align="left">核心能力</th>
+<th>产品名称</th>
+<th>核心特征</th>
+<th>驱动方式</th>
+<th>自由度</th>
+<th>典型场景</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left"><strong>A</strong></td>
-<td align="left"><strong>无动力夹取手指</strong></td>
-<td align="left">纯机械欠驱动 + 被动自适应</td>
-<td align="left"><strong>已定型</strong></td>
-<td align="left">零能耗布料自适应包络抓取，机械自锁保持</td>
+<td><strong>无动力夹取手指</strong></td>
+<td>纯机械被动自适应结构</td>
+<td>无动力（被动）</td>
+<td>1 DOF</td>
+<td>纺织布料分拣、柔性物料搬运、低成本自动化改造</td>
 </tr>
 <tr>
-<td align="left"><strong>B</strong></td>
-<td align="left"><strong>有动力夹取手指</strong></td>
-<td align="left">BLDC 主动驱动 + 多模态感知 + 力位混合智能控制</td>
-<td align="left"><strong>已定型</strong></td>
-<td align="left">三自由度精密抓持、六维力/触觉融合感知、ROS2 智能体接口</td>
+<td><strong>有动力夹取手指</strong></td>
+<td>模块化可拆卸、多模态感知</td>
+<td>直流无刷伺服电机 + 谐波减速器</td>
+<td>3 DOF</td>
+<td>精密装配、异形物体抓持、接触式感知、科研实验</td>
 </tr>
 <tr>
-<td align="left"><strong>C</strong></td>
-<td align="left"><strong>平行卷轴式手指</strong></td>
-<td align="left">滚动接触 + 连续旋转驱动</td>
-<td align="left"><strong>研发中</strong></td>
-<td align="left">薄板/薄膜类工件的无损伤卷取操作，适用于柔性电路板、光伏硅片等场景</td>
-</tr>
-<tr>
-<td align="left"><strong>D</strong></td>
-<td align="left"><strong>粘附式手指</strong></td>
-<td align="left">可控粘附界面 + 负压/静电/干粘附混合机制</td>
-<td align="left"><strong>研发中</strong></td>
-<td align="left">光滑表面物体的无损拾取，面向玻璃面板、抛光金属件等低摩擦工况</td>
-</tr>
-<tr>
-<td align="left"><strong>E</strong></td>
-<td align="left"><strong>双传送带平行手指</strong></td>
-<td align="left">平行夹持 + 双侧传送带连续输送</td>
-<td align="left"><strong>研发中</strong></td>
-<td align="left">长条形工件的夹持-输送一体化操作，适用于管材、棒材的连续上料与位移调整</td>
-</tr>
-<tr>
-<td align="left"><strong>F</strong></td>
-<td align="left"><strong>双传送带相对手指</strong></td>
-<td align="left">对置夹持 + 双侧传送带差速驱动</td>
-<td align="left"><strong>研发中</strong></td>
-<td align="left">工件夹持状态下的姿态精调与翻转，实现抓取后的六自由度微调，无需释放重抓</td>
+<td><strong>手指安装平台</strong></td>
+<td>正五边形五指承载、360°独立旋转</td>
+<td>5个旋转驱动电机</td>
+<td>5 DOF</td>
+<td>五指灵巧手整机组装、多指协调控制、科研工业平台</td>
 </tr>
 </tbody></table>
-<blockquote>
-<p><strong>研发中手指（C-F）</strong>：当前处于概念设计与关键技术验证阶段，预计 2026 Q4 完成原型机开发。本文档中已预留接口定义与系统兼容规格，确保定型后可无缝接入现有具身智能灵巧操作终端生态。</p>
-</blockquote>
-<p><img alt="可替换智能手指矩阵（A-F）" src="./assets/specialDexterousHand_finger_matrix.png"/></p>
-<h3>1.3 系统架构与生态关系</h3>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
-│              具身智能决策层（边缘计算单元 / 云端大脑）           │
-│    视觉语言模型(VLM) / 操作策略学习 / 数字孪生仿真 / Sim2Real   │
-└───────────────────────────┬─────────────────────────────────┘
-                            │ 以太网 / 5G / ROS2 Topic
-┌───────────────────────────▼─────────────────────────────────┐
-│              多模态感知融合层（上位机 / 工控机）               │
-│    3D 视觉点云 / 触觉阵列时空序列 / 六维力/力矩 / 关节状态     │
-│              ↑ 多模态数据对齐 ↑ 感知-动作闭环                  │
-└───────────────────────────┬─────────────────────────────────┘
-                            │ CAN FD / EtherCAT
-┌───────────────────────────▼─────────────────────────────────┐
-│        多特异型灵巧手指安装手掌基座（特异型灵巧手指安装平台）    │
-│         5 轴独立旋转驱动 ｜ 构型智能规划 ｜ 统一总线汇聚        │
-└────────────┬──────────────────────────────────┬─────────────┘
-             │ 手掌基座与特异型灵巧手指的连接部分 │
-    ┌────────┴────────┬─────────────┬───────────┴────────┐
-    ↓                 ↓             ↓                    ↓
- 手指 A            手指 B        手指 C-F          暂存机构
-(无动力)         (有动力驱动)    (研发中)         (手指离线暂存)
-</code></pre>
-<p><strong>生态关系说明</strong>：</p>
+<p>三款产品采用统一的模块化设计理念，支持独立部署或组合集成，可根据应用场景灵活配置为单指模块、多指组合或完整五指灵巧手系统。</p>
+<h3>1.2 产品系列对比</h3>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>无动力夹取手指</th>
+<th>有动力夹取手指</th>
+<th>手指安装平台</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>驱动方式</td>
+<td>纯机械被动驱动</td>
+<td>电机+谐波减速器主动驱动</td>
+<td>旋转驱动电机</td>
+</tr>
+<tr>
+<td>控制需求</td>
+<td>无需控制</td>
+<td>位置/力/阻抗等多模式控制</td>
+<td>位置/速度控制</td>
+</tr>
+<tr>
+<td>感知能力</td>
+<td>无</td>
+<td>6轴力/力矩 + 16×16触觉阵列</td>
+<td>无（取决于选用电机）</td>
+</tr>
+<tr>
+<td>重量</td>
+<td>16 g（单指）</td>
+<td>185 g（单指）</td>
+<td>161.75 g（不含电机）</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>极低</td>
+<td>中等</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>维护难度</td>
+<td>几乎免维护</td>
+<td>定期维护</td>
+<td>定期维护</td>
+</tr>
+<tr>
+<td>断电安全性</td>
+<td>机械自锁，不脱落</td>
+<td>谐波减速器自锁保持</td>
+<td>取决于电机</td>
+</tr>
+</tbody></table>
+<h3>1.3 应用场景总览</h3>
+<p>本系列产品覆盖从低成本柔性搬运到高精度灵巧操作的全场景需求：</p>
 <ul>
-<li><strong>多特异型灵巧手指安装手掌基座（特异型灵巧手指安装平台）<strong>是整个灵巧手系统的核心中间层，可直接安装于协作机械臂末端法兰，其上承载 5 根可替换智能手指（通过</strong>手掌基座与特异型灵巧手指的连接部分</strong>连接），实现完整五指灵巧手功能。</li>
-<li><strong>无动力夹取手指 A</strong>作为专用末端工具，面向纺织/布料场景，可独立部署于机械臂末端。</li>
-<li>**手掌基座与特异型灵巧手指的连接部分（手指快插拔模块）**使有动力手指能够在手掌基座上实现秒级拆装，支持根据不同任务快速更换手指构型。</li>
-<li>**特异型灵巧手指的暂存机构（特异型手指寄存模块）**为离线手指提供安全存放空间，支持产线中手指的缓存与备用管理。</li>
-<li>全系手指均遵循统一的机械接口、电气接口与通信协议规范，确保<strong>跨代际兼容</strong>与<strong>生态可扩展性</strong>。</li>
+<li><strong>纺织自动化</strong>：无动力夹取手指专用于轻薄布料、面料裁片的无损伤抓取</li>
+<li><strong>精密装配</strong>：有动力夹取手指适用于电子元器件插拔、螺丝拧紧、细小零件定位</li>
+<li><strong>异形物体抓持</strong>：三指/五指组合实现食品分拣、不规则工业零件包络抓取</li>
+<li><strong>科研实验</strong>：多指协调控制、触觉感知算法验证、灵巧操作研究平台</li>
+<li><strong>人机协作</strong>：服务机器人开门、倒水、物品传递等日常辅助操作</li>
+<li><strong>柔性生产</strong>：适用于异形零件分拣、食品饮料搬运等柔性生产线</li>
 </ul>
-<p><img alt="系统架构分层图" src="./assets/specialDexterousHand_system_architecture.png"/></p>
 <hr/>
-<h2>二、多特异型灵巧手指安装手掌基座（特异型灵巧手指安装平台）</h2>
+<h2>2. 无动力夹取手指</h2>
 <h3>2.1 产品概述</h3>
-<p><strong>多特异型灵巧手指安装手掌基座</strong>，即特异型灵巧手指安装平台，是面向协作机械臂末端与灵巧手系统的<strong>五指安装承载平台</strong>，采用<strong>正五边形模块化结构</strong>设计，内置 5 个旋转驱动电机，每根手指可实现 <strong>0°~360° 连续旋转</strong>。适配 ISO 9409-1-31.5/40/50/63 标准机械臂末端法兰盘。是构建完整灵巧手系统的核心承载与旋转定位中间层。</p>
-<p>作为具身智能灵巧操作终端的<strong>核心承载与构型重构枢纽</strong>，该平台赋予多指系统以<strong>类人手掌的构型智能</strong>——即根据不同操作对象的形状、材质与任务需求，实时计算并调整各手指的朝向角度，形成最优包络构型。</p>
-<p><img alt="手掌基座结构示意图（顶视图）" src="./assets/specialDexterousHand_palm_base_diagram.png"/></p>
-<h3>2.2 核心技术参数</h3>
+<p>本产品是一款面向纺织自动化、柔性物料搬运场景的<strong>无动力被动自适应布料夹爪</strong>，采用<strong>模块化可拆卸</strong>的纯机械欠驱动结构，可直接部署于协作机械臂末端或集成于布料分拣设备中。该夹爪依靠接触反力触发被动夹紧，通过内部斜楔-连杆机构实现自适应包络抓取，无需额外气/电动力源，依靠机械咬合与摩擦力实现轻薄、易变形布料的稳定抓取。相比传统有源夹爪，更适合纺织行业低成本、无气源/电源条件下的柔性物料自动化改造场景。</p>
 <table>
 <thead>
 <tr>
-<th align="left">参数项</th>
-<th align="left">规格</th>
-<th align="left">技术释义</th>
+<th>应用场景</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">结构形式</td>
-<td align="left">正五边形模块化结构</td>
-<td align="left">模拟人类手掌骨骼排布，最大化包络空间利用率</td>
+<td>纺织产线布料分拣</td>
+<td>轻薄布料、面料裁片的自动取放，依靠机械咬合实现无损伤抓取</td>
 </tr>
 <tr>
-<td align="left">主动自由度</td>
-<td align="left">5（旋转驱动电机 ×5）</td>
-<td align="left">每组独立 PID + 前馈控制，支持构型级协调规划</td>
+<td>服装自动化缝制线</td>
+<td>衣片、面料半成品的上料/转运，无动力结构避免管线干扰缝纫工序</td>
 </tr>
 <tr>
-<td align="left">旋转范围</td>
-<td align="left">0° ~ 360° 连续旋转</td>
-<td align="left">无限位设计，支持缠绕类操作与多圈姿态调整</td>
+<td>柔性物料分类搬运</td>
+<td>无纺布、薄皮革等易变形柔性物料的无标记自适应抓取</td>
 </tr>
 <tr>
-<td align="left">传动方式</td>
-<td align="left">推力球轴承 + 电机壳旋转</td>
-<td align="left">高刚性、低摩擦、零背隙，确保旋转定位精度</td>
+<td>低成本纺织自动化改造</td>
+<td>旧产线无气源/电源条件下的自动化升级，大幅降低设备投入与维护成本</td>
 </tr>
 <tr>
-<td align="left">适配法兰</td>
-<td align="left">ISO 9409-1-31.5/40/50/63</td>
-<td align="left">兼容 Universal Robots、ABB、KUKA、Fanuc 等主流协作臂</td>
-</tr>
-<tr>
-<td align="left">通信方式</td>
-<td align="left">由所选旋转电机决定（推荐 CAN 总线）</td>
-<td align="left">支持多节点实时通信，为具身智能高频感知反馈提供带宽保障</td>
-</tr>
-<tr>
-<td align="left">节点容量</td>
-<td align="left">最多 16 个节点共线</td>
-<td align="left">5 旋转轴 + 5 智能手指 + 6 预留扩展，支撑未来多模态传感器接入</td>
+<td>柔性抓取科研验证</td>
+<td>欠驱动机械结构在柔性布料抓取中的力学特性与适应性研究平台</td>
 </tr>
 </tbody></table>
-<h3>2.3 结构特征</h3>
+<h3>2.2 手指主体图</h3>
+<h4>2.2.1 3D渲染图</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%97%A0%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image1.png"/>
+<img alt="" src="./assets/specialDexterousHand_images_%E6%97%A0%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image2.png"/></p>
+<h4>2.2.2 部件清单</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%97%A0%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image3.png"/></p>
 <table>
 <thead>
 <tr>
-<th align="left">结构部件</th>
-<th align="left">连接方式</th>
-<th align="left">技术要点</th>
+<th>编号</th>
+<th>部件名称</th>
+<th>功能说明</th>
+<th>材质/备注</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">底盒</td>
-<td align="left">与机械臂末端法兰对接</td>
-<td align="left">提供整体承载基础，ISO 规格匹配；内置总线汇聚板</td>
+<td>1</td>
+<td>壳体3.1</td>
+<td>集成滚柱的运动路径，起固定整体结构的作用</td>
+<td>7075铝合金，阳极氧化</td>
 </tr>
 <tr>
-<td align="left">顶壳</td>
-<td align="left">M3×10 平头螺丝（5 颗）与底盒连接</td>
-<td align="left">力矩 0.5~0.8 N·m，五边形对角顺序拧紧</td>
+<td>2</td>
+<td>壳体3.2</td>
+<td>集成滚柱的运动路径，起固定整体结构的作用</td>
+<td>7075铝合金，阳极氧化</td>
 </tr>
 <tr>
-<td align="left">旋转电机</td>
-<td align="left">M2×3 螺丝固定于顶壳（每电机 3 颗）</td>
-<td align="left">力矩 0.15~0.2 N·m，1.5 mm 内六角扳手</td>
+<td>3</td>
+<td>手指3.1</td>
+<td>夹取布料</td>
+<td>7075铝合金，阳极氧化/表面硅胶覆盖</td>
 </tr>
 <tr>
-<td align="left">电机壳</td>
-<td align="left">推力球轴承支撑</td>
-<td align="left">带动手指根部电机整体旋转；集成手指电气滑环触点，旋转中保持信号连续传输</td>
+<td>4</td>
+<td>导轨3.1</td>
+<td>给弹簧和横向导槽提供约束路径</td>
+<td>7075铝合金，阳极氧化</td>
 </tr>
 <tr>
-<td align="left">手指安装位</td>
-<td align="left">每指 8 颗 M2×3 螺丝固定于电机壳</td>
-<td align="left">力矩 0.15~0.2 N·m，对角顺序拧紧</td>
+<td>5</td>
+<td>横向导槽3.1</td>
+<td>核心部件，夹爪的夹取靠它实现</td>
+<td>7075铝合金，阳极氧化</td>
+</tr>
+<tr>
+<td>6</td>
+<td>滚珠3.1</td>
+<td>实现夹爪开合的重要部件，通过特定路径让横向导槽固定在两种不同位置，使夹爪有开和合两种状态</td>
+<td>7075铝合金，阳极氧化</td>
 </tr>
 </tbody></table>
-<h3>2.4 标准工作流程</h3>
+<h3>2.3 平面设计图</h3>
+<h4>2.3.1 俯视图</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%97%A0%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image4.png"/></p>
+<h4>2.3.2 侧视图</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%97%A0%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image5.png"/>
+<img alt="" src="./assets/specialDexterousHand_images_%E6%97%A0%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image6.png"/></p>
+<h4>2.3.3 关键尺寸参数</h4>
+<table>
+<thead>
+<tr>
+<th>尺寸项</th>
+<th>数值</th>
+<th>公差</th>
+<th>单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>夹爪总长度（伸展状态）</td>
+<td>62.02</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>夹爪总长度（闭合状态）</td>
+<td>48.63</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>手指长度</td>
+<td>21.37</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>手指宽度</td>
+<td>9.62</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>壳体厚度</td>
+<td>20</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>壳体高度</td>
+<td>37.5</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>横向导槽宽度</td>
+<td>20</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>横向导槽高度</td>
+<td>38.54</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>横向导槽厚度</td>
+<td>9</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>导轨长度</td>
+<td>29</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>导轨直径</td>
+<td>1.9</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>滚柱直径</td>
+<td>2.9</td>
+<td>---</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>滚柱长度</td>
+<td>7</td>
+<td>---</td>
+<td>mm</td>
+</tr>
+</tbody></table>
+<h3>2.4 产品参数</h3>
+<table>
+<thead>
+<tr>
+<th>参数分类</th>
+<th>参数项</th>
+<th>典型数值或描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>结构与自由度</strong></td>
+<td>主动自由度</td>
+<td>1 DOF</td>
+</tr>
+<tr>
+<td></td>
+<td>关节数量</td>
+<td>2个旋转关节（手指关节）</td>
+</tr>
+<tr>
+<td></td>
+<td>手指构型</td>
+<td>类人单关节，可实行夹取动作</td>
+</tr>
+<tr>
+<td></td>
+<td>工作空间</td>
+<td>指尖可达空间 ≥ 62 mm（深度）× 60 mm（宽度）</td>
+</tr>
+<tr>
+<td><strong>尺寸与重量</strong></td>
+<td>单指自重（不含弹力零件）</td>
+<td>16 g</td>
+</tr>
+<tr>
+<td></td>
+<td>外形尺寸（伸展）</td>
+<td>62 mm × 9 mm × 9 mm</td>
+</tr>
+<tr>
+<td><strong>驱动方式</strong></td>
+<td>驱动方式</td>
+<td>无动力</td>
+</tr>
+<tr>
+<td><strong>负载性能</strong></td>
+<td>指尖最大法向力</td>
+<td>50 N</td>
+</tr>
+</tbody></table>
+<h3>2.5 产品结构特征</h3>
+<h4>2.5.1 结构示意图</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%97%A0%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image7.png"/></p>
+<h4>2.5.2 自由度配置</h4>
+<table>
+<thead>
+<tr>
+<th>自由度编号</th>
+<th>关节名称</th>
+<th>位置</th>
+<th>驱动方式</th>
+<th>关节类型</th>
+<th>传动形式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DOF-1</td>
+<td>手指关节</td>
+<td>手指根部</td>
+<td>无动力</td>
+<td>旋转关节</td>
+<td>手掌直连</td>
+</tr>
+</tbody></table>
+<h4>2.5.3 各自由度运动方向及角度范围</h4>
+<table>
+<thead>
+<tr>
+<th>关节</th>
+<th>运动描述</th>
+<th>运动方向</th>
+<th>角度范围</th>
+<th>最大角速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>手指</td>
+<td>根部旋转</td>
+<td>绕点旋转</td>
+<td>0° ~ +12°</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%97%A0%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image8.png"/></p>
+<h3>2.6 特异化设计要点</h3>
+<h4>2.6.1 设计特征表</h4>
+<table>
+<thead>
+<tr>
+<th>设计特征</th>
+<th>技术说明</th>
+<th>设计意图</th>
+<th>实现方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无动力被动自适应</td>
+<td>纯机械结构，依靠外力驱动实现自适应夹紧</td>
+<td>无需电机驱动，降低成本与控制复杂度，适配微小零件抓取</td>
+<td>连杆机构 + 弹性复位件</td>
+</tr>
+<tr>
+<td>高刚度滚柱销轴</td>
+<td>关键受力销轴采用 Φ1 mm 440C 不锈钢材料</td>
+<td>承受最大 50 N 载荷时不发生塑性变形或断裂</td>
+<td>走心机精密车削 + 淬火强化处理</td>
+</tr>
+<tr>
+<td>模块化装配结构</td>
+<td>夹爪主体采用分体式设计，销轴与手指可快速拆装</td>
+<td>便于加工、装配与维护，降低单件报废成本</td>
+<td>阻挡式定位 + 标准销轴配合</td>
+</tr>
+<tr>
+<td>防应力集中设计</td>
+<td>销轴根部设置 R0.2 过渡圆角</td>
+<td>避免交变载荷下的应力集中，提升零件疲劳寿命</td>
+<td>车削加工时预留圆角，去毛刺处理</td>
+</tr>
+</tbody></table>
+<h4>2.6.2 与通用夹爪对比</h4>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>平行夹爪（电爪）</th>
+<th>自适应三指夹爪</th>
+<th>无动力夹爪</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>驱动方式</td>
+<td>电机驱动，需控制</td>
+<td>电机驱动，需控制</td>
+<td>纯机械被动驱动，无控制</td>
+</tr>
+<tr>
+<td>结构复杂度</td>
+<td>中（含电机、丝杆）</td>
+<td>高（含多电机、连杆）</td>
+<td>低（仅连杆 + 销轴）</td>
+</tr>
+<tr>
+<td>成本与维护</td>
+<td>较高，需定期维护</td>
+<td>高，维护复杂</td>
+<td>极低，几乎免维护</td>
+</tr>
+<tr>
+<td>断电安全性</td>
+<td>需自锁机构，否则易脱落</td>
+<td>需自锁机构，否则易脱落</td>
+<td>机械自锁，断电不脱落</td>
+</tr>
+</tbody></table>
+<h3>2.7 工作方式</h3>
+<h4>2.7.1 标准工作流程</h4>
+<pre><code>步骤1：初始状态复位
+    时间：~300 ms
+    操作：夹爪在弹性复位件作用下，张开至最大开度的初始位置
+    判定：连杆机构到达机械限位，无卡顿、无卡滞
+
+步骤2：物体预定位
+    时间：取决于机械臂运动
+    操作：上位机控制机械臂，将夹爪移动到目标工件上方的抓取预位姿
+    判定：无
+
+步骤3：被动自适应抓取
+    时间：~150 ms
+    操作：机械臂带动夹爪下压接触工件，工件反作用力驱动夹爪被动闭合，连杆机构自适应贴合工件轮廓
+    判定：夹爪与工件完全贴合，机械结构自锁，无打滑趋势
+
+步骤4：工件搬运与保持
+    时间：取决于任务周期
+    操作：机械臂带动夹爪与工件运动至目标位置
+    判定：无额外外力干扰时，夹爪保持闭合状态，工件无脱落风险
+
+步骤5：工件释放
+    时间：~100 ms
+    操作：机械臂带动夹爪移动至放置位置，缓慢抬起，工件反作用力消失，夹爪在复位件作用下张开
+    判定：工件脱离夹爪接触面，完全释放；夹爪回到初始张开状态
+</code></pre>
+<h3>2.8 优势特点</h3>
+<h4>2.8.1 优势总结</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>优势</th>
+<th>技术支撑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>高刚度受力结构</strong></td>
+<td>Φ1 mm 关键销轴采用 440C 不锈钢淬火处理，可承受 50 N 载荷不发生塑性变形，安全系数＞3</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>被动自适应抓取</strong></td>
+<td>多段连杆机构实现无动力自适应包络，可适配不同尺寸、外形的微小零件，无需复杂控制算法</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>机械自锁防脱落</strong></td>
+<td>连杆机构死点自锁设计，断电或外力波动时仍可保持夹持状态，工件无脱落风险</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>轻量化与高集成度</strong></td>
+<td>主体采用 6061-T6 铝合金结构，单指重量仅 16 g，兼顾强度与轻量化需求</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>极低成本与免维护</strong></td>
+<td>纯机械结构设计，无电机、传感器等易损部件，成本仅为电爪的 1/10，几乎免维护</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>模块化快拆设计</strong></td>
+<td>销轴与连杆采用标准件配合，5 秒内即可完成拆装，便于更换不同适配手指</td>
+</tr>
+</tbody></table>
+<h3>2.9 使用注意事项</h3>
+<h4>2.9.1 安装紧固要求</h4>
+<h4>2.9.2 日常检查与维护</h4>
+<table>
+<thead>
+<tr>
+<th>维护项目</th>
+<th>检查内容</th>
+<th>建议周期</th>
+<th>处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>外观检查</td>
+<td>指尖硅胶端是否磨损、破裂；铝合金外壳有无磕碰变形；销轴表面有无锈蚀</td>
+<td>每月</td>
+<td>硅胶磨损及时更换；轻度磕碰不影响功能可继续使用；锈蚀销轴进行抛光或更换</td>
+</tr>
+<tr>
+<td>关节活动检查</td>
+<td>单关节旋转是否顺畅，有无异响或卡顿</td>
+<td>每日</td>
+<td>异响需拆开检查内部是否有异物或销轴卡滞；卡顿部位添加少量干性润滑脂</td>
+</tr>
+<tr>
+<td>紧固件检查</td>
+<td>安装螺钉和锁定卡扣是否松动</td>
+<td>每周</td>
+<td>松动螺钉按标准力矩重新拧紧；间隙过大的销轴进行更换</td>
+</tr>
+<tr>
+<td>自锁机构检查</td>
+<td>夹爪闭合后机械自锁是否可靠，有无晃动现象</td>
+<td>每月</td>
+<td>自锁失效时，检查横向导槽磨损情况及时更换</td>
+</tr>
+<tr>
+<td>弹性复位件检查</td>
+<td>复位弹簧弹性是否正常，张开/闭合动作是否到位</td>
+<td>每月</td>
+<td>弹性衰减时，更换同规格复位弹簧</td>
+</tr>
+</tbody></table>
+<h4>2.9.3 安全警告</h4>
 <ol>
-<li><strong>上电初始化</strong>：各旋转轴回零或到达预设初始角度</li>
-<li><strong>构型规划</strong>：上位机根据任务需求计算各手指朝向目标角度</li>
-<li><strong>旋转定位</strong>：5 个旋转轴独立或同步运动至目标角度</li>
-<li><strong>手指抓握</strong>：手指执行抓握原语完成物体抓取</li>
-<li><strong>协同操作</strong>：旋转轴与手指协同完成复杂操作任务</li>
+<li><strong>安装与固定安全</strong>：夹爪安装时，必须确保连接法兰与执行机构（机械臂/末端）刚性固定到位，螺栓按规定扭矩锁紧，防止运行过程中夹爪松脱、坠落。严禁使用变形、滑牙或规格不符的紧固件。</li>
+<li><strong>负载限制</strong>：夹爪能承受的最大压力为 50 N，不能超过此力，否则滚柱会断裂。</li>
+<li><strong>碰撞与防夹安全</strong>：夹爪运行路径内严禁放置人体部位、线缆或异物，防止夹伤或卡滞。发生碰撞卡滞后，应立即停止设备运行，在断电/停机状态下排查并排除故障，严禁在带电状态下强行拉扯或撬动夹爪。</li>
+<li><strong>维护与检查</strong>：定期检查夹爪关键受力件（钳口、连杆、弹簧、销轴等）是否有磨损、变形或裂纹，发现异常必须立即停用并更换零件。维护保养必须在设备完全停机、断电状态下进行。</li>
 </ol>
-<h3>2.5 控制架构（直通式）</h3>
-<pre><code>应用层（上位机）— 构型规划 / 视觉引导 / 手指协调控制
-    ↓ CAN / RS-485（直接控制）
-旋转驱动电机层（5 个电机，各自独立）— 位置控制 / 速度控制 / 编码器反馈
-    ↓ 机械传动
-执行层（电机壳 + 推力轴承 + 手指根部电机）— 手指旋转定位 / 手指抓取动作
+<hr/>
+<h2>3. 有动力夹取手指及快插拔模块</h2>
+<h3>3.1 产品概述</h3>
+<p>本产品是一款面向精密装配、异形物体抓取与接触式感知任务的<strong>特异化灵巧手指模块</strong>，采用模块化可拆卸设计，可独立部署于协作机械臂末端或集成于多指灵巧手系统中。该手指具备 3 自由度主动驱动、力/触觉多模态感知和快速拆装接口，适用于非标准几何体自适应包络抓持、细径物体捏取、插孔装配等对指尖灵巧度和环境感知能力要求较高的场景。</p>
+<table>
+<thead>
+<tr>
+<th>应用场景</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>精密装配</td>
+<td>电子元器件插拔、螺丝拧紧、细小零件定位放置</td>
+</tr>
+<tr>
+<td>异形物体抓持</td>
+<td>食品分拣、不规则工业零件包络抓取</td>
+</tr>
+<tr>
+<td>接触式感知作业</td>
+<td>表面粗糙度检测、按压力控操作</td>
+</tr>
+<tr>
+<td>医疗辅助</td>
+<td>药瓶取放、柔性组织接触操作</td>
+</tr>
+<tr>
+<td>科研实验</td>
+<td>触觉算法验证、灵巧操作研究平台</td>
+</tr>
+</tbody></table>
+<h3>3.2 手指主体图</h3>
+<h4>3.2.1 3D渲染图</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image1.png"/></p>
+<h4>3.2.2 部件清单</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image2.png"/></p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>部件名称</th>
+<th>功能说明</th>
+<th>材质/备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>支撑杆件</td>
+<td>对固定机夹起支撑作用</td>
+<td>6061铝合金，表面处理为阳极氧化</td>
+</tr>
+<tr>
+<td>2</td>
+<td>固定机夹</td>
+<td>对手指部分抓取脱落并有存放作用</td>
+<td>6061铝合金，表面处理为阳极氧化</td>
+</tr>
+<tr>
+<td>3</td>
+<td>异形手指本体</td>
+<td>通过电机转动带动手指在微型滑轨上进行开合和关闭（包含电机动力源）</td>
+<td>6061铝合金，表面处理为阳极氧化</td>
+</tr>
+<tr>
+<td>4</td>
+<td>外壳</td>
+<td>对手指起包覆作用</td>
+<td>6061铝合金，表面处理为阳极氧化</td>
+</tr>
+<tr>
+<td>5</td>
+<td>拆扣机构</td>
+<td>实现多模块手指快拆更换自定义（包含磁吸装置提高稳定性和紧固性）</td>
+<td>6061铝合金，表面处理为阳极氧化</td>
+</tr>
+<tr>
+<td>6</td>
+<td>掌骨自由度</td>
+<td>灵活弯曲（包含电机动力源）</td>
+<td>6061铝合金，表面处理为阳极氧化</td>
+</tr>
+</tbody></table>
+<h3>3.3 平面设计图</h3>
+<h4>3.3.1 俯视图</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image3.png"/></p>
+<h4>3.3.2 侧视图</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image4.png"/>
+<img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image5.png"/></p>
+<h4>3.3.3 关键尺寸参数</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image6.png"/>
+<img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image7.png"/></p>
+<table>
+<thead>
+<tr>
+<th>尺寸项</th>
+<th>数值</th>
+<th>公差</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>长度</td>
+<td>56.65 mm</td>
+<td>±1 mm</td>
+</tr>
+<tr>
+<td>长度</td>
+<td>65 mm</td>
+<td>±1 mm</td>
+</tr>
+</tbody></table>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image8.png"/>
+<img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image9.png"/></p>
+<table>
+<thead>
+<tr>
+<th>尺寸项</th>
+<th>数值</th>
+<th>公差</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>直径</td>
+<td>24 mm</td>
+<td>±1 mm</td>
+</tr>
+<tr>
+<td>尺寸</td>
+<td>27 mm</td>
+<td>±1 mm</td>
+</tr>
+<tr>
+<td>尺寸</td>
+<td>25 mm</td>
+<td>±1 mm</td>
+</tr>
+</tbody></table>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image10.png"/>
+<img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image11.png"/></p>
+<table>
+<thead>
+<tr>
+<th>尺寸项</th>
+<th>数值</th>
+<th>公差</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>尺寸</td>
+<td>15.6 mm</td>
+<td>±1 mm</td>
+</tr>
+</tbody></table>
+<h3>3.4 产品参数</h3>
+<table>
+<thead>
+<tr>
+<th>参数分类</th>
+<th>参数项</th>
+<th>典型数值或描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>结构与自由度</strong></td>
+<td>主动自由度</td>
+<td>2 DOF</td>
+</tr>
+<tr>
+<td></td>
+<td>关节数量</td>
+<td>2个旋转关节</td>
+</tr>
+<tr>
+<td></td>
+<td>运动学构型</td>
+<td>三段旋转关节串联，tendon-driven 与直驱混合</td>
+</tr>
+<tr>
+<td></td>
+<td>手指构型</td>
+<td>类人三关节屈伸，支持包络/捏取双模式</td>
+</tr>
+<tr>
+<td></td>
+<td>总传动比</td>
+<td>近关节 100:1 / 中关节 80:1 / 远关节 60:1</td>
+</tr>
+<tr>
+<td></td>
+<td>工作空间</td>
+<td>指尖可达空间 ≥ 120 mm（深度）× 60 mm（宽度）</td>
+</tr>
+<tr>
+<td><strong>尺寸与重量</strong></td>
+<td>单指自重（不含线缆）</td>
+<td>185 ± 5 g</td>
+</tr>
+<tr>
+<td></td>
+<td>外形尺寸（伸展）</td>
+<td>155 mm × 35 mm × 30 mm</td>
+</tr>
+<tr>
+<td></td>
+<td>驱动模组直径</td>
+<td>28 mm</td>
+</tr>
+<tr>
+<td></td>
+<td>驱动模组长度</td>
+<td>42 mm</td>
+</tr>
+<tr>
+<td><strong>驱动方式</strong></td>
+<td>驱动方式</td>
+<td>直流无刷伺服电机 + 微型谐波减速器</td>
+</tr>
+<tr>
+<td></td>
+<td>电机额定功率</td>
+<td>3.5 W（单关节）</td>
+</tr>
+<tr>
+<td></td>
+<td>电机峰值扭矩</td>
+<td>0.12 N·m（单关节）</td>
+</tr>
+<tr>
+<td></td>
+<td>关节最大输出力矩</td>
+<td>近关节 5 N·m / 中关节 3 N·m / 远关节 1.5 N·m</td>
+</tr>
+<tr>
+<td><strong>控制与通信</strong></td>
+<td>控制频率</td>
+<td>2000 Hz（单关节）</td>
+</tr>
+<tr>
+<td></td>
+<td>内置控制器</td>
+<td>ARM Cortex-M7，主频 480 MHz</td>
+</tr>
+<tr>
+<td></td>
+<td>控制模式</td>
+<td>位置控制 / 速度控制 / 力矩控制 / 力位混合控制 / 阻抗控制</td>
+</tr>
+<tr>
+<td></td>
+<td>通信接口</td>
+<td>CAN 2.0B / CAN FD / RS-485 / UART（可配置）</td>
+</tr>
+<tr>
+<td></td>
+<td>通信协议</td>
+<td>自定义CAN协议（兼容CANopen PDO/SDO映射）</td>
+</tr>
+<tr>
+<td></td>
+<td>通信速率</td>
+<td>CAN：1 Mbps / CAN FD：8 Mbps / RS-485：3 Mbps</td>
+</tr>
+<tr>
+<td></td>
+<td>总线终端电阻</td>
+<td>120 Ω（板载，可通过跳线启用/禁用）</td>
+</tr>
+<tr>
+<td><strong>感知能力</strong></td>
+<td>指尖力/力矩传感器</td>
+<td>6轴，量程 ±10 N（Fx/Fy/Fz），分辨率 0.01 N</td>
+</tr>
+<tr>
+<td></td>
+<td>指尖触觉阵列</td>
+<td>16 × 16 点阵，覆盖面积 12 mm × 12 mm</td>
+</tr>
+<tr>
+<td></td>
+<td>关节编码器</td>
+<td>19位磁编码器（单圈绝对值）</td>
+</tr>
+<tr>
+<td></td>
+<td>电流传感器</td>
+<td>12位ADC，每关节独立采样</td>
+</tr>
+<tr>
+<td></td>
+<td>温度传感器</td>
+<td>NTC热敏电阻，监控驱动模组温度</td>
+</tr>
+<tr>
+<td><strong>负载性能</strong></td>
+<td>指尖最大法向力</td>
+<td>12 N</td>
+</tr>
+<tr>
+<td></td>
+<td>指尖最大切向力</td>
+<td>8 N</td>
+</tr>
+<tr>
+<td></td>
+<td>指尖捏取载荷</td>
+<td>0.8 kg（标准测试棒 φ6 mm）</td>
+</tr>
+<tr>
+<td></td>
+<td>包络抓握载荷</td>
+<td>2 kg（异形物体，摩擦系数 ≥ 0.4）</td>
+</tr>
+<tr>
+<td></td>
+<td>静态保持力矩</td>
+<td>≥ 4 N·m（近关节，24V供电）</td>
+</tr>
+<tr>
+<td><strong>动态性能</strong></td>
+<td>全行程开合时间</td>
+<td>0.25 s（空载，位置控制模式）</td>
+</tr>
+<tr>
+<td></td>
+<td>关节最大转速</td>
+<td>300 °/s（中关节，空载）</td>
+</tr>
+<tr>
+<td></td>
+<td>关节最大加速度</td>
+<td>5000 °/s²</td>
+</tr>
+<tr>
+<td></td>
+<td>指尖最大线速度</td>
+<td>1.2 m/s</td>
+</tr>
+<tr>
+<td><strong>精度与寿命</strong></td>
+<td>重复定位精度</td>
+<td>± 0.05 mm（指尖，全行程）</td>
+</tr>
+<tr>
+<td></td>
+<td>绝对定位精度</td>
+<td>± 0.15 mm（经DH参数标定后）</td>
+</tr>
+<tr>
+<td></td>
+<td>力控分辨率</td>
+<td>0.05 N（指尖法向）</td>
+</tr>
+<tr>
+<td></td>
+<td>空载抓握寿命</td>
+<td>≥ 500,000 次</td>
+</tr>
+<tr>
+<td></td>
+<td>MTBF（平均无故障时间）</td>
+<td>≥ 20,000 小时</td>
+</tr>
+<tr>
+<td><strong>电气性能</strong></td>
+<td>额定工作电压</td>
+<td>24 V DC（范围 20 V ~ 30 V）</td>
+</tr>
+<tr>
+<td></td>
+<td>静态功耗</td>
+<td>2.5 W（待机，关节保持位置）</td>
+</tr>
+<tr>
+<td></td>
+<td>动态功耗</td>
+<td>8 W（典型抓握运动）</td>
+</tr>
+<tr>
+<td></td>
+<td>峰值功耗</td>
+<td>25 W（三关节同时以最大加速度运动）</td>
+</tr>
+<tr>
+<td></td>
+<td>工作电流（额定）</td>
+<td>0.35 A @ 24V</td>
+</tr>
+<tr>
+<td></td>
+<td>峰值电流</td>
+<td>1.2 A @ 24V</td>
+</tr>
+<tr>
+<td></td>
+<td>电气接口</td>
+<td>JST SM08B-SRSS-TB（8pin，信号+电源）</td>
+</tr>
+<tr>
+<td></td>
+<td>绝缘等级</td>
+<td>Class F（155 °C）</td>
+</tr>
+<tr>
+<td><strong>材料与防护</strong></td>
+<td>外壳/结构件材质</td>
+<td>7075-T6 铝合金</td>
+</tr>
+<tr>
+<td></td>
+<td>指尖接触材质</td>
+<td>食品级硅胶（邵氏A 40度），可更换</td>
+</tr>
+<tr>
+<td></td>
+<td>密封等级</td>
+<td>IP54（防粉尘/防溅水）</td>
+</tr>
+<tr>
+<td></td>
+<td>工作温度范围</td>
+<td>0 °C ~ +50 °C</td>
+</tr>
+<tr>
+<td></td>
+<td>存储温度范围</td>
+<td>-20 °C ~ +60 °C</td>
+</tr>
+<tr>
+<td></td>
+<td>相对湿度</td>
+<td>≤ 85% RH（无凝露）</td>
+</tr>
+</tbody></table>
+<h3>3.5 产品结构特征</h3>
+<h4>3.5.1 结构示意图</h4>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image13.png"/></p>
+<p><img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image15.png"/>
+<img alt="" src="./assets/specialDexterousHand_images_%E6%9C%89%E5%8A%A8%E5%8A%9B%E5%A4%B9%E5%8F%96%E6%89%8B%E6%8C%87_image16.png"/></p>
+<h4>3.5.2 自由度配置</h4>
+<table>
+<thead>
+<tr>
+<th>自由度编号</th>
+<th>关节名称</th>
+<th>位置</th>
+<th>驱动方式</th>
+<th>关节类型</th>
+<th>传动形式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DOF-1</td>
+<td>MCP（掌指关节）</td>
+<td>手指根部</td>
+<td>电机+谐波减速器直驱</td>
+<td>旋转关节</td>
+<td>谐波减速器输出直连</td>
+</tr>
+<tr>
+<td>DOF-2</td>
+<td>PIP（近端指间关节）</td>
+<td>中节与近节之间</td>
+<td>电机+谐波减速器，差动连杆</td>
+<td>旋转关节</td>
+<td>连杆传动，与中关节耦合</td>
+</tr>
+<tr>
+<td>DOF-3</td>
+<td>DIP（远端指间关节）</td>
+<td>远节与中节之间</td>
+<td>腱绳传动，耦合驱动</td>
+<td>旋转关节</td>
+<td>腱绳-滑轮耦合（与PIP保持固定比例）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>耦合传动关系</strong>：DIP 与 PIP 之间存在固定传动比，通常设置为 1:1.2 ~ 1:1.5，实现类人手指的自然弯曲形态。用户可根据应用需求在固件中调整耦合比。</p>
+</blockquote>
+<h4>3.5.3 各自由度运动方向及角度范围</h4>
+<table>
+<thead>
+<tr>
+<th>关节</th>
+<th>运动描述</th>
+<th>运动方向</th>
+<th>角度范围</th>
+<th>最大角速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MCP</td>
+<td>根部屈伸</td>
+<td>伸展→弯曲</td>
+<td>0° ~ +100°</td>
+<td>200 °/s</td>
+</tr>
+<tr>
+<td>PIP</td>
+<td>中段屈伸</td>
+<td>伸展→弯曲</td>
+<td>0° ~ +110°</td>
+<td>250 °/s</td>
+</tr>
+<tr>
+<td>DIP</td>
+<td>末端屈伸</td>
+<td>伸展→弯曲</td>
+<td>0° ~ +80°</td>
+<td>300 °/s</td>
+</tr>
+<tr>
+<td>DIP:PIP耦合</td>
+<td>联动比例</td>
+<td>---</td>
+<td>DIP = 0.8 × PIP（出厂默认值）</td>
+<td>---</td>
+</tr>
+</tbody></table>
+<h3>3.6 手指功能介绍</h3>
+<h4>3.6.1 功能列表</h4>
+<table>
+<thead>
+<tr>
+<th>功能类别</th>
+<th>功能名称</th>
+<th>说明</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>基础运动</strong></td>
+<td>位置控制</td>
+<td>指定目标关节角度，手指运动到目标位置</td>
+<td>精确重复性抓持</td>
+</tr>
+<tr>
+<td></td>
+<td>速度控制</td>
+<td>指定关节运动速度，连续运动</td>
+<td>扫描式搜索、轨迹跟踪</td>
+</tr>
+<tr>
+<td></td>
+<td>力矩控制</td>
+<td>指定输出力矩，用于与环境接触的操作</td>
+<td>按压力控制、柔顺接触</td>
+</tr>
+<tr>
+<td></td>
+<td>力位混合控制</td>
+<td>正常运动时位置控制，接触后切换力控制</td>
+<td>大多数抓持场景</td>
+</tr>
+<tr>
+<td></td>
+<td>阻抗控制</td>
+<td>设定目标阻抗（刚度+阻尼），实现柔顺交互</td>
+<td>人机协作、易碎物体操作</td>
+</tr>
+<tr>
+<td></td>
+<td>自适应包络抓握</td>
+<td>根据物体形状自动调整关节角度，实现多接触面包络</td>
+<td>异形/不规则物体抓持</td>
+</tr>
+<tr>
+<td></td>
+<td>捏取模式</td>
+<td>指尖对捏，利用DIP-PIP协调运动实现精确捏取</td>
+<td>细小零件、薄片物体</td>
+</tr>
+<tr>
+<td><strong>感知功能</strong></td>
+<td>指尖力/力矩感知</td>
+<td>6轴力/力矩实时反馈</td>
+<td>接触力监测、滑移检测</td>
+</tr>
+<tr>
+<td></td>
+<td>触觉阵列成像</td>
+<td>16×16点阵压力分布实时输出</td>
+<td>抓取稳定性评估、物体纹理识别</td>
+</tr>
+<tr>
+<td></td>
+<td>关节状态反馈</td>
+<td>位置/速度/力矩/电流/温度实时反馈</td>
+<td>健康监测、故障预测</td>
+</tr>
+<tr>
+<td></td>
+<td>碰撞检测</td>
+<td>基于电流突变的快速碰撞检测（响应 &lt; 1 ms）</td>
+<td>安全防护</td>
+</tr>
+<tr>
+<td></td>
+<td>滑移检测</td>
+<td>基于触觉阵列时序变化的指尖滑移判断</td>
+<td>抓握力自适应调整</td>
+</tr>
+<tr>
+<td><strong>高级功能</strong></td>
+<td>自主学习抓握</td>
+<td>通过多次尝试记录最优抓握参数</td>
+<td>未知物体自适应</td>
+</tr>
+<tr>
+<td></td>
+<td>固件在线升级</td>
+<td>通过CAN总线更新固件</td>
+<td>远程维护</td>
+</tr>
+<tr>
+<td></td>
+<td>参数自标定</td>
+<td>自动标定DH参数和传感器零偏</td>
+<td>安装后快速校准</td>
+</tr>
+<tr>
+<td></td>
+<td>多指协同（选配）</td>
+<td>通过主控制器协调多根手指运动</td>
+<td>整手灵巧操作</td>
+</tr>
+</tbody></table>
+<h4>3.6.2 操作原语表</h4>
+<table>
+<thead>
+<tr>
+<th>原语名称</th>
+<th>参数</th>
+<th>描述</th>
+<th>典型执行时间</th>
+<th>返回状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>HOME</code></td>
+<td>无</td>
+<td>手指回到初始位置（全伸展）</td>
+<td>300 ms</td>
+<td>完成/超时</td>
+</tr>
+<tr>
+<td><code>FLEX</code></td>
+<td><code>angle</code> [°], <code>speed</code> [%]</td>
+<td>指定关节按比例同时弯曲</td>
+<td>可变</td>
+<td>完成/受阻</td>
+</tr>
+<tr>
+<td><code>EXTEND</code></td>
+<td><code>angle</code> [°], <code>speed</code> [%]</td>
+<td>从当前位置伸展</td>
+<td>可变</td>
+<td>完成/超时</td>
+</tr>
+<tr>
+<td><code>GRASP_ENVELOPE</code></td>
+<td><code>force</code> [N], <code>max_angle</code> [°]</td>
+<td>包络抓握：弯曲直到力反馈达到阈值或角度达到上限</td>
+<td>200-500 ms</td>
+<td>抓握成功/空抓/超时</td>
+</tr>
+<tr>
+<td><code>PINCH</code></td>
+<td><code>force</code> [N]</td>
+<td>指尖捏取模式：DIP+PIP协调运动至指尖接触</td>
+<td>150-300 ms</td>
+<td>接触成功/空捏</td>
+</tr>
+<tr>
+<td><code>RELEASE</code></td>
+<td><code>speed</code> [%]</td>
+<td>释放物体，缓慢伸展至HOME位置</td>
+<td>200-400 ms</td>
+<td>完成</td>
+</tr>
+<tr>
+<td><code>HOLD</code></td>
+<td><code>force</code> [N], <code>duration</code> [ms]</td>
+<td>以指定力保持当前抓握状态</td>
+<td>持续</td>
+<td>保持中/滑移/超时</td>
+</tr>
+<tr>
+<td><code>SLIDE_DETECT</code></td>
+<td><code>threshold</code> [N]</td>
+<td>启用滑移检测，当检测到位移时触发事件</td>
+<td>持续</td>
+<td>滑移事件/正常</td>
+</tr>
+<tr>
+<td><code>IMPEDANCE_SET</code></td>
+<td><code>stiffness</code> [N/m], <code>damping</code> [N·s/m]</td>
+<td>设置阻抗控制参数</td>
+<td>即时</td>
+<td>设置成功/参数越界</td>
+</tr>
+<tr>
+<td><code>TOUCH_SEARCH</code></td>
+<td><code>direction</code>, <code>max_force</code> [N]</td>
+<td>沿指定方向运动直到接触物体</td>
+<td>可变</td>
+<td>接触/超时</td>
+</tr>
+</tbody></table>
+<h3>3.7 特异化设计要点</h3>
+<h4>3.7.1 设计特征表</h4>
+<table>
+<thead>
+<tr>
+<th>设计特征</th>
+<th>技术说明</th>
+<th>设计意图</th>
+<th>实现方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模块化快拆接口</td>
+<td>机械+电气一体化快拆，无需工具可在5秒内完成拆装</td>
+<td>支持现场快速更换不同功能的手指，提升系统灵活性</td>
+<td>卡扣式锁定机构 + 8pin弹簧探针触点</td>
+</tr>
+<tr>
+<td>异构驱动架构</td>
+<td>MCP直驱，PIP连杆传动，DIP腱绳耦合传动</td>
+<td>根部高刚度输出，末端轻量化，整体功率密度最大化</td>
+<td>谐波减速器+差动连杆+钢丝腱绳混合</td>
+</tr>
+<tr>
+<td>集成式多模态感知</td>
+<td>单指集成6轴力/力矩+16×16触觉阵列+关节状态感知</td>
+<td>在紧凑空间内实现力/触觉/本体感觉三重感知</td>
+<td>MEMS力传感器+电容式触觉传感+磁编码器</td>
+</tr>
+<tr>
+<td>指尖可更换端盖</td>
+<td>硅胶端盖为标准件，提供多种硬度/纹理规格可选</td>
+<td>适应不同摩擦系数和硬度要求的抓持对象</td>
+<td>螺纹锁紧，3种硬度（邵氏A 20/40/60）</td>
+</tr>
+<tr>
+<td>中空走线设计</td>
+<td>所有电气线缆从手指内部中心通道穿过</td>
+<td>避免外部线缆在运动中磨损和缠绕</td>
+<td>铝合金结构件中心钻孔，线缆全内置</td>
+</tr>
+<tr>
+<td>自锁保持功能</td>
+<td>断电时关节可通过减速器自锁保持位置</td>
+<td>意外断电时抓持物体不脱落</td>
+<td>谐波减速器反向间隙 &lt; 3 arcmin</td>
+</tr>
+</tbody></table>
+<h4>3.7.2 与通用夹爪对比</h4>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>平行夹爪（电爪）</th>
+<th>自适应三指夹爪</th>
+<th>本特异化灵巧手指</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主动自由度</td>
+<td>1（开合）</td>
+<td>3-4（协同抓取）</td>
+<td>3（独立可控）</td>
+</tr>
+<tr>
+<td>指尖运动空间</td>
+<td>一维直线</td>
+<td>有限锥形空间</td>
+<td>完整三维工作空间</td>
+</tr>
+<tr>
+<td>力/力矩感知</td>
+<td>无或仅整体电流</td>
+<td>整体力估计</td>
+<td>6轴力/力矩（单指尖）</td>
+</tr>
+<tr>
+<td>触觉感知</td>
+<td>无</td>
+<td>无</td>
+<td>16×16 触觉阵列</td>
+</tr>
+<tr>
+<td>包络适应性</td>
+<td>差（仅平面对夹）</td>
+<td>中（被动适应外形）</td>
+<td>优（主动调整多接触面）</td>
+</tr>
+<tr>
+<td>捏取精度</td>
+<td>中</td>
+<td>中</td>
+<td>优（亚毫米级定位）</td>
+</tr>
+<tr>
+<td>重量</td>
+<td>300-800 g</td>
+<td>500-1200 g</td>
+<td>185 g</td>
+</tr>
+<tr>
+<td>控制模式</td>
+<td>位置控制</td>
+<td>位置控制</td>
+<td>位置/力/力位混合/阻抗</td>
+</tr>
+<tr>
+<td>典型价格区间</td>
+<td>0.5-2 万元</td>
+<td>3-8 万元</td>
+<td>【填写价格】万元</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>标准件搬运</td>
+<td>规则物体抓取</td>
+<td>异形物体、精密装配、感知作业</td>
+</tr>
+</tbody></table>
+<h3>3.8 工作方式</h3>
+<h4>3.8.1 标准工作流程</h4>
+<pre><code>步骤1：上电初始化
+    时间：~500 ms
+    操作：接入24V电源，手指执行自检程序
+    判定：状态灯由熄灭→绿色闪烁，自检完成→绿色常亮
+
+步骤2：总线连接
+    时间：~100 ms
+    操作：主机通过CAN/CAN FD建立通信连接
+    判定：收到心跳帧，状态灯绿色常亮
+
+步骤3：参数配置（如需）
+    时间：~50 ms
+    操作：设置控制模式（力位混合/阻抗等）、目标力阈值、耦合比
+    判定：配置确认应答
+
+步骤4：执行HOME原语
+    时间：~300 ms
+    操作：手指回到全伸展初始位置
+    判定：三个关节到达0°位置，编码器读数稳定
+
+步骤5：物体接近
+    时间：取决于机械臂运动
+    操作：上位机控制机械臂将手指移动到抓握预位姿
+    判定：视觉/激光定位完成
+
+步骤6：执行抓握原语（GRASP_ENVELOPE 或 PINCH）
+    时间：150-500 ms
+    操作：手指按指定模式运动，直到力反馈达到阈值
+    判定：力传感器读数 ≥ 目标力，或达到最大允许角度
+
+步骤7：保持抓握（HOLD）
+    时间：取决于任务
+    操作：以设定力维持抓握，实时监测滑移
+    判定：无滑移报警，物体稳定
+
+步骤8：运输/操作
+    时间：取决于任务
+    操作：机械臂携带物体移动到目标位置
+    判定：加速度/振动在允许范围内
+
+步骤9：释放（RELEASE）
+    时间：200-400 ms
+    操作：手指缓慢伸展，释放物体
+    判定：指尖力归零，关节回到伸展位
+
+步骤10：返回步骤4或进入待机
+    操作：准备下一次抓握任务或断开连接待机
+</code></pre>
+<h4>3.8.2 任务模式</h4>
+<table>
+<thead>
+<tr>
+<th>模式名称</th>
+<th>模式描述</th>
+<th>关键参数</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>精密捏取模式</strong></td>
+<td>指尖对捏，利用DIP-PIP协调实现精确夹持，力控精度最高</td>
+<td>目标力：0.5-5 N，刚度：高（1000 N/m）</td>
+<td>电子元件、小螺丝、薄片</td>
+</tr>
+<tr>
+<td><strong>包络抓握模式</strong></td>
+<td>三段关节依次弯曲，实现多接触面包络，适应异形物体</td>
+<td>目标力：2-10 N，刚度：中（500 N/m）</td>
+<td>不规则零件、瓶子、水果</td>
+</tr>
+<tr>
+<td><strong>力控接触模式</strong></td>
+<td>阻抗控制模式，手指作为力控探针与物体交互</td>
+<td>刚度：10-200 N/m（可调），阻尼：0.5-5 N·s/m</td>
+<td>按键按压、表面检测</td>
+</tr>
+<tr>
+<td><strong>柔顺交互模式</strong></td>
+<td>低刚度阻抗控制，实现与人/环境的安全物理交互</td>
+<td>刚度：低（50 N/m），阻尼：高（10 N·s/m）</td>
+<td>人机协作、易碎物体</td>
+</tr>
+<tr>
+<td><strong>快速抓取模式</strong></td>
+<td>位置控制为主，最大速度运行，牺牲部分柔顺性</td>
+<td>速度：100%，力控阈值仅作超限保护</td>
+<td>大批量分拣、高节拍场景</td>
+</tr>
+<tr>
+<td><strong>探索感知模式</strong></td>
+<td>触觉阵列全量输出，力传感器高频采样，用于数据采集</td>
+<td>采样率：触觉100 Hz，力传感器1 kHz</td>
+<td>算法研究、数据集采集</td>
+</tr>
+</tbody></table>
+<h3>3.9 优势特点</h3>
+<h4>3.9.1 优势总结</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>优势</th>
+<th>技术支撑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>超高功率密度</strong></td>
+<td>185 g整机重量实现3自由度主动驱动+5 N·m近关节输出，功率重量比达到行业领先水平</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>指尖多模态感知</strong></td>
+<td>单指集成6轴力/力矩传感器和256点触觉阵列，实现抓持力、接触分布、滑移三重感知</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>亚毫米级定位精度</strong></td>
+<td>19位磁编码器+低背隙谐波传动，指尖重复定位精度±0.05 mm</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>5秒快拆互换</strong></td>
+<td>机械+电气一体化快拆接口，支持产线现场快速更换不同规格的手指模块</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>全内置中空走线</strong></td>
+<td>所有线缆从结构件中心通道穿过，IP54防护等级，无惧粉尘和水溅</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>多模式柔顺控制</strong></td>
+<td>支持位置/速度/力矩/力位混合/阻抗五种控制模式，覆盖从高速搬运到精细装配全场景</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>开放控制接口</strong></td>
+<td>提供C++/Python ROS2 SDK和CAN协议文档，支持用户自定义控制算法和二次开发</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>谐波自锁保持</strong></td>
+<td>断电时减速器自锁功能确保抓持物体不脱落，提升系统安全性</td>
+</tr>
+</tbody></table>
+<h4>3.9.2 竞品对比</h4>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>本产品</th>
+<th>竞品A（Shadow Dexterous Hand单指）</th>
+<th>竞品B（Robotiq 2-Finger单指模块）</th>
+<th>竞品C（国内灵巧手厂商单指）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主动自由度</td>
+<td>3</td>
+<td>3</td>
+<td>1（仅开合）</td>
+<td>2</td>
+</tr>
+<tr>
+<td>指尖力/力矩传感</td>
+<td>6轴</td>
+<td>6轴</td>
+<td>无</td>
+<td>单轴力</td>
+</tr>
+<tr>
+<td>触觉阵列</td>
+<td>16×16</td>
+<td>无（需外配）</td>
+<td>无</td>
+<td>8×8</td>
+</tr>
+<tr>
+<td>单指重量</td>
+<td>185 g</td>
+<td>~200 g</td>
+<td>~350 g</td>
+<td>~220 g</td>
+</tr>
+<tr>
+<td>指尖最大力</td>
+<td>12 N</td>
+<td>10 N</td>
+<td>20 N（整体）</td>
+<td>8 N</td>
+</tr>
+<tr>
+<td>重复定位精度</td>
+<td>±0.05 mm</td>
+<td>±0.10 mm</td>
+<td>±0.5 mm</td>
+<td>±0.10 mm</td>
+</tr>
+<tr>
+<td>防护等级</td>
+<td>IP54</td>
+<td>IP30</td>
+<td>IP40</td>
+<td>IP40</td>
+</tr>
+<tr>
+<td>控制模式</td>
+<td>5种</td>
+<td>3种</td>
+<td>2种</td>
+<td>3种</td>
+</tr>
+<tr>
+<td>通信接口</td>
+<td>CAN/CAN FD/RS-485</td>
+<td>CAN/Ethernet</td>
+<td>Modbus RTU/TCP</td>
+<td>CAN/UART</td>
+</tr>
+<tr>
+<td>参考价格</td>
+<td>【填写】万元</td>
+<td>~15 万元</td>
+<td>~3 万元</td>
+<td>~5 万元</td>
+</tr>
+</tbody></table>
+<h3>3.10 通信方式</h3>
+<h4>3.10.1 协议支持</h4>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>物理层</th>
+<th>数据速率</th>
+<th>适用场景</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自定义CAN协议</td>
+<td>CAN 2.0B / CAN FD</td>
+<td>1 Mbps / 8 Mbps</td>
+<td>实时控制，推荐首选</td>
+<td>帧格式定义见《通信协议手册》</td>
+</tr>
+<tr>
+<td>CANopen（CiA 301）</td>
+<td>CAN 2.0B</td>
+<td>1 Mbps</td>
+<td>兼容CANopen主站</td>
+<td>支持PDO/SDO，节点ID可配置</td>
+</tr>
+<tr>
+<td>串口协议</td>
+<td>RS-485 / UART</td>
+<td>3 Mbps / 921600 bps</td>
+<td>调试、简单集成</td>
+<td>Modbus RTU帧格式兼容</td>
+</tr>
+</tbody></table>
+<h4>3.10.2 接口定义</h4>
+<blockquote>
+<p>8pin连接器引脚定义（从手指向外看视角）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>信号名称</th>
+<th>类型</th>
+<th>说明</th>
+<th>电气规格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>VCC</td>
+<td>电源输入</td>
+<td>24V直流供电</td>
+<td>20-30V DC，最大2A</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GND</td>
+<td>电源地</td>
+<td>供电回路地</td>
+<td>---</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CAN_H</td>
+<td>信号</td>
+<td>CAN总线高</td>
+<td>符合ISO 11898-2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CAN_L</td>
+<td>信号</td>
+<td>CAN总线低</td>
+<td>符合ISO 11898-2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>RS485_A</td>
+<td>信号</td>
+<td>RS-485差分正</td>
+<td>半双工</td>
+</tr>
+<tr>
+<td>6</td>
+<td>RS485_B</td>
+<td>信号</td>
+<td>RS-485差分负</td>
+<td>半双工</td>
+</tr>
+<tr>
+<td>7</td>
+<td>UART_TX</td>
+<td>信号</td>
+<td>串口发送（手指→主机）</td>
+<td>3.3V TTL电平</td>
+</tr>
+<tr>
+<td>8</td>
+<td>UART_RX</td>
+<td>信号</td>
+<td>串口接收（主机→手指）</td>
+<td>3.3V TTL电平</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>注意</strong>：RS-485与CAN共用差分线对时需要通过跳线选择，不可同时使用。UART为调试接口，正常工作推荐优先使用CAN/CAN FD。</p>
+</blockquote>
+<h4>3.10.3 通信拓扑图</h4>
+<p><strong>单指直连模式</strong></p>
+<pre><code>┌─────────────┐      USB-CAN       ┌──────────────┐
+│   上位机    │ ←——————————————→ │  手指模块    │
+│  (PC/工控机)│   适配器(1 Mbps)  │  (本节点ID)  │
+└─────────────┘                   └──────────────┘
+</code></pre>
+<p><strong>多指组网模式</strong></p>
+<pre><code>┌─────────────┐
+│   上位机    │ ←—— CAN 总线主干（1 Mbps，双绞线，120Ω终端匹配）
+│  (主控制器) │      ↓
+└─────────────┘   ┌─────────┬─────────┬─────────┐
+                  │ 手指-1  │ 手指-2  │ 手指-3  │ ←— 最多支持16个节点
+                  │ ID=0x01 │ ID=0x02 │ ID=0x03 │
+                  └─────────┴─────────┴─────────┘
 </code></pre>
 <blockquote>
-<p>本平台<strong>不含独立控制器</strong>，所有控制指令由上位机直接下发至各旋转电机。</p>
+<p>CAN总线推荐采用菊花链拓扑，总线两端各接一个120Ω终端电阻。手指模块板载终端电阻可通过跳线启用，处于总线末端的节点应启用终端电阻。</p>
 </blockquote>
-<h3>2.6 通信拓扑</h3>
-<ul>
-<li>5 个旋转电机作为 5 个独立 CAN 节点</li>
-<li>可与灵巧手手指节点<strong>共享同一 CAN 总线</strong>，通过节点 ID 区分</li>
-<li>总线两端各接一个 120Ω 终端电阻</li>
-</ul>
-<h3>2.7 安装与安全要点</h3>
+<h4>3.10.4 通信帧格式（摘要）</h4>
 <table>
 <thead>
 <tr>
-<th align="left">项目</th>
-<th align="left">要求</th>
+<th>帧类型</th>
+<th>COB-ID</th>
+<th>数据长度</th>
+<th>数据字节定义</th>
+<th>发送方向</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">法兰盘安装</td>
-<td align="left">按对角线顺序分两步拧紧：预紧 2 N·m → 最终按法兰规格标准力矩</td>
+<td>心跳帧</td>
+<td>0x700+NodeID</td>
+<td>1</td>
+<td>Byte0: 节点状态</td>
+<td>手指→主机</td>
 </tr>
 <tr>
-<td align="left">供电</td>
-<td align="left">严格按照所选电机额定电压供电，严禁超压</td>
+<td>关节状态帧</td>
+<td>0x180+NodeID</td>
+<td>8</td>
+<td>Byte0-1:MCP角度, 2-3:PIP角度, 4-5:DIP角度, 6-7:力矩</td>
+<td>手指→主机</td>
 </tr>
 <tr>
-<td align="left">旋转碰撞</td>
-<td align="left">发送旋转指令前确认周边无障碍物，避免旋转过程中手指相互碰撞或与外部结构干涉</td>
+<td>力/触觉帧</td>
+<td>0x280+NodeID</td>
+<td>8</td>
+<td>Byte0-1:Fx, 2-3:Fy, 4-5:Fz, 6-7:触觉中心压力</td>
+<td>手指→主机</td>
 </tr>
 <tr>
-<td align="left">负载限制</td>
-<td align="left">不得超过单个旋转轴额定径向载荷（以选用电机和轴承规格为准），过载运行将加速轴承磨损</td>
+<td>位置指令帧</td>
+<td>0x300+NodeID</td>
+<td>6</td>
+<td>Byte0-1:MCP目标, 2-3:PIP目标, 4-5:DIP目标</td>
+<td>主机→手指</td>
 </tr>
 <tr>
-<td align="left">拆装操作</td>
-<td align="left">必须先断电，确认各旋转轴静止后再进行操作，避免因意外通电导致夹手伤人</td>
-</tr>
-<tr>
-<td align="left">防水防尘</td>
-<td align="left">非密封结构，避免在高湿度、多水雾、重粉尘环境中使用。如需防护，可加装防尘盖或防护罩</td>
-</tr>
-<tr>
-<td align="left">紧固件</td>
-<td align="left">严禁使用非标准规格螺丝替换，以免损坏铝合金螺纹孔。尤其 M2 螺丝力矩不得超过 0.2 N·m</td>
+<td>模式配置帧</td>
+<td>0x400+NodeID</td>
+<td>2</td>
+<td>Byte0:控制模式, Byte1:使能状态</td>
+<td>主机→手指</td>
 </tr>
 </tbody></table>
-<hr/>
-<h2>三、可替换智能手指 A —— 无动力夹取手指</h2>
-<h3>3.1 具身智能定位</h3>
-<p>无动力夹取手指是具身智能灵巧操作终端的<strong>零能耗被动自适应智能体</strong>。该手指摒弃传统机电驱动路径，以<strong>纯机械具身智能</strong>范式实现操作——将环境交互反力本身作为驱动源，通过内部斜楔-连杆机构的智能几何设计，将外部接触力自主转化为自适应夹紧力。这种"以环境为驱动"的设计理念，使该手指在<strong>无电源、无气源、无控制器</strong>的三无条件下，依然具备对非结构化柔性物料的智能适应能力。</p>
-<h3>3.2 核心技术参数</h3>
-<table>
-<thead>
-<tr>
-<th align="left">参数项</th>
-<th align="left">规格</th>
-<th align="left">智能特征</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">驱动方式</td>
-<td align="left">无动力源，纯机械被动自适应</td>
-<td align="left">零能耗、零控制、零故障电气风险</td>
-</tr>
-<tr>
-<td align="left">机构类型</td>
-<td align="left">斜楔-连杆欠驱动机构</td>
-<td align="left">单输入（下压力）→ 多输出（自适应包络力）的智能力放大</td>
-</tr>
-<tr>
-<td align="left">夹持原理</td>
-<td align="left">接触反力触发被动闭合，机械自锁保持</td>
-<td align="left">接触即智能响应，无需传感器-控制器-执行器闭环</td>
-</tr>
-<tr>
-<td align="left">复位方式</td>
-<td align="left">弹性复位件</td>
-<td align="left">无外力时自动张开至最大开度</td>
-</tr>
-<tr>
-<td align="left">最大承受压力</td>
-<td align="left"><strong>50 N</strong>（超载将导致滚柱断裂）</td>
-<td align="left">结构自保护——超载前滚柱优先断裂，保护基体</td>
-</tr>
-<tr>
-<td align="left">应用场景</td>
-<td align="left">纺织自动化、布料分拣、柔性物料搬运</td>
-<td align="left">对轻薄、易变形、低刚度物料具身自适应</td>
-</tr>
-</tbody></table>
-<h3>3.3 结构特征</h3>
-<ul>
-<li><strong>斜楔-连杆机构</strong>：工件反作用力驱动夹爪被动闭合，自适应贴合工件轮廓</li>
-<li><strong>弹性复位件</strong>：无外力时自动张开至最大开度</li>
-<li><strong>机械自锁</strong>：闭合后结构自锁，无需持续供能即可保持抓持</li>
-<li><strong>模块化可拆卸</strong>：便于维护与更换磨损件</li>
-</ul>
-<h3>3.4 标准工作流程</h3>
-<table>
-<thead>
-<tr>
-<th align="left">步骤</th>
-<th align="left">操作</th>
-<th align="left">预计时间</th>
-<th align="left">判定条件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">初始状态复位（弹性复位件张开）</td>
-<td align="left">~300 ms</td>
-<td align="left">到达机械限位，无卡顿</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">物体预定位（机械臂运动）</td>
-<td align="left">视任务而定</td>
-<td align="left">—</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">被动自适应抓取（下压触发闭合）</td>
-<td align="left">~150 ms</td>
-<td align="left">完全贴合，结构自锁，无打滑</td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left">工件搬运与保持</td>
-<td align="left">视任务周期</td>
-<td align="left">无外力干扰时保持闭合</td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left">工件释放（抬起即张开）</td>
-<td align="left">~100 ms</td>
-<td align="left">工件脱离，夹爪回到张开状态</td>
-</tr>
-</tbody></table>
-<h3>3.5 与通用夹爪对比</h3>
-<table>
-<thead>
-<tr>
-<th align="left">对比维度</th>
-<th align="left">无动力夹取手指（具身智能）</th>
-<th align="left">传统有源夹爪（传统范式）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">动力源</td>
-<td align="left">零能耗（环境反力驱动）</td>
-<td align="left">需气源或电源</td>
-</tr>
-<tr>
-<td align="left">控制复杂度</td>
-<td align="left">零控制（几何智能自决策）</td>
-<td align="left">需 PLC/控制器 + 传感器闭环</td>
-</tr>
-<tr>
-<td align="left">故障模式</td>
-<td align="left">仅机械磨损，无电气故障</td>
-<td align="left">电气、软件、机械多域故障</td>
-</tr>
-<tr>
-<td align="left">环境适应性</td>
-<td align="left">对柔性物料具身自适应</td>
-<td align="left">需预设程序适配不同工件</td>
-</tr>
-<tr>
-<td align="left">全生命周期成本</td>
-<td align="left">极低（无电气件更换）</td>
-<td align="left">高（驱动器、传感器、线缆老化）</td>
-</tr>
-<tr>
-<td align="left">智能升级路径</td>
-<td align="left">结构参数可调（楔角、弹簧刚度）</td>
-<td align="left">依赖软件算法升级</td>
-</tr>
-</tbody></table>
-<h3>3.6 安全与维护要点</h3>
-<table>
-<thead>
-<tr>
-<th align="left">项目</th>
-<th align="left">要求</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">安装固定</td>
-<td align="left">连接法兰必须刚性固定，螺栓按规定扭矩锁紧；严禁使用变形/滑牙紧固件</td>
-</tr>
-<tr>
-<td align="left">负载限制</td>
-<td align="left">最大压力 <strong>50 N</strong>，超载将导致滚柱断裂</td>
-</tr>
-<tr>
-<td align="left">碰撞防夹</td>
-<td align="left">运行路径内严禁放置人体部位、线缆或异物；卡滞后必须停机断电排查</td>
-</tr>
-<tr>
-<td align="left">定期检查</td>
-<td align="left">检查钳口、连杆、弹簧、销轴等关键受力件是否有磨损、变形或裂纹</td>
-</tr>
-<tr>
-<td align="left">维护保养</td>
-<td align="left">必须在完全停机、断电状态下进行</td>
-</tr>
-</tbody></table>
-<hr/>
-<h2>四、可替换智能手指 B —— 有动力夹取手指</h2>
-<h3>4.1 具身智能定位</h3>
-<p>有动力夹取手指是具身智能灵巧操作终端的<strong>旗舰级主动感知智能体</strong>。该手指集成 3 自由度精密驱动、六维力/力矩多模态感知与 16×16 高分辨率触觉阵列，构建起<strong>指尖级别的具身智能感知-决策-执行闭环</strong>。通过力位混合智能控制、阻抗顺应控制与 ROS2 具身智能接口，该手指不仅能执行精密抓持，更能理解接触物理——感知滑移、识别材质、估计形状，并将这些具身经验沉淀为操作策略知识，驱动持续进化。</p>
-<h3>4.2 核心技术参数</h3>
-<table>
-<thead>
-<tr>
-<th align="left">参数项</th>
-<th align="left">规格</th>
-<th align="left">智能层级</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">主动自由度</td>
-<td align="left">3（MCP 近关节、PIP 中关节、DIP 远关节）</td>
-<td align="left">类人手指运动学，支持捏取、包络、侧推等多态操作</td>
-</tr>
-<tr>
-<td align="left">驱动电机</td>
-<td align="left">BLDC 电机 ×3 + FOC 矢量控制</td>
-<td align="left">低转矩脉动，支持精细力控（分辨率达 0.01 N）</td>
-</tr>
-<tr>
-<td align="left">减速机构</td>
-<td align="left">谐波减速器</td>
-<td align="left">零背隙、高刚性，确保定位重复精度</td>
-</tr>
-<tr>
-<td align="left">耦合传动</td>
-<td align="left">DIP 与 PIP 固定传动比 1:1.2 ~ 1:1.5（固件可调）</td>
-<td align="left">模拟人类手指自然弯曲形态，支持操作风格个性化配置</td>
-</tr>
-<tr>
-<td align="left">指尖力</td>
-<td align="left">12 N（额定）/ 峰值更高</td>
-<td align="left">覆盖从精密装配到中等负载抓持的全谱系</td>
-</tr>
-<tr>
-<td align="left">智能载荷</td>
-<td align="left">捏取 0.8 kg / 包络 2 kg</td>
-<td align="left">多模态力控下稳定操作的安全载荷</td>
-</tr>
-<tr>
-<td align="left">感知能力</td>
-<td align="left">六维力/力矩 + 16×16 触觉阵列</td>
-<td align="left">构建指尖数字触觉孪生，支持滑移预测与材质识别</td>
-</tr>
-<tr>
-<td align="left">供电电压</td>
-<td align="left">24 V DC（范围 20~30 V）</td>
-<td align="left">支持工业现场电压波动自适应</td>
-</tr>
-<tr>
-<td align="left">控制模式</td>
-<td align="left">位置控制 / 力位混合控制 / 阻抗控制</td>
-<td align="left">四层控制架构，支持操作策略级切换</td>
-</tr>
-<tr>
-<td align="left">通信接口</td>
-<td align="left">CAN / CAN FD（推荐）、RS-485、UART（调试）</td>
-<td align="left">原生 ROS2 支持，即插即用接入具身智能生态</td>
-</tr>
-<tr>
-<td align="left">总线节点数</td>
-<td align="left">最多 16 个节点共线</td>
-<td align="left">支持多指协同与分布式感知</td>
-</tr>
-</tbody></table>
-<h3>4.3 自由度配置与角度范围</h3>
-<table>
-<thead>
-<tr>
-<th align="left">关节</th>
-<th align="left">解剖学命名</th>
-<th align="left">类型</th>
-<th align="left">运动方向</th>
-<th align="left">角度范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">MCP</td>
-<td align="left">掌指关节</td>
-<td align="left">主动</td>
-<td align="left">屈伸</td>
-<td align="left">0° ~ 屈曲最大角</td>
-</tr>
-<tr>
-<td align="left">PIP</td>
-<td align="left">近端指间关节</td>
-<td align="left">主动（与 DIP 耦合）</td>
-<td align="left">屈伸</td>
-<td align="left">0° ~ 屈曲最大角</td>
-</tr>
-<tr>
-<td align="left">DIP</td>
-<td align="left">远端指间关节</td>
-<td align="left">主动（与 PIP 耦合）</td>
-<td align="left">屈伸</td>
-<td align="left">0° ~ 屈曲最大角</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>伸展方向为 0°，弯曲方向为正。单指模块不支持主动侧摆，集成于手掌时可通过手掌 MP 关节实现。</p>
-</blockquote>
-<h3>4.4 标准工作流程</h3>
-<table>
-<thead>
-<tr>
-<th align="left">步骤</th>
-<th align="left">操作</th>
-<th align="left">预计时间</th>
-<th align="left">判定条件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">上电初始化（自检）</td>
-<td align="left">~500 ms</td>
-<td align="left">绿灯常亮</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">总线连接（CAN）</td>
-<td align="left">~100 ms</td>
-<td align="left">收到心跳帧</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">参数配置（模式/力阈值/耦合比）</td>
-<td align="left">~50 ms</td>
-<td align="left">配置确认应答</td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left">执行 HOME 原语</td>
-<td align="left">~300 ms</td>
-<td align="left">三关节回到 0°</td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left">物体接近（机械臂运动）</td>
-<td align="left">视任务而定</td>
-<td align="left">视觉/激光定位完成</td>
-</tr>
-<tr>
-<td align="left">6</td>
-<td align="left">执行抓握原语（GRASP_ENVELOPE / PINCH）</td>
-<td align="left">150~500 ms</td>
-<td align="left">力传感器 ≥ 目标力</td>
-</tr>
-<tr>
-<td align="left">7</td>
-<td align="left">保持抓握（HOLD）</td>
-<td align="left">视任务而定</td>
-<td align="left">无滑移报警</td>
-</tr>
-<tr>
-<td align="left">8</td>
-<td align="left">运输/操作</td>
-<td align="left">视任务而定</td>
-<td align="left">加速度/振动在允许范围内</td>
-</tr>
-<tr>
-<td align="left">9</td>
-<td align="left">释放（RELEASE）</td>
-<td align="left">200~400 ms</td>
-<td align="left">指尖力归零</td>
-</tr>
-<tr>
-<td align="left">10</td>
-<td align="left">返回 HOME 或进入待机</td>
-<td align="left">—</td>
-<td align="left">准备下一次任务</td>
-</tr>
-</tbody></table>
-<h3>4.5 控制架构（四级分层）</h3>
-<pre><code>应用层（上位机）— 任务规划 / 视觉引导 / 力控算法 / 学习算法
-    ↓ ROS2 Topic / CAN Protocol
-运动规划层（PC端，可选）— 轨迹生成 / 逆运动学 / 碰撞检测 / 多指协调
-    ↓ CAN / CAN FD
-关节控制层（手指内置 MCU，480 MHz）— PID+前馈 / 力位混合 / 阻抗控制 / 安全监控
-    ↓ PWM + FOC
-驱动层（BLDC×3 / 谐波减速器 / 编码器 / 传感器）
+<h3>3.11 控制方式</h3>
+<h4>3.11.1 控制架构</h4>
+<pre><code>┌─────────────────────────────────────────────┐
+│              应用层（上位机）                  │
+│  任务规划 / 视觉引导 / 力控算法 / 学习算法    │
+└─────────────────┬───────────────────────────┘
+                  │ ROS2 Topic / CAN Protocol
+┌─────────────────▼───────────────────────────┐
+│           运动规划层（可选，PC端）             │
+│  轨迹生成 / 逆运动学 / 碰撞检测 / 多指协调    │
+└─────────────────┬───────────────────────────┘
+                  │ CAN / CAN FD
+┌─────────────────▼───────────────────────────┐
+│      关节控制层（手指内置MCU，480MHz）        │
+│  PID+前馈 / 力位混合 / 阻抗控制 / 安全监控    │
+└─────────────────┬───────────────────────────┘
+                  │ PWM + FOC
+┌─────────────────▼───────────────────────────┐
+│          驱动层（手指内置驱动器）              │
+│  BLDC电机×3 / 谐波减速器 / 编码器 / 传感器   │
+└─────────────────────────────────────────────┘
 </code></pre>
-<h3>4.6 力位混合控制逻辑</h3>
-<p>有动力夹取手指的默认工作模式为<strong>力位混合具身智能控制</strong>，其决策逻辑模拟人类手指的"自由接近-柔顺接触-稳定保持"直觉：</p>
-<ol>
-<li><strong>位置控制阶段</strong>：指尖力 &lt; 力切换阈值（默认 0.5 N）时，手指按位置控制模式运动，跟踪目标关节角度</li>
-<li><strong>切换条件</strong>：当指尖力 ≥ 力切换阈值时，自动切换到力控制模式</li>
-<li><strong>力控制阶段</strong>：手指根据目标力与当前力的偏差调整关节输出力矩，维持稳定的接触力</li>
-<li><strong>切换回位置控制</strong>：当接触力降至阈值以下且持续 100 ms 时，自动回到位置控制</li>
-</ol>
+<h4>3.11.2 控制模式</h4>
+<table>
+<thead>
+<tr>
+<th>控制模式</th>
+<th>模式说明</th>
+<th>关键参数</th>
+<th>响应带宽</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>位置控制（PID）</strong></td>
+<td>各关节独立PID位置闭环，带速度和加速度前馈</td>
+<td>Kp, Ki, Kd, 前馈增益</td>
+<td>500 Hz</td>
+<td>高速精确重复定位</td>
+</tr>
+<tr>
+<td><strong>速度控制</strong></td>
+<td>速度闭环，指定目标角速度</td>
+<td>目标速度, 加速度限幅</td>
+<td>500 Hz</td>
+<td>连续运动、扫描搜索</td>
+</tr>
+<tr>
+<td><strong>力矩控制</strong></td>
+<td>电流闭环→力矩输出，直接控制力矩</td>
+<td>目标力矩, 力矩变化率限幅</td>
+<td>2 kHz</td>
+<td>按压力控、与环境接触</td>
+</tr>
+<tr>
+<td><strong>力位混合控制</strong></td>
+<td>非接触时位置控制，接触后按力偏差切换力控制</td>
+<td>切换力阈值, 力目标值, 位置环增益</td>
+<td>1 kHz</td>
+<td><strong>推荐默认模式</strong>，大多数抓取任务</td>
+</tr>
+<tr>
+<td><strong>阻抗控制</strong></td>
+<td>设定目标刚度-阻尼-质量参数，手指表现为虚拟弹簧-阻尼系统</td>
+<td>K（刚度）, D（阻尼）, M（等效质量）</td>
+<td>1 kHz</td>
+<td>柔顺交互、人机协作、易碎物体操作</td>
+</tr>
+</tbody></table>
+<p><strong>力位混合控制模式详解</strong></p>
+<p>力位混合控制为本手指的推荐默认工作模式，其控制逻辑如下：</p>
+<ul>
+<li><strong>位置控制阶段</strong>：当指尖力传感器读数低于力切换阈值（默认 0.5 N）时，手指按位置控制模式运动，跟踪目标关节角度。</li>
+<li><strong>切换条件</strong>：当指尖力 ≥ 力切换阈值时，自动切换到力控制模式。</li>
+<li><strong>力控制阶段</strong>：在力控制模式下，手指根据目标力与当前力的偏差调整关节输出力矩，维持稳定的接触力。</li>
+<li><strong>切换回位置控制</strong>：当接触力降至阈值以下且持续 100 ms 时，自动回到位置控制。</li>
+</ul>
 <p>可调参数：</p>
 <ul>
-<li><code>force_threshold</code>：0.1 ~ 10 N（默认 0.5 N）</li>
-<li><code>target_force</code>：0 ~ 12 N</li>
-<li><code>kp_position</code>：0 ~ 1000</li>
-<li><code>kp_force</code>：0 ~ 100</li>
+<li><code>force_threshold</code>：力切换阈值，范围 0.1~10 N，默认值 0.5 N</li>
+<li><code>target_force</code>：目标保持力，范围 0~12 N</li>
+<li><code>kp_position</code>：位置环比例增益，范围 0~1000</li>
+<li><code>kp_force</code>：力环比例增益，范围 0~100</li>
 </ul>
-<h3>4.7 通信接口（8pin 连接器）</h3>
-<ul>
-<li><strong>推荐协议</strong>：CAN / CAN FD（1 Mbps）</li>
-<li><strong>节点 ID</strong>：可配置，多指组网时通过 ID 区分</li>
-<li><strong>拓扑</strong>：菊花链，总线两端各接 120Ω 终端电阻</li>
-<li><strong>RS-485 与 CAN 共用差分线对</strong>，需通过跳线选择，不可同时使用</li>
-</ul>
-<h3>4.8 SDK/API 支持</h3>
+<h4>3.11.3 SDK/API</h4>
+<p><strong>ROS2支持</strong></p>
 <table>
 <thead>
 <tr>
-<th align="left">接口类型</th>
-<th align="left">支持平台</th>
-<th align="left">编程语言</th>
-<th align="left">主要功能</th>
+<th>项目</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">Python SDK</td>
-<td align="left">Ubuntu 22.04/24.04</td>
-<td align="left">Python 3.10+</td>
-<td align="left">初始化、模式设置、原语调用、传感器读取</td>
+<td>支持平台</td>
+<td>ROS2 Humble / Jazzy</td>
 </tr>
 <tr>
-<td align="left">C++ SDK</td>
-<td align="left">Ubuntu 22.04/24.04</td>
-<td align="left">C++17</td>
-<td align="left">低延迟实时控制</td>
+<td>驱动包名称</td>
+<td><code>specialized_finger_ros2</code></td>
 </tr>
 <tr>
-<td align="left">ROS2 驱动</td>
-<td align="left">Ubuntu 22.04/24.04</td>
-<td align="left">Python/C++</td>
-<td align="left">Topic 订阅发布、Service 调用</td>
+<td>主要功能</td>
+<td>节点管理、话题发布/订阅、服务调用、参数配置</td>
+</tr>
+<tr>
+<td>发布话题</td>
+<td><code>/finger/joint_states</code>、<code>/finger/force_torque</code>、<code>/finger/tactile_map</code>、<code>/finger/status</code></td>
+</tr>
+<tr>
+<td>订阅话题</td>
+<td><code>/finger/joint_cmd</code>、<code>/finger/mode_cmd</code></td>
+</tr>
+<tr>
+<td>提供服务</td>
+<td><code>~/home</code>、<code>~/grasp</code>、<code>~/release</code>、<code>~/set_impedance</code></td>
 </tr>
 </tbody></table>
-<p><strong>Python 快速示例</strong>：</p>
-<pre><code class="language-python">from specialized_finger import FingerController
+<p><strong>Python API</strong></p>
+<pre><code class="language-python"># 示例：Python SDK快速上手代码
+from specialized_finger import FingerController
 
 # 初始化（通过CAN接口）
 finger = FingerController(interface='can0', node_id=1)
@@ -1232,351 +2507,1531 @@ finger.release()
 # 断开连接
 finger.disconnect()
 </code></pre>
-<h3>4.9 安全与维护要点</h3>
+<p><strong>C++ API</strong></p>
 <table>
 <thead>
 <tr>
-<th align="left">项目</th>
-<th align="left">要求</th>
+<th>类/接口</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">供电</td>
-<td align="left">24 V DC，严禁交流或 &gt;30 V DC</td>
+<td><code>class FingerDriver</code></td>
+<td>核心驱动类，管理CAN通信和状态机</td>
 </tr>
 <tr>
-<td align="left">过温保护</td>
-<td align="left">&gt;60°C 自动切断电机输出，冷却至 &lt;40°C 后恢复</td>
+<td><code>bool connect(const string&amp; iface, uint8_t node_id)</code></td>
+<td>连接指定CAN接口和节点ID</td>
 </tr>
 <tr>
-<td align="left">碰撞处理</td>
-<td align="left">立即切断力矩 → 排除原因 → HOME → 绿灯常亮 → 继续</td>
+<td><code>bool setControlMode(ControlMode mode)</code></td>
+<td>设置控制模式</td>
 </tr>
 <tr>
-<td align="left">固件升级</td>
-<td align="left">严禁断电或拔插线缆，需在稳定供电环境下执行</td>
+<td><code>bool setJointPositions(const array&lt;float,3&gt;&amp; angles)</code></td>
+<td>设置目标关节角度 [rad]</td>
 </tr>
 <tr>
-<td align="left">安装力矩</td>
-<td align="left">M6×16 螺钉：预紧 2 N·m → 最终 6 N·m</td>
+<td><code>bool setTargetForce(float force)</code></td>
+<td>设置目标力 [N]</td>
 </tr>
 <tr>
-<td align="left">终端电阻</td>
-<td align="left">总线末端节点需启用 120Ω 终端电阻</td>
+<td><code>bool setImpedance(float K, float D, float M)</code></td>
+<td>设置阻抗参数</td>
 </tr>
 <tr>
-<td align="left">快拆基座</td>
-<td align="left">对准定位销推入，顺时针旋转至"咔嗒"声锁定；拆卸时按压卡扣逆时针旋转</td>
+<td><code>JointStates getJointStates()</code></td>
+<td>获取关节状态（位置/速度/力矩）</td>
+</tr>
+<tr>
+<td><code>ForceTorque getForceTorque()</code></td>
+<td>获取指尖力/力矩</td>
+</tr>
+<tr>
+<td><code>TactileMap getTactileMap()</code></td>
+<td>获取触觉阵列数据</td>
+</tr>
+<tr>
+<td><code>bool executePrimitive(PrimitiveType p, const PrimitiveParam&amp; param)</code></td>
+<td>执行操作原语</td>
 </tr>
 </tbody></table>
-<hr/>
-<h2>五、手掌基座与特异型灵巧手指的连接部分（手指快插拔模块）</h2>
-<h3>5.1 模块定位</h3>
-<p><strong>手掌基座与特异型灵巧手指的连接部分</strong>，即手指快插拔模块，是连接<strong>有动力夹取手指</strong>与<strong>多特异型灵巧手指安装手掌基座</strong>（或机械臂末端）的机械接口模块，实现有动力手指的<strong>秒级快速拆装</strong>。该模块使同一手掌基座能够根据不同任务需求快速更换不同构型的手指，大幅提升产线柔性。</p>
-<h3>5.2 结构特征</h3>
+<blockquote>
+<p>完整API文档和示例代码见配套《SDK开发指南》。支持Ubuntu 22.04/24.04 LTS，提供CMake构建系统和Debian安装包。</p>
+</blockquote>
+<h3>3.12 指示灯对照表</h3>
 <table>
 <thead>
 <tr>
-<th align="left">特征</th>
-<th align="left">说明</th>
+<th>指示灯状态</th>
+<th>状态符号</th>
+<th>系统状态</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">锁定机构</td>
-<td align="left">旋转卡扣式锁定，推入后顺时针旋转至"咔嗒"声确认</td>
+<td>不亮</td>
+<td>---</td>
+<td>断电</td>
+<td>未接入电源或电源模块故障</td>
 </tr>
 <tr>
-<td align="left">定位方式</td>
-<td align="left">定位销 + 防呆槽，确保电气与机械同轴对接</td>
+<td>绿色闪烁（1 Hz）</td>
+<td>待机</td>
+<td>已通电，等待连接</td>
+<td>系统正常，尚未与主机建立通信</td>
 </tr>
 <tr>
-<td align="left">拆卸方式</td>
-<td align="left">按压卡扣按钮，逆时针旋转释放</td>
+<td>绿色常亮</td>
+<td>运行中</td>
+<td>已连接，正常工作</td>
+<td>系统已启动，通信正常，可执行控制指令</td>
 </tr>
 <tr>
-<td align="left">电气接口</td>
-<td align="left">8pin 连接器与机械锁紧一体化，插接同时完成电气连通</td>
+<td>黄色常亮</td>
+<td>警告</td>
+<td>存在非致命异常</td>
+<td>温度偏高（&gt;45°C）或电源波动，建议暂停操作排查</td>
 </tr>
 <tr>
-<td align="left">承载能力</td>
-<td align="left">满足有动力手指额定负载（指尖力 12 N / 包络载荷 2 kg）</td>
+<td>黄色闪烁（2 Hz）</td>
+<td>标定中</td>
+<td>正在执行参数自标定</td>
+<td>此时请勿施加外力或发送运动指令</td>
 </tr>
 <tr>
-<td align="left">智能识别</td>
-<td align="left">触点编码识别 finger ID，基座自动识别当前接入手指型号（A/B/C/D/E/F），加载对应驱动与策略</td>
+<td>红色闪烁（2 Hz）</td>
+<td>预故障</td>
+<td>即将触发故障保护</td>
+<td>温度接近过温阈值（&gt;55°C），需尽快停止运行</td>
+</tr>
+<tr>
+<td>红色常亮</td>
+<td>严重故障</td>
+<td>硬件或软件致命错误</td>
+<td>主控异常、通信失步、编码器故障等，应立即断电检查</td>
+</tr>
+<tr>
+<td>蓝色常亮</td>
+<td>固件升级</td>
+<td>Bootloader模式</td>
+<td>正在进行固件升级，严禁断电或拔插线缆</td>
+</tr>
+<tr>
+<td>紫色常亮</td>
+<td>力控饱和</td>
+<td>力/力矩输出达到上限</td>
+<td>当前负载超出设定输出能力，需降低负载或调整目标力</td>
+</tr>
+<tr>
+<td>青色常亮</td>
+<td>碰撞触发</td>
+<td>碰撞检测已触发</td>
+<td>检测到异常接触力，关节已进入保护状态，需复位后恢复</td>
 </tr>
 </tbody></table>
-<h3>5.3 安装要点</h3>
-<ul>
-<li><strong>安装</strong>：将手指快拆基座对准安装面定位销 → 推入到位 → 顺时针旋转锁定卡扣至"咔嗒"声确认锁定</li>
-<li><strong>拆卸</strong>：按压卡扣按钮 → 逆时针旋转 → 释放取出</li>
-<li><strong>检查</strong>：首次安装后确认无松动间隙，8pin 插头防呆槽对齐，插接到位听到锁定声</li>
-</ul>
-<hr/>
-<h2>六、特异型灵巧手指的暂存机构（特异型手指寄存模块）</h2>
-<h3>6.1 模块定位</h3>
-<p><strong>特异型灵巧手指的暂存机构</strong>，即特异型手指寄存模块，是为灵巧手系统配套的<strong>离线手指存放与管理模块</strong>。当多特异型灵巧手指安装手掌基座需要更换手指构型（如从三指抓取切换为两指捏取）或手指需要离线维护/校准时，暂存机构提供安全、有序的存放空间，避免手指散乱放置造成的损伤或遗失。</p>
-<h3>6.2 功能特征</h3>
+<h3>3.13 产品配件表</h3>
 <table>
 <thead>
 <tr>
-<th align="left">特征</th>
-<th align="left">说明</th>
+<th>图示</th>
+<th>名称</th>
+<th>类型</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">存放容量</td>
-<td align="left">【根据设计确定，如：可同时存放 3~5 根有动力手指】</td>
+<td>【图片：电源适配器外观图】</td>
+<td>24V直流电源适配器</td>
+<td>标配</td>
+<td>额定输出：24V 3A，峰值功率72W，含AC输入线</td>
 </tr>
 <tr>
-<td align="left">定位固定</td>
-<td align="left">每根手指有独立的存放位，带有与快插拔模块匹配的定位结构</td>
+<td>【图片：CAN-USB适配器外观图】</td>
+<td>CAN-USB适配器</td>
+<td>标配</td>
+<td>USB转CAN/CAN FD接口卡，用于PC与手指通信</td>
 </tr>
 <tr>
-<td align="left">电气保护</td>
-<td align="left">存放位不带电，避免离线手指的电气短路或误触发</td>
+<td>【图片：连接线束图】</td>
+<td>手指连接线缆</td>
+<td>标配</td>
+<td>8芯屏蔽线缆，长度0.5m，一端JST母头一端散线</td>
 </tr>
 <tr>
-<td align="left">防护设计</td>
-<td align="left">防尘/防碰撞外壳，保护离线手指的精密结构</td>
+<td>【图片：指尖端盖套装图】</td>
+<td>可更换指尖端盖套装</td>
+<td>标配</td>
+<td>3种硬度硅胶端盖（邵氏A 20°/40°/60°），各1件</td>
 </tr>
 <tr>
-<td align="left">模块化</td>
-<td align="left">可独立部署于工作台或集成于产线设备旁</td>
+<td>【图片：机械安装法兰图】</td>
+<td>机械安装法兰</td>
+<td>标配</td>
+<td>铝合金转接法兰，M6螺钉安装孔，用于固定手指基座</td>
 </tr>
 <tr>
-<td align="left">智能台账</td>
-<td align="left">支持 RFID / 二维码身份识别（预留），每根手指的服役历史、维护记录、性能退化曲线可追溯</td>
+<td>【图片：配件工具包图】</td>
+<td>配件工具包</td>
+<td>标配</td>
+<td>六角扳手×3（1.5/2/2.5mm）、撬棒×1、M3螺钉×8、M4螺钉×8</td>
+</tr>
+<tr>
+<td>【图片：防水线缆图】</td>
+<td>防水延长线缆（2m）</td>
+<td>选配</td>
+<td>IP67防护等级延长线，用于潮湿环境部署</td>
+</tr>
+<tr>
+<td>【图片：多指转接板图】</td>
+<td>多指手掌转接板</td>
+<td>选配</td>
+<td>支持安装3/4/5根手指的铝合金手掌基座</td>
+</tr>
+<tr>
+<td>【图片：标定夹具图】</td>
+<td>指尖标定夹具</td>
+<td>选配</td>
+<td>用于精确标定力传感器零偏和触觉阵列增益</td>
+</tr>
+<tr>
+<td>【图片：防护套图】</td>
+<td>防尘防护套</td>
+<td>选配</td>
+<td>硅胶材质，覆盖手指运动部分，提升IP等级至IP65</td>
 </tr>
 </tbody></table>
-<h3>6.3 使用方式</h3>
+<h3>3.14 使用注意事项</h3>
+<h4>3.14.1 安装紧固要求</h4>
 <ol>
-<li>从安装平台拆卸手指（按压快插拔卡扣 → 逆时针旋转 → 取出）</li>
-<li>将手指对准暂存机构存放位的定位销</li>
-<li>推入至限位，确认手指稳固无晃动</li>
-<li>需要使用时取出，安装至安装平台即可</li>
+<li><p><strong>快拆基座安装</strong>：将手指快拆基座对准安装面的定位销，推入到位后顺时针旋转锁定卡扣至"咔嗒"声确认锁定。拆卸时按压卡扣按钮并逆时针旋转即可释放。</p>
+</li>
+<li><p><strong>螺钉紧固</strong>：安装法兰与机械臂/手掌连接时，使用M6×16内六角圆柱头螺钉（强度等级8.8级以上），按对角线顺序分两步拧紧：</p>
+<ul>
+<li>第一步：预拧紧，力矩 2 N·m</li>
+<li>第二步：最终拧紧，力矩 6 N·m（使用校准过的扭矩扳手）</li>
+</ul>
+</li>
+<li><p><strong>电气连接</strong>：连接8pin线缆时确认插头方向正确（防呆槽对齐），插接到位后听到锁定声。首次上电前用万用表确认VCC与GND之间无短路，供电电压在20V~30V范围内。</p>
+</li>
+<li><p><strong>总线终端电阻</strong>：当手指作为CAN总线末端节点时，需将基座上的TERMINATION跳线帽置于ON位置以启用120Ω终端电阻。中间节点应置于OFF位置。</p>
+</li>
+</ol>
+<h4>3.14.2 日常检查与维护</h4>
+<table>
+<thead>
+<tr>
+<th>维护项目</th>
+<th>检查内容</th>
+<th>建议周期</th>
+<th>处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>外观检查</td>
+<td>指尖硅胶端盖是否磨损、破裂，铝合金外壳有无磕碰变形</td>
+<td>每日</td>
+<td>磨损端盖及时更换；轻度磕碰不影响功能可继续使用</td>
+</tr>
+<tr>
+<td>关节活动检查</td>
+<td>三关节屈伸是否顺畅，有无异响或卡顿</td>
+<td>每日</td>
+<td>异响需拆开检查内部是否有异物或腱绳松动</td>
+</tr>
+<tr>
+<td>紧固件检查</td>
+<td>安装螺钉和锁定卡扣是否松动</td>
+<td>每周</td>
+<td>松动螺钉按标准力矩重新拧紧</td>
+</tr>
+<tr>
+<td>传感器零偏校准</td>
+<td>无负载状态下力传感器读数是否接近零</td>
+<td>每月</td>
+<td>执行 <code>CALIBRATE_FORCE</code>原语进行零偏自标定</td>
+</tr>
+<tr>
+<td>触觉阵列标定</td>
+<td>均匀压力下触觉阵列读数是否均匀分布</td>
+<td>每月</td>
+<td>使用标定夹具执行阵列增益标定</td>
+</tr>
+<tr>
+<td>线缆检查</td>
+<td>连接线缆外皮有无破损，接头有无氧化</td>
+<td>每月</td>
+<td>破损线缆及时更换；氧化接头用无水酒精清洁</td>
+</tr>
+<tr>
+<td>驱动模组散热</td>
+<td>运行中驱动模组温度是否持续&gt;50°C</td>
+<td>持续</td>
+<td>温度偏高时降低运动Duty Cycle或增加外部散热</td>
+</tr>
+<tr>
+<td>谐波减速器润滑</td>
+<td>累计运行&gt;5000小时后检查润滑状态</td>
+<td>每5000小时</td>
+<td>由厂商或授权服务商执行专业维护</td>
+</tr>
+</tbody></table>
+<h4>3.14.3 安全警告</h4>
+<ol>
+<li><strong>供电安全</strong>：手指模块采用24V直流供电，严禁接入交流电源或超过30V的直流电源，否则将导致永久性损坏。</li>
+<li><strong>过温保护</strong>：当驱动模组温度超过60°C时，系统将自动触发过温保护并切断电机输出。此时应停止使用，待自然冷却至40°C以下后再恢复运行。</li>
+<li><strong>碰撞处理</strong>：当碰撞检测触发后，手指将立即切断电机输出力矩。恢复操作步骤：排除碰撞原因 → 发送 <code>HOME</code>原语 → 确认状态灯恢复绿色常亮 → 继续任务。</li>
+<li><strong>固件升级</strong>：固件升级过程中严禁断电或拔插通信线缆，升级失败可能导致设备无法启动。建议仅在稳定的供电环境下执行升级操作。</li>
+<li><strong>负载限制</strong>：严禁超过额定负载（指尖力12N / 捏取载荷0.8kg / 包络载荷2kg）使用，超载运行将加速减速器磨损并可能触发安全保护。</li>
 </ol>
 <hr/>
-<h2>七、全系可替换智能手指横向对比</h2>
+<h2>4. 特异型灵巧手指安装平台</h2>
+<h3>4.1 产品概述</h3>
+<p>本产品是一款面向协作机械臂末端与灵巧手系统的<strong>五指安装平台</strong>，采用正五边形模块化结构设计，可独立部署于协作机械臂末端法兰盘，实现五根灵巧手指的统一承载与独立旋转驱动。平台内置5个旋转驱动电机，每根手指可实现 0°~360° 连续旋转，适配符合 ISO 9409-1-31.5/40/50/63 标准的机械臂末端法兰盘。该平台可广泛应用于科研探索、工业生产及日常服务等多类场景，是构建完整灵巧手系统的核心中间层结构件。</p>
 <table>
 <thead>
 <tr>
-<th align="left">对比维度</th>
-<th align="left">A 无动力夹取手指</th>
-<th align="left">B 有动力夹取手指</th>
-<th align="left">C 平行卷轴式手指</th>
-<th align="left">D 粘附式手指</th>
-<th align="left">E 双传送带平行手指</th>
-<th align="left">F 双传送带相对手指</th>
+<th>应用场景</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left"><strong>开发状态</strong></td>
-<td align="left"><strong>已定型</strong></td>
-<td align="left"><strong>已定型</strong></td>
-<td align="left"><strong>研发中</strong></td>
-<td align="left"><strong>研发中</strong></td>
-<td align="left"><strong>研发中</strong></td>
-<td align="left"><strong>研发中</strong></td>
+<td>科研实验平台</td>
+<td>用于灵巧手抓取算法验证、多指协调控制研究、触觉感知数据采集等实验室场景</td>
 </tr>
 <tr>
-<td align="left"><strong>具身范式</strong></td>
-<td align="left">被动机械具身智能</td>
-<td align="left">主动感知-决策-执行闭环</td>
-<td align="left">滚动接触具身智能</td>
-<td align="left">界面粘附具身智能</td>
-<td align="left">夹持-输送协同智能</td>
-<td align="left">夹持-姿态协同智能</td>
+<td>精密装配作业</td>
+<td>配合灵巧手指完成电子元器件插拔、螺丝拧紧、精密零件定位放置等工业任务</td>
 </tr>
 <tr>
-<td align="left"><strong>驱动方式</strong></td>
-<td align="left">零能耗（环境反力）</td>
-<td align="left">BLDC×3 + FOC（24V）</td>
-<td align="left">伺服电机 + 卷轴传动</td>
-<td align="left">负压/静电/干粘附混合驱动</td>
-<td align="left">双侧伺服 + 传送带</td>
-<td align="left">双侧伺服 + 差速传送带</td>
+<td>柔性生产分拣</td>
+<td>适用于异形零件包络抓取、食品饮料分拣、不规则工业部件搬运等柔性生产线</td>
 </tr>
 <tr>
-<td align="left"><strong>自由度</strong></td>
-<td align="left">欠驱动（被动自适应）</td>
-<td align="left">3（屈伸×3）</td>
-<td align="left">1~2（卷轴旋转 + 开合）</td>
-<td align="left">1（粘附面贴合）</td>
-<td align="left">2（开合 + 带传动）</td>
-<td align="left">3（开合 + 双侧差速）</td>
+<td>人机协作场景</td>
+<td>通过旋转调整各手指朝向，使灵巧手快速适配不同形态物体，实现安全人机协作</td>
 </tr>
 <tr>
-<td align="left"><strong>感知能力</strong></td>
-<td align="left">无（纯机械自适应）</td>
-<td align="left">六维力/力矩 + 16×16 触觉</td>
-<td align="left">卷轴编码器 + 张力传感（规划）</td>
-<td align="left">真空度/静电压监测（规划）</td>
-<td align="left">带速编码器 + 夹持力传感（规划）</td>
-<td align="left">带速编码器 + 夹持力传感（规划）</td>
-</tr>
-<tr>
-<td align="left"><strong>核心操作</strong></td>
-<td align="left">下压-包络-自锁-释放</td>
-<td align="left">接近-感知-力控抓握-释放</td>
-<td align="left">卷取-保持-释放</td>
-<td align="left">贴附-粘取-转移-释放</td>
-<td align="left">夹持-输送-位移-释放</td>
-<td align="left">夹持-差速旋转-姿态调整</td>
-</tr>
-<tr>
-<td align="left"><strong>典型工件</strong></td>
-<td align="left">布料、薄膜、柔性袋</td>
-<td align="left">异形零件、精密器件</td>
-<td align="left">薄板、柔性电路板、光伏硅片</td>
-<td align="left">玻璃面板、抛光金属、光滑塑料</td>
-<td align="left">管材、棒材、长条形工件</td>
-<td align="left">需翻转调姿的工件</td>
-</tr>
-<tr>
-<td align="left"><strong>控制接口</strong></td>
-<td align="left">无（纯机械）</td>
-<td align="left">CAN FD / ROS2 / SDK</td>
-<td align="left">CAN FD / ROS2（预留）</td>
-<td align="left">CAN FD / ROS2（预留）</td>
-<td align="left">CAN FD / ROS2（预留）</td>
-<td align="left">CAN FD / ROS2（预留）</td>
-</tr>
-<tr>
-<td align="left"><strong>能耗等级</strong></td>
-<td align="left">零</td>
-<td align="left">中（24V 有源驱动）</td>
-<td align="left">中（卷轴伺服）</td>
-<td align="left">低-中（粘附泵/高压）</td>
-<td align="left">中（双侧伺服）</td>
-<td align="left">中（双侧差速伺服）</td>
-</tr>
-<tr>
-<td align="left"><strong>维护模式</strong></td>
-<td align="left">磨损件热插拔更换</td>
-<td align="left">预测性维护 + OTA</td>
-<td align="left">预测性维护（规划）</td>
-<td align="left">粘附面定期更换（规划）</td>
-<td align="left">传送带张紧调整（规划）</td>
-<td align="left">传送带张紧调整（规划）</td>
+<td>日常辅助服务</td>
+<td>可集成于服务机器人，完成开门、倒水、物品传递等日常生活辅助操作</td>
 </tr>
 </tbody></table>
-<hr/>
-<h2>八、系统集成方案</h2>
-<h3>8.1 完整五指灵巧手系统</h3>
-<pre><code>协作机械臂末端（ISO 9409-1 法兰）
-    ↓
-多特异型灵巧手指安装手掌基座（底盒固定，5 旋转轴）
-    ↓（通过手掌基座与特异型灵巧手指的连接部分连接）
-5 × 可替换智能手指（安装于电机壳）
-    ↓
-CAN 总线统一连接（最多 16 节点：5 旋转轴 + 5 手指 = 10 节点）
-    ↓
-上位机（PC/工控机，ROS2 / 自定义控制软件）
+<h3>4.2 产品主体图</h3>
+<h4>4.2.1 3D渲染图</h4>
+<p><img alt="手指底盒等轴测视图" src="./assets/specialDexterousHand_images_%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0_image1.jpeg"/></p>
+<p><img alt="手指安装平台下视图" src="./assets/specialDexterousHand_images_%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0_image2.jpeg"/></p>
+<h4>4.2.2 部件清单</h4>
+<p><img alt="手指安装平台爆炸序号图" src="./assets/specialDexterousHand_images_%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0_image3.jpeg"/></p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>部件名称</th>
+<th>功能说明</th>
+<th>数量</th>
+<th>材料/备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>旋转驱动电机（平台内部）+ 手指根部电机</td>
+<td>驱动电机驱动手指绕旋转轴 0°~360° 连续旋转，实现手指朝向自由调整；手指根部电机安装于电机壳上，驱动灵巧手指第一关节（MCP关节），每根手指独立驱动</td>
+<td>5+5</td>
+<td>5个旋转驱动电机 + 5个手指根部电机，均为同一型号</td>
+</tr>
+<tr>
+<td>2</td>
+<td>手指安装平台底盒</td>
+<td>平台主承载结构，与机械臂末端法兰盘连接，适配 ISO 9409-1-31.5/40/50/63</td>
+<td>1</td>
+<td>6061铝合金，本色阳极氧化</td>
+</tr>
+<tr>
+<td>3</td>
+<td>手指安装平台顶壳</td>
+<td>封闭平台上方，固定5个旋转驱动电机，为手指根部提供安装基准面</td>
+<td>1</td>
+<td>6061铝合金，本色阳极氧化</td>
+</tr>
+<tr>
+<td>4</td>
+<td>推力球轴承</td>
+<td>支撑电机壳旋转，承受手指及电机壳的轴向载荷，保证旋转精度</td>
+<td>5</td>
+<td>轴承钢，型号 6×12×4.5 mm</td>
+</tr>
+<tr>
+<td>5</td>
+<td>电机壳</td>
+<td>连接旋转驱动电机与手指根部电机，传递旋转运动，保护内部结构</td>
+<td>5</td>
+<td>6061铝合金，本色阳极氧化</td>
+</tr>
+<tr>
+<td>6</td>
+<td>M2×3 平头内六角螺丝</td>
+<td>固定手指根部电机至电机壳（每个电机8颗）；固定平台内部旋转电机至顶壳（每个电机3颗）</td>
+<td>55（40+15）</td>
+<td>304不锈钢，镀镍/镀黑锌</td>
+</tr>
+<tr>
+<td>7</td>
+<td>M3×10 平头内六角螺丝</td>
+<td>连接顶壳与底盒，锁紧平台整体结构</td>
+<td>5</td>
+<td>304不锈钢，镀镍/镀黑锌</td>
+</tr>
+</tbody></table>
+<h3>4.3 平面设计图</h3>
+<h4>4.3.1 俯视图</h4>
+<p><img alt="手指安装平台俯视图" src="./assets/specialDexterousHand_images_%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0_image4.jpeg"/></p>
+<h4>4.3.2 侧视图</h4>
+<p><img alt="手指安装平台侧视图" src="./assets/specialDexterousHand_images_%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0_image5.jpeg"/></p>
+<h4>4.3.3 关键尺寸参数</h4>
+<table>
+<thead>
+<tr>
+<th>尺寸项</th>
+<th>数值</th>
+<th>公差</th>
+<th>单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>五边形内切圆直径</td>
+<td>80</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>顶点外圆角半径</td>
+<td>≈28.28</td>
+<td>---</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>顶点内圆角半径</td>
+<td>≈26</td>
+<td>---</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>外壳壁厚</td>
+<td>2</td>
+<td>±0.2</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>盒底+盒盖高度（不含电机壳）</td>
+<td>24.5</td>
+<td>±0.3</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>底部至电机壳顶部总高度</td>
+<td>49</td>
+<td>±0.5</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>电机壳伸出顶壳高度</td>
+<td>≈24.5</td>
+<td>---</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>手指安装位数量</td>
+<td>5</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>手指安装位分布</td>
+<td>均匀分布于五边形5个顶点方向，间隔72°</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>推力球轴承规格</td>
+<td>6×12×4.5</td>
+<td>---</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>整机质量（不含电机）</td>
+<td>161.75</td>
+<td>±3</td>
+<td>g</td>
+</tr>
+<tr>
+<td>法兰适配标准</td>
+<td>ISO 9409-1-31.5 / 40 / 50 / 63</td>
+<td>---</td>
+<td>---</td>
+</tr>
+</tbody></table>
+<h3>4.4 产品参数</h3>
+<table>
+<thead>
+<tr>
+<th>参数分类</th>
+<th>参数项</th>
+<th>典型数值或描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>结构与自由度</strong></td>
+<td>主动自由度</td>
+<td>5 DOF（每根手指旋转轴各1个自由度）</td>
+</tr>
+<tr>
+<td></td>
+<td>旋转轴数量</td>
+<td>5个独立旋转轴，对应5个手指安装位</td>
+</tr>
+<tr>
+<td></td>
+<td>手指安装位分布</td>
+<td>正五边形顶点均匀分布，相邻夹角72°</td>
+</tr>
+<tr>
+<td></td>
+<td>法兰适配标准</td>
+<td>ISO 9409-1-31.5 / ISO 9409-1-40 / ISO 9409-1-50 / ISO 9409-1-63</td>
+</tr>
+<tr>
+<td></td>
+<td>平台构型</td>
+<td>正五边形封闭壳体，底部连接机械臂，顶部驱动5根手指旋转</td>
+</tr>
+<tr>
+<td><strong>尺寸与重量</strong></td>
+<td>五边形内切圆直径</td>
+<td>80 mm</td>
+</tr>
+<tr>
+<td></td>
+<td>外形总高度（不含电机壳）</td>
+<td>24.5 mm</td>
+</tr>
+<tr>
+<td></td>
+<td>底部至电机壳顶部高度</td>
+<td>49 mm</td>
+</tr>
+<tr>
+<td></td>
+<td>外壳壁厚</td>
+<td>2 mm</td>
+</tr>
+<tr>
+<td></td>
+<td>整机质量（不含电机）</td>
+<td>161.75 ± 3 g</td>
+</tr>
+<tr>
+<td><strong>旋转自由度性能</strong></td>
+<td>旋转角度范围</td>
+<td>0° ~ 360°（连续旋转）</td>
+</tr>
+<tr>
+<td></td>
+<td>轴承类型</td>
+<td>推力球轴承，规格 6×12×4.5 mm</td>
+</tr>
+<tr>
+<td></td>
+<td>旋转轴数量</td>
+<td>5个独立旋转轴</td>
+</tr>
+<tr>
+<td><strong>驱动</strong></td>
+<td>平台内部电机数量</td>
+<td>5个（旋转驱动电机，驱动电机壳旋转）</td>
+</tr>
+<tr>
+<td></td>
+<td>平台外部电机数量</td>
+<td>5个（手指根部电机，安装在电机壳上，随电机壳旋转）</td>
+</tr>
+<tr>
+<td></td>
+<td>平台内部电机固定方式</td>
+<td>每个电机3颗M2×3平头内六角螺丝固定于顶壳</td>
+</tr>
+<tr>
+<td></td>
+<td>手指根部电机固定方式</td>
+<td>每个电机8颗M2×3平头内六角螺丝固定于电机壳</td>
+</tr>
+<tr>
+<td><strong>机械连接</strong></td>
+<td>平台顶壳与底盒连接</td>
+<td>5颗M3×10平头内六角螺丝</td>
+</tr>
+<tr>
+<td></td>
+<td>与机械臂连接方式</td>
+<td>底盒底部法兰安装面，适配 ISO 9409-1 系列标准法兰</td>
+</tr>
+<tr>
+<td><strong>材料与工艺</strong></td>
+<td>底盒材质</td>
+<td>6061铝合金，本色阳极氧化</td>
+</tr>
+<tr>
+<td></td>
+<td>顶壳材质</td>
+<td>6061铝合金，本色阳极氧化</td>
+</tr>
+<tr>
+<td></td>
+<td>电机壳材质</td>
+<td>6061铝合金，本色阳极氧化</td>
+</tr>
+<tr>
+<td></td>
+<td>轴承材质</td>
+<td>轴承钢</td>
+</tr>
+<tr>
+<td></td>
+<td>紧固件材质</td>
+<td>304不锈钢，镀镍/镀黑锌</td>
+</tr>
+</tbody></table>
+<h3>4.5 产品结构特征</h3>
+<h4>4.5.1 结构示意图</h4>
+<p><img alt="手指安装平台结构示意图" src="./assets/specialDexterousHand_images_%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0_image6.jpeg"/></p>
+<h4>4.5.2 自由度配置</h4>
+<p>手指安装平台共配置5个主动旋转自由度，每个自由度对应一个手指安装位。平台内置5个旋转驱动电机，每个电机通过推力球轴承驱动对应的电机壳绕竖直轴做 0°~360° 连续旋转，从而带动安装在电机壳上的手指根部电机和手指整体旋转，实现手指朝向的自由调整。</p>
+<p><img alt="手指安装平台自由度示意图" src="./assets/specialDexterousHand_images_%E5%AE%89%E8%A3%85%E5%B9%B3%E5%8F%B0_image7.jpeg"/></p>
+<table>
+<thead>
+<tr>
+<th>自由度编号</th>
+<th>位置</th>
+<th>驱动方式</th>
+<th>关节类型</th>
+<th>旋转范围</th>
+<th>承载方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DOF-1</td>
+<td>手指位1（0°方向）</td>
+<td>平台内部旋转电机驱动</td>
+<td>旋转关节</td>
+<td>0°~360°连续</td>
+<td>推力球轴承</td>
+</tr>
+<tr>
+<td>DOF-2</td>
+<td>手指位2（72°方向）</td>
+<td>平台内部旋转电机驱动</td>
+<td>旋转关节</td>
+<td>0°~360°连续</td>
+<td>推力球轴承</td>
+</tr>
+<tr>
+<td>DOF-3</td>
+<td>手指位3（144°方向）</td>
+<td>平台内部旋转电机驱动</td>
+<td>旋转关节</td>
+<td>0°~360°连续</td>
+<td>推力球轴承</td>
+</tr>
+<tr>
+<td>DOF-4</td>
+<td>手指位4（216°方向）</td>
+<td>平台内部旋转电机驱动</td>
+<td>旋转关节</td>
+<td>0°~360°连续</td>
+<td>推力球轴承</td>
+</tr>
+<tr>
+<td>DOF-5</td>
+<td>手指位5（288°方向）</td>
+<td>平台内部旋转电机驱动</td>
+<td>旋转关节</td>
+<td>0°~360°连续</td>
+<td>推力球轴承</td>
+</tr>
+</tbody></table>
+<h4>4.5.3 运动自由度说明</h4>
+<p>每个旋转自由度的运动轴线为竖直方向（与机械臂末端法兰轴线平行），旋转运动带动电机壳及其上方的手指根部电机整体旋转。通过独立控制5个旋转自由度，可实现以下典型构型：</p>
+<table>
+<thead>
+<tr>
+<th>构型名称</th>
+<th>各手指旋转角度</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标准五指展开构型</td>
+<td>所有手指朝向外侧均匀展开</td>
+<td>包络抓握大型物体</td>
+</tr>
+<tr>
+<td>集中夹持构型</td>
+<td>5根手指均朝向中心内侧</td>
+<td>抓取细长柱状物体</td>
+</tr>
+<tr>
+<td>对侧捏取构型</td>
+<td>相邻两指相向旋转，形成对捏姿态</td>
+<td>精密捏取小型零件</td>
+</tr>
+<tr>
+<td>扇形展开构型</td>
+<td>手指角度渐进排列，形成扇面</td>
+<td>抓取扁平不规则物体</td>
+</tr>
+<tr>
+<td>自定义构型</td>
+<td>每根手指独立设定任意角度</td>
+<td>复杂操作任务自适应配置</td>
+</tr>
+</tbody></table>
+<h3>4.6 平台功能介绍</h3>
+<h4>4.6.1 功能列表</h4>
+<table>
+<thead>
+<tr>
+<th>功能类别</th>
+<th>功能名称</th>
+<th>说明</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>基础运动</strong></td>
+<td>手指旋转定位</td>
+<td>控制5个旋转轴至指定角度，调整每根手指朝向</td>
+<td>抓取前构型调整</td>
+</tr>
+<tr>
+<td></td>
+<td>连续旋转</td>
+<td>支持 0°~360° 无限制连续旋转，无死区</td>
+<td>旋拧式操作、动态朝向调整</td>
+</tr>
+<tr>
+<td></td>
+<td>多指协同旋转</td>
+<td>同步或异步控制多根手指旋转，快速切换抓取构型</td>
+<td>复杂操作任务</td>
+</tr>
+<tr>
+<td></td>
+<td>原位构型切换</td>
+<td>在保持抓取状态时，重新分配未受力手指的朝向</td>
+<td>在线任务重构</td>
+</tr>
+<tr>
+<td><strong>结构功能</strong></td>
+<td>五指统一承载</td>
+<td>为5根灵巧手指提供统一的机械连接基准和电气走线通道</td>
+<td>整机集成</td>
+</tr>
+<tr>
+<td></td>
+<td>多规格法兰适配</td>
+<td>底盒适配 ISO 9409-1 系列标准，兼容主流协作机械臂</td>
+<td>多品牌机械臂集成</td>
+</tr>
+<tr>
+<td></td>
+<td>模块化拆装</td>
+<td>顶壳与底盒通过5颗螺丝连接，电机壳通过螺丝固定，维护便捷</td>
+<td>现场维护与升级</td>
+</tr>
+<tr>
+<td><strong>安全功能</strong></td>
+<td>轴向载荷承载</td>
+<td>推力球轴承承受手指重力及操作载荷的轴向分量，保护旋转电机</td>
+<td>高载荷抓取</td>
+</tr>
+<tr>
+<td></td>
+<td>结构紧凑防护</td>
+<td>全封闭铝合金壳体，保护内部旋转电机免受粉尘、碰撞影响</td>
+<td>工业环境使用</td>
+</tr>
+</tbody></table>
+<h4>4.6.2 典型操作流程</h4>
+<p>以下为一次完整的"构型调整→抓取"操作流程示例：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>操作内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>步骤1</td>
+<td>上位机发送旋转指令</td>
+<td>根据目标物体形态，计算5根手指所需朝向角度，向平台旋转电机发送目标角度指令</td>
+</tr>
+<tr>
+<td>步骤2</td>
+<td>平台旋转电机动作</td>
+<td>5个旋转驱动电机独立驱动对应电机壳旋转至目标角度，手指朝向随之调整</td>
+</tr>
+<tr>
+<td>步骤3</td>
+<td>确认构型就绪</td>
+<td>上位机读取旋转轴编码器反馈，确认所有手指角度到位</td>
+</tr>
+<tr>
+<td>步骤4</td>
+<td>手指执行抓取</td>
+<td>上位机驱动灵巧手手指执行抓握动作（GRASP_ENVELOPE / PINCH等原语）</td>
+</tr>
+<tr>
+<td>步骤5</td>
+<td>完成操作</td>
+<td>根据任务需要，可在保持抓取的同时旋转部分手指，进行二次构型调整</td>
+</tr>
+</tbody></table>
+<h3>4.7 特异化设计要点</h3>
+<h4>4.7.1 设计特征表</h4>
+<table>
+<thead>
+<tr>
+<th>设计特征</th>
+<th>技术说明</th>
+<th>设计意图</th>
+<th>实现方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正五边形对称结构</td>
+<td>平台轮廓为正五边形，5个手指安装位对称分布于顶点，间隔72°</td>
+<td>均衡分配各手指受力，避免抓取时整体力矩偏斜，贴近人手拓扑</td>
+<td>铝合金整体铣削成型，顶点倒圆角处理</td>
+</tr>
+<tr>
+<td>独立360°旋转驱动</td>
+<td>每根手指配备独立旋转驱动电机，支持连续全角度旋转，无死区限制</td>
+<td>使灵巧手可快速切换抓取构型，适应不同形态物体，提升系统灵活性</td>
+<td>旋转电机+推力球轴承+电机壳传动链</td>
+</tr>
+<tr>
+<td>推力球轴承轴向支撑</td>
+<td>采用 6×12×4.5 mm 推力球轴承支撑旋转电机壳，承受手指及载荷的轴向力</td>
+<td>保护旋转电机不受轴向冲击，延长使用寿命，保证旋转精度</td>
+<td>每个手指位各配置1只推力球轴承</td>
+</tr>
+<tr>
+<td>多规格法兰适配底盘</td>
+<td>底盒底面设计适配 ISO 9409-1-31.5/40/50/63 标准安装孔位</td>
+<td>兼容主流协作机械臂品牌（UR、KUKA、ABB等），降低系统集成难度</td>
+<td>底盒法兰面多组安装孔预设，一盒适配多款机械臂</td>
+</tr>
+<tr>
+<td>铝合金轻量化结构</td>
+<td>底盒、顶壳、电机壳均采用6061铝合金加工，整机（不含电机）仅 161.75 g</td>
+<td>减少机械臂末端附加载荷，保留更多有效载荷余量供手指和抓取任务使用</td>
+<td>6061铝合金数控铣削+本色阳极氧化表面处理</td>
+</tr>
+<tr>
+<td>紧凑分层装配设计</td>
+<td>底盒+顶壳总高仅 24.5 mm，含电机壳整机高度 49 mm，结构极为紧凑</td>
+<td>降低末端整体高度，减小操作盲区，提升末端在狭窄空间内的可达性</td>
+<td>顶壳与底盒通过5颗M3螺丝快速拆装，维护方便</td>
+</tr>
+</tbody></table>
+<h4>4.7.2 与固定法兰盘安装方式对比</h4>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>传统固定安装法兰</th>
+<th>可旋转三指手掌</th>
+<th>本五指安装平台</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>手指朝向调整</td>
+<td>不可调，固定朝向</td>
+<td>有限调整（被动或1~2自由度）</td>
+<td>每指独立360°连续旋转，全自由</td>
+</tr>
+<tr>
+<td>手指数量</td>
+<td>通常1~3根</td>
+<td>2~4根</td>
+<td>5根</td>
+</tr>
+<tr>
+<td>构型切换</td>
+<td>不支持</td>
+<td>有限构型（2~4种）</td>
+<td>任意构型（理论无限种）</td>
+</tr>
+<tr>
+<td>法兰兼容性</td>
+<td>单一规格</td>
+<td>部分兼容</td>
+<td>ISO 9409-1系列四规格全兼容</td>
+</tr>
+<tr>
+<td>自重（不含手指）</td>
+<td>50~150 g</td>
+<td>200~400 g</td>
+<td>161.75 g（含电机壳，不含电机）</td>
+</tr>
+<tr>
+<td>适用手指数量</td>
+<td>1~3根</td>
+<td>2~4根</td>
+<td>5根</td>
+</tr>
+<tr>
+<td>维护便捷性</td>
+<td>高（无运动部件）</td>
+<td>中</td>
+<td>中（5颗螺丝拆装顶壳）</td>
+</tr>
+<tr>
+<td>典型应用</td>
+<td>简单夹爪集成</td>
+<td>三指抓取系统</td>
+<td>五指灵巧手完整系统</td>
+</tr>
+</tbody></table>
+<h3>4.8 工作方式</h3>
+<h4>4.8.1 标准工作流程</h4>
+<p>以下为平台从上电到完成一次完整构型调整及抓取任务的标准工作流程：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>时间</th>
+<th>操作</th>
+<th>判定条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>步骤1：上电初始化</td>
+<td>~500 ms</td>
+<td>接入电源，平台旋转电机执行自检和零位标定</td>
+<td>各旋转轴回到参考零位，状态灯绿色常亮</td>
+</tr>
+<tr>
+<td>步骤2：通信建立</td>
+<td>~100 ms</td>
+<td>上位机建立通信连接，读取各旋转轴当前角度</td>
+<td>收到平台状态反馈，各轴角度读数正常</td>
+</tr>
+<tr>
+<td>步骤3：构型规划</td>
+<td>取决于算法</td>
+<td>上位机根据目标物体形态，规划5根手指所需朝向角度</td>
+<td>构型规划完成，目标角度已计算</td>
+</tr>
+<tr>
+<td>步骤4：手指旋转定位</td>
+<td>100~500 ms</td>
+<td>发送旋转指令，5个旋转电机独立或协同驱动手指至目标朝向</td>
+<td>所有旋转轴到达目标角度，编码器反馈稳定</td>
+</tr>
+<tr>
+<td>步骤5：接近目标物体</td>
+<td>取决于机械臂</td>
+<td>上位机控制机械臂将平台移动至抓取预位姿</td>
+<td>视觉/激光定位完成，末端姿态确认</td>
+</tr>
+<tr>
+<td>步骤6：执行抓取</td>
+<td>150~500 ms</td>
+<td>驱动各手指执行抓握原语（包络/捏取等）</td>
+<td>力传感器反馈达到目标，抓握成功</td>
+</tr>
+<tr>
+<td>步骤7：搬运与操作</td>
+<td>取决于任务</td>
+<td>机械臂携带物体移动至目标位置，可同步调整非受力手指朝向</td>
+<td>无异常振动，物体稳定持握</td>
+</tr>
+<tr>
+<td>步骤8：释放物体</td>
+<td>200~400 ms</td>
+<td>各手指缓慢伸展，完成释放</td>
+<td>手指力反馈归零，释放确认</td>
+</tr>
+<tr>
+<td>步骤9：复位待机</td>
+<td>~300 ms</td>
+<td>旋转轴回到默认构型（如展开构型），等待下次任务</td>
+<td>各轴到达待机角度</td>
+</tr>
+</tbody></table>
+<h4>4.8.2 典型构型模式</h4>
+<table>
+<thead>
+<tr>
+<th>模式名称</th>
+<th>各旋转轴角度</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>五指对称展开</td>
+<td>每指朝向外侧，间隔72°均匀展开</td>
+<td>最大包络范围，五指均衡受力</td>
+<td>大型物体包络抓握</td>
+</tr>
+<tr>
+<td>五指内聚模式</td>
+<td>5根手指均旋转指向中心区域</td>
+<td>强力夹持，适合柱状/球状物体</td>
+<td>抓取球体、圆柱体</td>
+</tr>
+<tr>
+<td>拇指对四指模式</td>
+<td>1根手指朝向与其余4根相对</td>
+<td>模拟人手拇指对立结构</td>
+<td>精密捏取、工具使用</td>
+</tr>
+<tr>
+<td>两侧夹持模式</td>
+<td>相邻两根手指相向，另3根待机</td>
+<td>高精度双指/四指对捏</td>
+<td>细小零件夹持</td>
+</tr>
+<tr>
+<td>扇形渐进模式</td>
+<td>手指角度以固定步长递增排列</td>
+<td>适应扁平、不规则几何体</td>
+<td>板状工件、扁平物体</td>
+</tr>
+<tr>
+<td>自定义模式</td>
+<td>每根手指独立设定任意角度</td>
+<td>最高灵活性，满足特殊操作需求</td>
+<td>复杂操作任务</td>
+</tr>
+</tbody></table>
+<h3>4.9 优势特点</h3>
+<h4>4.9.1 优势总结</h4>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>优势</th>
+<th>技术支撑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>五指全向旋转</strong></td>
+<td>5个旋转自由度支持 0°~360° 连续旋转，任意构型切换，覆盖人手所有典型抓取姿态及更多扩展姿态</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>轻量化紧凑设计</strong></td>
+<td>整机（不含电机）仅 161.75 g，外形高度 49 mm，最大程度保留机械臂有效载荷，减小末端尺寸</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>多规格法兰兼容</strong></td>
+<td>一体支持 ISO 9409-1-31.5/40/50/63 四种标准，覆盖UR、ABB、KUKA、FANUC等主流协作机械臂</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>推力球轴承保护</strong></td>
+<td>每个旋转轴配置推力球轴承，有效承受手指及操作载荷的轴向力，保护旋转驱动电机，延长使用寿命</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>模块化快速维护</strong></td>
+<td>顶壳与底盒仅5颗M3螺丝连接，电机壳通过标准螺丝固定，可快速拆卸维修或更换手指模块</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>高品质铝合金结构</strong></td>
+<td>底盒、顶壳、电机壳全部采用6061铝合金数控铣削成型，本色阳极氧化处理，耐腐蚀、强度高</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>五指对称拓扑</strong></td>
+<td>正五边形布局，相邻手指72°均匀分布，力学分布对称，适合执行全向平衡抓取任务</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>科研工业双适用</strong></td>
+<td>结构参数与法兰接口满足工业现场标准，同时支持科研平台快速集成与二次开发</td>
+</tr>
+</tbody></table>
+<h4>4.9.2 竞品对比</h4>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>传统固定法兰（单指/三指）</th>
+<th>通用三指手掌基座</th>
+<th>本五指安装平台</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>手指安装数量</td>
+<td>1~3根</td>
+<td>3~4根</td>
+<td>5根</td>
+</tr>
+<tr>
+<td>旋转自由度</td>
+<td>0（固定）</td>
+<td>0~1（部分可选）</td>
+<td>5个独立，每指360°</td>
+</tr>
+<tr>
+<td>构型种类</td>
+<td>1种（固定）</td>
+<td>有限（2~4种预设）</td>
+<td>无限（连续可调）</td>
+</tr>
+<tr>
+<td>整机自重（不含手指）</td>
+<td>50~150 g</td>
+<td>200~500 g</td>
+<td>161.75 g</td>
+</tr>
+<tr>
+<td>法兰兼容规格数</td>
+<td>通常1种</td>
+<td>1~2种</td>
+<td>4种（ISO 9409-1系列）</td>
+</tr>
+<tr>
+<td>整机高度</td>
+<td>20~40 mm</td>
+<td>40~80 mm</td>
+<td>49 mm</td>
+</tr>
+<tr>
+<td>材质</td>
+<td>铝合金/钢</td>
+<td>铝合金</td>
+<td>6061铝合金，阳极氧化</td>
+</tr>
+<tr>
+<td>维护便捷性</td>
+<td>高</td>
+<td>中</td>
+<td>中（5颗螺丝快拆）</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>简单夹持任务</td>
+<td>三指通用抓取</td>
+<td>五指灵巧操作/科研/工业</td>
+</tr>
+<tr>
+<td>参考价格</td>
+<td>0.2~1 万元</td>
+<td>1~5 万元</td>
+<td>待定</td>
+</tr>
+</tbody></table>
+<h3>4.10 通信方式</h3>
+<blockquote>
+<p><strong>说明</strong>：本平台自身不含独立控制器，通信接口由所选用旋转驱动电机决定。以下内容为推荐集成方案，具体参数以最终选用电机的规格为准。</p>
+</blockquote>
+<h4>4.10.1 推荐集成方案</h4>
+<table>
+<thead>
+<tr>
+<th>通信方式</th>
+<th>物理层</th>
+<th>推荐场景</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CAN / CAN FD</td>
+<td>CAN 2.0B / CAN FD</td>
+<td>多轴实时协同控制，推荐首选</td>
+<td>可将5个旋转轴作为5个CAN节点统一管理</td>
+</tr>
+<tr>
+<td>RS-485</td>
+<td>RS-485半双工</td>
+<td>低成本集成、调试使用</td>
+<td>Modbus RTU帧格式，支持菊花链拓扑</td>
+</tr>
+<tr>
+<td>UART</td>
+<td>3.3V/5V TTL</td>
+<td>单轴调试、固件烧写</td>
+<td>调试接口，不推荐正式部署使用</td>
+</tr>
+<tr>
+<td>以太网/EtherCAT</td>
+<td>100BASE-TX</td>
+<td>高实时性工业应用</td>
+<td>需旋转电机支持EtherCAT从站</td>
+</tr>
+</tbody></table>
+<h4>4.10.2 典型通信拓扑</h4>
+<p>以CAN总线为例，5个旋转驱动电机作为5个独立CAN节点，上位机通过USB-CAN适配器统一管理：</p>
+<p>多节点组网拓扑示意（文字版）：</p>
+<pre><code>┌──────────┐ USB-CAN ┌─────────────────────────────────────┐
+│  上位机  │────────→│ CAN总线（1 Mbps，120Ω终端匹配）     │
+└──────────┘         └──┬──────┬──────┬──────┬──────┬──────┘
+                      旋转轴1 旋转轴2 旋转轴3 旋转轴4 旋转轴5
+                      ID=0x01 ID=0x02 ID=0x03 ID=0x04 ID=0x05
 </code></pre>
 <blockquote>
-<p>当需要更换手指构型时，通过连接部分秒级拆卸/安装手指；离线手指存放于<strong>特异型灵巧手指的暂存机构</strong>。</p>
+<p>说明：5个旋转轴节点可与灵巧手手指节点共享同一CAN总线，通过节点ID区分，最多支持16个节点共线运行。总线两端各接一个120Ω终端电阻。</p>
 </blockquote>
-<h3>8.2 布料抓取专用系统</h3>
-<pre><code>协作机械臂末端
-    ↓
-无动力夹取手指 A（法兰连接）
-    ↓
-无需电气连接，纯机械操作
-    ↓
-上位机仅控制机械臂运动轨迹
+<h3>4.11 控制方式</h3>
+<blockquote>
+<p><strong>说明</strong>：本平台不含独立控制器，所有控制指令由上位机直接下发至各旋转驱动电机。以下内容为推荐控制架构，具体实现取决于所选用旋转电机的控制能力。</p>
+</blockquote>
+<h4>4.11.1 控制架构</h4>
+<p>本平台采用直通式控制架构，上位机直接通过总线控制5个旋转驱动电机，无中间控制器层：</p>
+<pre><code>┌─────────────────────────────────────────────┐
+│              应用层（上位机）                  │
+│      构型规划 / 视觉引导 / 手指协调控制算法   │
+└─────────────────┬───────────────────────────┘
+                  │ CAN / RS-485（直接控制）
+┌─────────────────▼───────────────────────────┐
+│       旋转驱动电机层（5个电机，各自独立）      │
+│         位置控制 / 速度控制 / 编码器反馈       │
+└─────────────────┬───────────────────────────┘
+                  │ 机械传动
+┌─────────────────▼───────────────────────────┐
+│       执行层（电机壳+推力轴承+手指根部电机）   │
+│           手指旋转定位 / 手指抓取动作          │
+└─────────────────────────────────────────────┘
 </code></pre>
-<h3>8.3 混合配置方案</h3>
-<p>在需要同时处理刚性物体和柔性布料的产线中，可采用<strong>快换装置</strong>实现有动力手指/无动力夹爪的快速切换：</p>
+<h4>4.11.2 推荐控制模式</h4>
+<table>
+<thead>
+<tr>
+<th>控制模式</th>
+<th>说明</th>
+<th>关键参数</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>位置控制</td>
+<td>指定目标旋转角度，电机运动至目标位置后保持</td>
+<td>目标角度、运动速度、加速度</td>
+<td>构型调整、固定朝向抓取</td>
+</tr>
+<tr>
+<td>速度控制</td>
+<td>指定旋转速度，连续旋转直到收到停止指令</td>
+<td>目标速度、方向</td>
+<td>旋拧式操作、连续扫描</td>
+</tr>
+<tr>
+<td>多轴同步控制</td>
+<td>上位机同步下发5个旋转轴指令，实现同时到达</td>
+<td>各轴目标角度、同步策略</td>
+<td>快速构型切换</td>
+</tr>
+<tr>
+<td>顺序控制</td>
+<td>按优先级顺序逐轴调整朝向，避免手指间碰撞</td>
+<td>调整顺序、间隔时间</td>
+<td>空间受限场景的安全调整</td>
+</tr>
+</tbody></table>
+<h4>4.11.3 与灵巧手手指的协同控制建议</h4>
+<p>当平台旋转轴与灵巧手手指均通过CAN总线连接时，推荐以下协同控制策略：</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>构型调整优先</td>
+<td>先完成旋转轴构型调整（所有轴到位），再驱动手指执行抓取动作，避免旋转过程中手指误接触目标物</td>
+</tr>
+<tr>
+<td>分组节点管理</td>
+<td>旋转轴节点ID（如0x01<del>0x05）与手指节点ID（如0x11</del>0x15）分组规划，便于广播指令区分</td>
+</tr>
+<tr>
+<td>旋转到位检测</td>
+<td>读取旋转轴编码器反馈，确认所有轴角度误差 &lt; 1°后再发送手指抓取指令</td>
+</tr>
+<tr>
+<td>抓取中构型微调</td>
+<td>仅调整未受力的旋转轴，避免对已抓取手指施加额外干扰</td>
+</tr>
+</tbody></table>
+<h3>4.12 指示灯对照表</h3>
+<blockquote>
+<p><strong>说明</strong>：本平台自身不含指示灯模块。如所选用旋转驱动电机自带状态指示灯，请参考对应电机的产品手册。以下为推荐集成指示灯方案（选配），用于指示平台整体工作状态。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指示灯状态</th>
+<th>状态符号</th>
+<th>系统状态</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不亮</td>
+<td>---</td>
+<td>断电</td>
+<td>未接入电源或电源故障</td>
+</tr>
+<tr>
+<td>绿色闪烁（1 Hz）</td>
+<td>待机</td>
+<td>已通电，等待连接</td>
+<td>系统正常上电，尚未与上位机建立通信</td>
+</tr>
+<tr>
+<td>绿色常亮</td>
+<td>运行中</td>
+<td>已连接，正常工作</td>
+<td>通信正常，旋转轴处于位置保持或待命状态</td>
+</tr>
+<tr>
+<td>黄色常亮</td>
+<td>警告</td>
+<td>存在非致命异常</td>
+<td>某轴角度误差偏大或电源电压偏低，建议检查</td>
+</tr>
+<tr>
+<td>黄色闪烁（2 Hz）</td>
+<td>标定中</td>
+<td>正在执行零位标定</td>
+<td>此时请勿施加外力或发送运动指令</td>
+</tr>
+<tr>
+<td>红色闪烁（2 Hz）</td>
+<td>预故障</td>
+<td>即将触发保护</td>
+<td>旋转轴负载过大或温度异常，需尽快减载</td>
+</tr>
+<tr>
+<td>红色常亮</td>
+<td>严重故障</td>
+<td>致命错误</td>
+<td>通信失步、电机故障等，应立即断电检查</td>
+</tr>
+<tr>
+<td>蓝色常亮</td>
+<td>固件升级</td>
+<td>Bootloader模式</td>
+<td>正在进行固件升级，严禁断电</td>
+</tr>
+</tbody></table>
+<h3>4.13 产品配件表</h3>
+<table>
+<thead>
+<tr>
+<th>图示</th>
+<th>名称</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>【图片：电源适配器外观图】</td>
+<td>直流电源适配器</td>
+<td>标配</td>
+<td>适配旋转驱动电机额定工作电压，随电机规格确定，含AC输入线</td>
+</tr>
+<tr>
+<td>【图片：CAN-USB适配器外观图】</td>
+<td>CAN-USB适配器</td>
+<td>标配</td>
+<td>USB转CAN/CAN FD接口卡，用于上位机与平台旋转电机通信</td>
+</tr>
+<tr>
+<td>【图片：连接线束图】</td>
+<td>平台连接线缆组</td>
+<td>标配</td>
+<td>含5路旋转电机信号线+电源线，按平台内部走线设计裁切</td>
+</tr>
+<tr>
+<td>【图片：M2/M3螺丝包图】</td>
+<td>备用螺丝包</td>
+<td>标配</td>
+<td>M2×3平头内六角螺丝×20颗、M3×10平头内六角螺丝×10颗</td>
+</tr>
+<tr>
+<td>【图片：内六角扳手套装图】</td>
+<td>内六角扳手套装</td>
+<td>标配</td>
+<td>1.5 mm / 2 mm / 2.5 mm 内六角扳手各1把</td>
+</tr>
+<tr>
+<td>【图片：法兰转接板图】</td>
+<td>ISO法兰转接板（31.5 mm规格）</td>
+<td>标配（按订单）</td>
+<td>适配ISO 9409-1-31.5标准末端法兰，铝合金加工</td>
+</tr>
+<tr>
+<td>【图片：法兰转接板图】</td>
+<td>ISO法兰转接板（40 mm规格）</td>
+<td>选配</td>
+<td>适配ISO 9409-1-40标准末端法兰</td>
+</tr>
+<tr>
+<td>【图片：法兰转接板图】</td>
+<td>ISO法兰转接板（50 mm规格）</td>
+<td>选配</td>
+<td>适配ISO 9409-1-50标准末端法兰</td>
+</tr>
+<tr>
+<td>【图片：法兰转接板图】</td>
+<td>ISO法兰转接板（63 mm规格）</td>
+<td>选配</td>
+<td>适配ISO 9409-1-63标准末端法兰</td>
+</tr>
+<tr>
+<td>【图片：防尘盖图】</td>
+<td>手指安装位防尘盖</td>
+<td>选配</td>
+<td>用于暂时封闭未使用的手指安装位，防止灰尘进入平台内部</td>
+</tr>
+</tbody></table>
+<h3>4.14 使用注意事项</h3>
+<h4>4.14.1 安装紧固要求</h4>
 <ul>
-<li>刚性/精密任务 → 有动力夹取手指 B（通过连接部分安装在手掌基座上）</li>
-<li>布料/柔性物料任务 → 无动力夹取手指 A（独立安装在快换装置上）</li>
-<li>离线手指管理 → 特异型灵巧手指的暂存机构</li>
+<li><strong>法兰盘安装</strong>：将平台底盒安装面对准机械臂末端法兰，确认ISO规格匹配，按对角线顺序分两步拧紧安装螺丝：第一步预拧紧（力矩 2 N·m），第二步最终拧紧（力矩按法兰规格参考标准力矩）。</li>
+<li><strong>顶壳与底盒连接</strong>：使用5颗M3×10平头内六角螺丝，按五边形对角顺序均匀拧紧，建议拧紧力矩 0.5~0.8 N·m，避免铝合金结构件因力矩过大而变形。</li>
+<li><strong>旋转电机固定</strong>：平台内部5个旋转电机使用M2×3螺丝固定于顶壳，每个电机3颗，拧紧力矩 0.15~0.2 N·m，使用1.5 mm内六角扳手操作。</li>
+<li><strong>手指根部电机固定</strong>：每根手指的根部电机安装至电机壳时，使用8颗M2×3螺丝，按对角顺序拧紧，力矩 0.15~0.2 N·m，确保电机无松动。</li>
+<li><strong>电机壳与推力轴承</strong>：安装电机壳前确认推力球轴承安装到位，轴承两端面平整贴合，不得有倾斜或卡滞现象。</li>
+</ul>
+<h4>4.14.2 日常检查与维护</h4>
+<table>
+<thead>
+<tr>
+<th>维护项目</th>
+<th>检查内容</th>
+<th>建议周期</th>
+<th>处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>外观检查</td>
+<td>铝合金壳体有无磕碰变形，安装螺丝有无松动</td>
+<td>每日</td>
+<td>轻度磕碰不影响功能；螺丝松动按标准力矩重新拧紧</td>
+</tr>
+<tr>
+<td>旋转轴灵活性检查</td>
+<td>5个电机壳手动旋转是否顺畅，有无卡顿或异响</td>
+<td>每周</td>
+<td>异响需拆开检查轴承是否损坏或异物进入</td>
+</tr>
+<tr>
+<td>推力轴承检查</td>
+<td>轴承有无异响、过度磨损，旋转阻力是否均匀</td>
+<td>每月</td>
+<td>轴承损坏应及时更换，规格 6×12×4.5 mm 推力球轴承</td>
+</tr>
+<tr>
+<td>螺丝紧固检查</td>
+<td>所有M2×3和M3×10螺丝有无松动</td>
+<td>每月</td>
+<td>按标准力矩重新拧紧</td>
+</tr>
+<tr>
+<td>线缆检查</td>
+<td>内部连接线缆外皮有无破损，接头有无氧化</td>
+<td>每月</td>
+<td>破损线缆及时更换；氧化接头用无水酒精清洁</td>
+</tr>
+<tr>
+<td>旋转零位校准</td>
+<td>各旋转轴零位是否漂移，实际角度与编码器读数是否一致</td>
+<td>每季度</td>
+<td>通过上位机执行旋转轴零位标定程序</td>
+</tr>
+</tbody></table>
+<h4>4.14.3 安全警告</h4>
+<ul>
+<li><strong>供电安全</strong>：严格按照所选用旋转驱动电机的额定电压供电，严禁超压使用，否则将造成电机永久性损坏。</li>
+<li><strong>旋转碰撞防护</strong>：在发送旋转指令前，确认各手指周边无障碍物，避免旋转过程中手指相互碰撞或与外部结构干涉，造成手指或平台结构损坏。</li>
+<li><strong>负载限制</strong>：不得超过单个旋转轴的额定径向载荷（以选用电机和轴承规格为准），过载运行将加速轴承磨损。</li>
+<li><strong>拆装操作</strong>：拆装顶壳或电机壳时必须先断电，确认各旋转轴静止后再进行操作，避免因意外通电导致夹手伤人。</li>
+<li><strong>防水防尘</strong>：本平台为非密封结构，请避免在高湿度、多水雾、重粉尘环境中使用。如需防护，可加装防尘盖或防护罩。</li>
+<li><strong>紧固件规格</strong>：严禁使用非标准规格螺丝替换，以免损坏铝合金螺纹孔。尤其M2螺丝力矩不得超过 0.2 N·m。</li>
 </ul>
 <hr/>
-<h2>九、关键紧固件与安装力矩汇总</h2>
+<h2>5. 文档信息</h2>
+<h3>5.1 版本记录</h3>
 <table>
 <thead>
 <tr>
-<th align="left">产品/模块</th>
-<th align="left">连接部位</th>
-<th align="left">紧固件规格</th>
-<th align="left">拧紧力矩</th>
+<th>产品</th>
+<th>文档版本</th>
+<th>发布日期</th>
+<th>适用产品型号</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">手掌基座</td>
-<td align="left">底盒 → 机械臂末端法兰</td>
-<td align="left">按 ISO 法兰标准螺钉</td>
-<td align="left">预紧 2 N·m → 最终按标准力矩</td>
+<td>特异型灵巧手产品文档汇总</td>
+<td>V1.0</td>
+<td>2026.05.25</td>
+<td>特异型灵巧手系列产品</td>
 </tr>
 <tr>
-<td align="left">手掌基座</td>
-<td align="left">顶壳 → 底盒</td>
-<td align="left">M3×10 平头内六角螺丝（5 颗）</td>
-<td align="left">0.5 ~ 0.8 N·m</td>
+<td>无动力夹取手指</td>
+<td>V1.0</td>
+<td>【填写日期】</td>
+<td>【填写产品型号】</td>
 </tr>
 <tr>
-<td align="left">手掌基座</td>
-<td align="left">旋转电机 → 顶壳</td>
-<td align="left">M2×3 螺丝（每电机 3 颗）</td>
-<td align="left">0.15 ~ 0.2 N·m</td>
+<td>有动力夹取手指</td>
+<td>V2.0</td>
+<td>【填写日期】</td>
+<td>【填写产品型号】</td>
 </tr>
 <tr>
-<td align="left">手掌基座</td>
-<td align="left">手指根部电机 → 电机壳</td>
-<td align="left">M2×3 螺丝（每指 8 颗）</td>
-<td align="left">0.15 ~ 0.2 N·m</td>
-</tr>
-<tr>
-<td align="left">有动力手指 B</td>
-<td align="left">安装法兰 → 机械臂/手掌</td>
-<td align="left">M6×16 内六角圆柱头螺钉（8.8 级以上）</td>
-<td align="left">预紧 2 N·m → 最终 6 N·m</td>
-</tr>
-<tr>
-<td align="left">无动力夹爪 A</td>
-<td align="left">连接法兰 → 执行机构</td>
-<td align="left">按标准规格螺栓</td>
-<td align="left">按规定扭矩</td>
+<td>手指安装平台</td>
+<td>V1.0</td>
+<td>2026.05.25</td>
+<td>手指安装平台（五指旋转型）</td>
 </tr>
 </tbody></table>
-<hr/>
-<h2>十、文档版本信息</h2>
+<h3>5.2 技术支持</h3>
 <table>
 <thead>
 <tr>
-<th align="left">项目</th>
-<th align="left">内容</th>
+<th>项目</th>
+<th>内容</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">文档名称</td>
-<td align="left">具身智能灵巧操作终端 —— 产品技术白皮书</td>
+<td>技术支持</td>
+<td>【请填写技术支持邮箱/电话】</td>
 </tr>
 <tr>
-<td align="left">版本号</td>
-<td align="left">V2.0</td>
+<td>官方网站</td>
+<td>【请填写官方网站地址】</td>
 </tr>
 <tr>
-<td align="left">发布日期</td>
-<td align="left">2026-05-26</td>
-</tr>
-<tr>
-<td align="left">编制依据</td>
-<td align="left">特异型灵巧手指安装平台产品文档、无动力夹取手指产品文档、有动力夹取手指及手指快插拔模块及特异型手指寄存模块产品文档</td>
-</tr>
-<tr>
-<td align="left">生态兼容</td>
-<td align="left">全系手指 A-F 统一接口规范；C-F 研发中规格已预留，确保定型后无缝接入</td>
-</tr>
-<tr>
-<td align="left">版权信息</td>
-<td align="left">版权所有 © 英诺维信机器人</td>
+<td>公司名称</td>
+<td>英诺维信机器人</td>
 </tr>
 </tbody></table>
+<h3>5.3 法律声明</h3>
 <blockquote>
-<p>未经书面许可，不得以任何形式复制或传播本文档的全部或部分内容。产品规格如有变更，恕不另行通知。具身智能，感知世界，灵巧未来。</p>
+<p><strong>版权所有 © 英诺维信机器人</strong></p>
+<p>未经书面许可，不得以任何形式复制或传播本文档的全部或部分内容。产品规格如有变更，恕不另行通知。</p>
 </blockquote>
 </div>
     <div id="content-dualArmRobot" class="project-content markdown-body " style="color: var(--text-main);"><h1>INVrobot 具身智能机械臂</h1>
@@ -1590,8 +4045,8 @@ CAN 总线统一连接（最多 16 节点：5 旋转轴 + 5 手指 = 10 节点�
 </blockquote>
 <p>INVrobot 具身智能机械臂是一个低成本、开放式的机械臂实验平台，面向传统控制理论、机器人动力学算法和具身智能数据流程。项目包含 6 轴机械臂本体、CAN 总线底层通讯、C# WinForms 上位机、Unity 数字孪生、内置运动学/动力学算法库，并计划提供接入 LeRobot 的数据采集、模型训练和模型部署流程。</p>
 <p align="center">
-<img alt="DM-ABB 机械臂 CAD 正视图" src="./assets/dualArmRobot_Snipaste_2026-05-24_20-34-07.jpg" width="48%">
-<img alt="数字孪生上位机界面" src="./assets/dualArmRobot_3d424691c6329379d0f834edf01aacdd.jpg" width="48%">
+<img alt="DM-ABB 机械臂 CAD 正视图" src="./assets/dualArmRobot_pictures_Snipaste_2026-05-24_20-34-07.jpg" width="48%">
+<img alt="数字孪生上位机界面" src="./assets/dualArmRobot_pictures_3d424691c6329379d0f834edf01aacdd.jpg" width="48%">
 </img></img></p>
 <hr/>
 <h2>目录</h2>
@@ -1702,8 +4157,8 @@ CAN 总线统一连接（最多 16 节点：5 旋转轴 + 5 手指 = 10 节点�
 </tr>
 </tbody></table>
 <p align="center">
-<img alt="控制算法界面" src="./assets/dualArmRobot_707501acaee0bdf02739f15425568c18.jpg" width="48%">
-<img alt="双臂力反馈界面" src="./assets/dualArmRobot_abd5ed0d356370d251c7430e3a55edc7.jpg" width="48%">
+<img alt="控制算法界面" src="./assets/dualArmRobot_pictures_707501acaee0bdf02739f15425568c18.jpg" width="48%">
+<img alt="双臂力反馈界面" src="./assets/dualArmRobot_pictures_abd5ed0d356370d251c7430e3a55edc7.jpg" width="48%">
 </img></img></p>
 <hr/>
 <h2>系统架构</h2>
@@ -1759,8 +4214,8 @@ CAN 总线统一连接（最多 16 节点：5 旋转轴 + 5 手指 = 10 节点�
 </tr>
 </tbody></table>
 <p align="center">
-<img alt="轨迹规划界面" src="./assets/dualArmRobot_f3015f73cadd926fb34236dbb9d51c55.jpg" width="48%">
-<img alt="DM-ABB 机械臂 CAD 侧视图" src="./assets/dualArmRobot_Snipaste_2026-05-24_20-34-19.jpg" width="40%">
+<img alt="轨迹规划界面" src="./assets/dualArmRobot_pictures_f3015f73cadd926fb34236dbb9d51c55.jpg" width="48%">
+<img alt="DM-ABB 机械臂 CAD 侧视图" src="./assets/dualArmRobot_pictures_Snipaste_2026-05-24_20-34-19.jpg" width="40%">
 </img></img></p>
 <hr/>
 <h2>上位机软件</h2>
@@ -1884,7 +4339,7 @@ CAN 总线统一连接（最多 16 节点：5 旋转轴 + 5 手指 = 10 节点�
 <li><strong>世界模型训练</strong>：基于 LTX‑Video 的扩散式世界模型，学习在给定动作条件下预测未来多视角视频帧，为在线强化学习提供想象环境。</li>
 <li><strong>在线策略自提升</strong>：参考 <strong>RISE</strong> 框架，利用世界模型（WM）和奖励模型（RM）生成想象 rollout，通过优势信号（GAE）对策略进行在线 RL 微调，实现无需真实试错的策略自我提升。</li>
 </ul>
-<p><img alt="算法整体流程图" src="./assets/SoftEmbodiedPolicy_algorithm_pipeline.svg"/></p>
+<p><img alt="算法整体流程图" src="./assets/SoftEmbodiedPolicy_media_algorithm_pipeline.svg"/></p>
 <table>
 <thead>
 <tr>
@@ -1963,7 +4418,7 @@ CAN 总线统一连接（最多 16 节点：5 旋转轴 + 5 手指 = 10 节点�
 <p><strong>注意</strong>：本仓库暂未进行 LoRA 微调，如有需要，需自行测试。</p>
 </blockquote>
 <hr/>
-<p><img alt="柔性布料操作系统概述" src="./assets/SoftEmbodiedPolicy_system_overview.svg"/></p>
+<p><img alt="柔性布料操作系统概述" src="./assets/SoftEmbodiedPolicy_media_system_overview.svg"/></p>
 <h3>效果展示</h3>
 <p><strong>双臂柔性上筒子布（我方方案）</strong></p>
 <p><img alt="双臂柔性上筒子布演示" src="https://github.com/SuppartWang/software-algorithm/releases/download/media-assets-2025/demo_bimanual_tubing_v2.gif"/></p>
@@ -2936,9 +5391,9 @@ bash examples/embodiment/run_embodiment.sh rl_release_bi_s1_wm_rm
 </code></pre>
 <hr/>
 <h3>柔性具身模型架构</h3>
-<p><img alt="柔性具身模型架构" src="./assets/SoftEmbodiedPolicy_embodied_model.png"/></p>
+<p><img alt="柔性具身模型架构" src="./assets/SoftEmbodiedPolicy_media_embodied_model.png"/></p>
 <hr/>
-<p><img alt="π0.5 VLA 模型架构" src="./assets/SoftEmbodiedPolicy_pi05_architecture.svg"/></p>
+<p><img alt="π0.5 VLA 模型架构" src="./assets/SoftEmbodiedPolicy_media_pi05_architecture.svg"/></p>
 <h2>π0.5</h2>
 <p>该仓库的具身模型基于<strong>π0.5</strong>进行微调。π0.5 是由 Physical Intelligence 公司发布的视觉-语言-动作（VLA）模型，作为 π0 的迭代升级版本，其核心特点包括：</p>
 <ul>
@@ -3341,7 +5796,7 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 <li><strong>导出结果</strong>：支持 NPZ / CSV 格式下载</li>
 </ul>
 <h3>Web 界面截图</h3>
-<p><img alt="Web界面" src="./assets/retargeting_anything_screenshot_final_demo.png"/></p>
+<p><img alt="Web界面" src="./assets/retargeting_anything_web_screenshot_final_demo.png"/></p>
 </div>
     <div id="content-shoeLacingMachine" class="project-content markdown-body " style="color: var(--text-main);"><p>"# 自动穿鞋带机</p>
 <blockquote>
@@ -3471,7 +5926,7 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 <p><strong>● 机架下部：</strong> 独立合理规划为电控箱、工控机等电器控制系统的专业安全组装区域，位</p>
 <p>置位于下方两侧或后侧。</p>
 <p><strong>● 设备正面：</strong> 合理排布有工业视觉检测显示器、设备操作触摸屏及常用控制按钮，工装上下料高度完全便于人工无疲劳进行日常作业。</p>
-<p><img alt="image2" src="./assets/shoeLacingMachine_image2.png"/> <img alt="image3" src="./assets/shoeLacingMachine_image3.png"/></p>
+<p><img alt="image2" src="./assets/shoeLacingMachine_._media_image2.png"/> <img alt="image3" src="./assets/shoeLacingMachine_._media_image3.png"/></p>
 <h4>3.1.2. 设备清单</h4>
 <table>
 <colgroup>
@@ -3645,8 +6100,8 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 <li><p><strong>成品下料：</strong> 鞋面穿绳完成后，所有执行机构都将复位，人工取出穿好鞋带的鞋面，进入下一个循环。</p>
 </li>
 </ol>
-<p><img alt="image4" src="./assets/shoeLacingMachine_image4.png"/></p>
-<p><img alt="image5" src="./assets/shoeLacingMachine_image5.png"/></p>
+<p><img alt="image4" src="./assets/shoeLacingMachine_._media_image4.png"/></p>
+<p><img alt="image5" src="./assets/shoeLacingMachine_._media_image5.png"/></p>
 <h4>3.1.4. 设备主要功能参数</h4>
 <table>
 <thead>
@@ -3750,22 +6205,22 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 <h3>3.2. 设备结构组成</h3>
 <h4>3.2.1. 主机机架</h4>
 <p>主机机架由优质高标号型材经过高强度焊接总成、焊后将表面全部打磨平整，外部钣金保护外壳采用工业造型设计，表面实施多道均匀美观的防锈烤漆工艺，无色差与掉漆变形隐患。为防止由于各直线模组高速高动态行走所带来的细微机械共振，机架设计安装有高强度钢制台面板，所有机构安装在台面板上。防护门及可拆卸封板内侧设计有精密的卡口防漏灰挡边，活动封门均配有高可靠性按压式安全门锁。机架下层的内部电箱安装板与电箱之间通过高负荷螺柱焊接与螺母锁定，电气元件排列整齐标识清晰，并配有对流冷却风扇、安全护线套灯。机体下方坚固部署了 4 组支持可移动或长效固定的原装福马脚轮地脚。</p>
-<p><img alt="主机架" src="./assets/shoeLacingMachine_image6.png"/></p>
+<p><img alt="主机架" src="./assets/shoeLacingMachine_._media_image6.png"/></p>
 <h4>3.2.2. 主机防护罩</h4>
 <p>位于主机架上方，骨架由优质铝合金型材配有铝合金框架的门，防护罩的固定封板和门的封板都是由优质的透明PC板加工而成，操作面板安装在防护罩的正前上方，工业显示器和触摸屏安装在操作面板上，报警灯安装在防护罩上方角部位置。</p>
-<p><img alt="主机防护罩" src="./assets/shoeLacingMachine_image7.png"/></p>
+<p><img alt="主机防护罩" src="./assets/shoeLacingMachine_._media_image7.png"/></p>
 <h4>3.2.3. 核心功能区细节</h4>
 <p>核心功能部件包括鞋面定位夹紧工装，上层X-Y-Z模组机械手+气动夹手，下层X-Y-Z模组机械手+气动夹手，下方拉绳和滚绳、拨绳装置，如图示：</p>
 <p>鞋面、鞋带定位工装</p>
 <p>下层X-Y-Z模组机械手</p>
-<p><img alt="上层X-Y-Z模组机械手" src="./assets/shoeLacingMachine_image8.png"/></p>
+<p><img alt="上层X-Y-Z模组机械手" src="./assets/shoeLacingMachine_._media_image8.png"/></p>
 <p>鞋面压紧装置</p>
 <p>鞋根拉伸装置</p>
 <p>鞋带下拉与举升装置</p>
 <p>鞋带滚拉装置</p>
 <p>鞋带拨动装置</p>
 <p>鞋带居中压紧装置</p>
-<p><img alt="鞋带束头预置工装" src="./assets/shoeLacingMachine_image9.png"/></p>
+<p><img alt="鞋带束头预置工装" src="./assets/shoeLacingMachine_._media_image9.png"/></p>
 <h4>3.2.4. 相机光源布置</h4>
 <table>
 <thead>
@@ -3791,7 +6246,7 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 </tbody></table>
 <p>下方平面补光光源</p>
 <p>带中心孔的平面光源</p>
-<p><img alt="相机及镜头" src="./assets/shoeLacingMachine_image10.png"/></p>
+<p><img alt="相机及镜头" src="./assets/shoeLacingMachine_._media_image10.png"/></p>
 <h4>3.2.4. 设备常见异常现象及现场处理建议</h4>
 <table>
 <thead>
@@ -3967,7 +6422,7 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 </ul>
 <h3>5.4. 软件系统运行流程架构图</h3>
 <p>根据PLC与上位机联动控制，整机控制流程通过以下架构图形式表述：</p>
-<p><img alt="image11" src="./assets/shoeLacingMachine_image11.png"/></p>
+<p><img alt="image11" src="./assets/shoeLacingMachine_._media_image11.png"/></p>
 <hr/>
 <h2>📜 授权协议</h2>
 <p>本仓库代码与文档采用 <a href="https://suppartwang.github.io/INVrobot/LICENSE">自定义商业禁止闭源协议</a> 授权。</p>
@@ -4043,8 +6498,8 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 <p>置位于下方两侧或后侧。</p>
 <p><strong>● 设备正面：</strong> 合理排布有工业视觉检测显示器、设备操作触摸屏及常用控制按钮，下方</p>
 <p>的上下料区空间高度完全便于人工无疲劳进行日常作业。</p>
-<p><img alt="image2" src="./assets/barrelFabricCutter_image2.png"/><img alt="image3" src="./assets/barrelFabricCutter_image3.png"/></p>
-<p><img alt="image4" src="./assets/barrelFabricCutter_image4.png"/></p>
+<p><img alt="image2" src="./assets/barrelFabricCutter_._media_image2.png"/><img alt="image3" src="./assets/barrelFabricCutter_._media_image3.png"/></p>
+<p><img alt="image4" src="./assets/barrelFabricCutter_._media_image4.png"/></p>
 <h4>3.1.2. 设备清单</h4>
 <table>
 <thead>
@@ -4214,7 +6669,7 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 <li><p><strong>循环收尾出料：</strong> 轨迹运行加工结束后，软件关闭激光输出，XY平台退出加工危险区域，工装进退模组在缩回到位信号满足后驱动工位自动伸出到便于人工上下料的安全待机状态。</p>
 </li>
 </ol>
-<p><img alt="image5" src="./assets/barrelFabricCutter_image5.png"/></p>
+<p><img alt="image5" src="./assets/barrelFabricCutter_._media_image5.png"/></p>
 <h4>3.1.4. 设备主要功能参数</h4>
 <table>
 <thead>
@@ -4313,19 +6768,19 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 <h4>3.2.1. 主机机架及钣金外壳</h4>
 <p>机架由优质高标号型材经过高强度焊接总成、焊后将表面全部打磨平整，外部钣金保护外壳采用专业的现代工业造型设计，表面实施多道均匀美观的防锈烤漆工艺，无色差与掉漆变形隐患。为防止由于激光高速高动态行走所带来的细微机械共振，面积较大的钣金件内部均科学焊接有加强筋或抗振加强板。防护门及可拆卸封板内侧设计有精密的卡口防漏灰挡边，活动封门均配有高可靠性带调节螺丝的紧固按压式安全门锁。机架下层的内部电箱安装板与电箱之间通过高负荷螺柱焊接与螺母锁定，电气元件排列整齐标识清晰，并配有对流冷却风扇、安全护线套与LED箱内高亮照明灯。机体下方坚固部署了 4 组支持可移动或长效固定的原装福马脚轮地脚。</p>
 <p>主机架如下图示：</p>
-<p><img alt="image6" src="./assets/barrelFabricCutter_image6.png"/> <img alt="image7" src="./assets/barrelFabricCutter_image7.png"/></p>
+<p><img alt="image6" src="./assets/barrelFabricCutter_._media_image6.png"/> <img alt="image7" src="./assets/barrelFabricCutter_._media_image7.png"/></p>
 <p>方通焊接烤漆整体机架</p>
 <p>外壳防护罩如下图示：</p>
-<p><img alt="image8" src="./assets/barrelFabricCutter_image8.png"/></p>
+<p><img alt="image8" src="./assets/barrelFabricCutter_._media_image8.png"/></p>
 <h4>3.2.2. 上料及成品检验区</h4>
 <p>该区域位于设备正面操作面，操作高度和结构布局完全遵照人机工程学设计，主要由通用型电动可调变宽裁切工装、工装进退移动模组以及内含的排烟吸风管道精密组成。其中工装进退移动模组采用气动驱动，底座由 2 条坚固的双滑块直线导轨提供刚性支撑，并配有行程硬件限位开关及轻薄坦克链托链槽。工装核心结构融合了扩张、收缩与翻转，能有效带动筒子布物料在工装上实现张紧、放松与快速对位。整个工位在结构与控制链上均保留了标准的模块化接口，可随时向上升级兼容，无缝扩展机器人全自动上下料流水线。</p>
-<p><img alt="image9" src="./assets/barrelFabricCutter_image9.png"/></p>
+<p><img alt="image9" src="./assets/barrelFabricCutter_._media_image9.png"/></p>
 <h4>3.2.3. 电调裁切工装</h4>
 <p>工装电动开合机构</p>
 <p>工装可实现前进后退、翻转、工装板可扩张和收缩，以适应不同规格尺寸的筒子布自动裁切，工装构造如下：</p>
 <p>工装进退装置（气动）</p>
 <p>工装电动翻转机构</p>
-<p><img alt="方通焊接烤漆整体机架" src="./assets/barrelFabricCutter_image10.png"/></p>
+<p><img alt="方通焊接烤漆整体机架" src="./assets/barrelFabricCutter_._media_image10.png"/></p>
 <h4>3.2.4. 运动平台与标定功能参数细节</h4>
 <table>
 <thead>
@@ -4557,7 +7012,7 @@ python -c "from app import app; app.run(host='0.0.0.0', port=5001)"
 </ul>
 <h3>5.4. 软件系统运行流程架构图</h3>
 <p>根据上位机控制源码与软件执行线程结构，整机控制流程通过以下架构图形式表述：</p>
-<p><img alt="image11" src="./assets/barrelFabricCutter_image11.png"/></p>
+<p><img alt="image11" src="./assets/barrelFabricCutter_._media_image11.png"/></p>
 <hr/>
 <h2>📜 授权协议</h2>
 <p>本仓库代码与文档采用 <a href="https://suppartwang.github.io/INVrobot/LICENSE">自定义商业禁止闭源协议</a> 授权。</p>
