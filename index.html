@@ -342,7 +342,7 @@
 <p>本节介绍 INV Hand 的整体结构设计、通信与电源接口排布，说明各自由度命名规范及运动参数，帮助用户了解产品机械构造与使用准则。</p>
 <h3>3.1. 结构示意图</h3>
 <p>INV Hand 采用五指仿生结构设计，每个手指包含4个关节，实现20自由度的灵活运动。下图展示整体结构及主要组成部分：</p>
-<p><img alt="image1" src="https://github.com/SuppartWang/product-fiveFingerDexterousHand/blob/main/./media/image1.png"/></p>
+<p><img alt="image1" src="./assets/fiveFingerDexterousHand_._media_image1.png"/></p>
 <p>A~E分别对应不同手指：</p>
 <p>A、拇指 (Thumb)</p>
 <p>B、食指 (Index)</p>
@@ -357,7 +357,7 @@
 <p>5、腕骨 (Carpals)</p>
 <h3>3.2. INV Hand 自由度配置</h3>
 <p>下图为 INV Hand 各关节的解剖学命名与对应位置关系，便于理解各自由度的定位。</p>
-<p><img alt="image2" src="https://github.com/SuppartWang/product-fiveFingerDexterousHand/blob/main/./media/image2.png"/></p>
+<p><img alt="image2" src="./assets/fiveFingerDexterousHand_._media_image2.png"/></p>
 <p>图中 1~6 分别对应：</p>
 <p>1、CMC1</p>
 <p>2、CMC2</p>
@@ -368,7 +368,7 @@
 <p>7、DIP2</p>
 <h3>3.3. 各自由度运动方向及角度范围</h3>
 <p>食指 、中指、无名指、小指结构一致，单指全长约 150mm；拇指模块结构略有差异，单指全长约 140 mm。下图以拇指和小指为例，说明各自由度的运动方向及角度范围：</p>
-<p><img alt="image3" src="https://github.com/SuppartWang/product-fiveFingerDexterousHand/blob/main/./media/image3.png"/></p>
+<p><img alt="image3" src="./assets/fiveFingerDexterousHand_._media_image3.png"/></p>
 <table style="width:62%;">
 <colgroup>
 <col style="width: 15%"/>
@@ -506,7 +506,7 @@
 </thead>
 <tbody>
 <tr>
-<td><img alt="image4" src="./media/image4.png"><img alt="image5" src="./media/image5.png"/></img></td>
+<td><img alt="image4" src="./assets/fiveFingerDexterousHand_._media_image4.png"><img alt="image5" src="./assets/fiveFingerDexterousHand_._media_image5.png"/></img></td>
 <td>电源适配器及AC 线</td>
 <td>供电</td>
 </tr>
@@ -516,7 +516,7 @@
 <td>异常情况剧烈冲击时主动分离</td>
 </tr>
 <tr>
-<td><img alt="image7" src="./media/image7.png"/></td>
+<td><img alt="image7" src="./assets/fiveFingerDexterousHand_._media_image7.png"/></td>
 <td>直连转接座</td>
 <td>连接 INV Hand 与用户设备</td>
 </tr>
@@ -4035,7 +4035,6 @@ finger.disconnect()
 </blockquote>
 </div>
     <div id="content-dualArmRobot" class="project-content markdown-body " style="color: var(--text-main);"><h1>INVrobot 具身智能机械臂</h1>
-<p><a href="https://github.com/SuppartWang/product-dualArmRobot/blob/main/./README.md">English</a> | 中文</p>
 <p><img alt="Platform" src="https://img.shields.io/badge/platform-Windows-blue"/>
 <img alt="Control" src="https://img.shields.io/badge/control-CAN%20%7C%20500Hz--1kHz-green"/>
 <img alt="LeRobot" src="https://img.shields.io/badge/LeRobot-supported-orange"/>
@@ -4045,8 +4044,8 @@ finger.disconnect()
 </blockquote>
 <p>INVrobot 具身智能机械臂是一个低成本、开放式的机械臂实验平台，面向传统控制理论、机器人动力学算法和具身智能数据流程。项目包含 6 轴机械臂本体、CAN 总线底层通讯、C# WinForms 上位机、Unity 数字孪生、内置运动学/动力学算法库，并计划提供接入 LeRobot 的数据采集、模型训练和模型部署流程。</p>
 <p align="center">
-<img alt="DM-ABB 机械臂 CAD 正视图" src="./assets/dualArmRobot_pictures_Snipaste_2026-05-24_20-34-07.jpg" width="48%">
-<img alt="数字孪生上位机界面" src="./assets/dualArmRobot_pictures_3d424691c6329379d0f834edf01aacdd.jpg" width="48%">
+<img alt="DM-ABB 机械臂 CAD 正视图" src="./assets/dualArmRobot_1.dm_abb_desktop_arm_media_pictures_Snipaste_2026-05-24_20-34-07.jpg" width="48%">
+<img alt="数字孪生上位机界面" src="./assets/dualArmRobot_1.dm_abb_desktop_arm_media_pictures_3d424691c6329379d0f834edf01aacdd.jpg" width="48%">
 </img></img></p>
 <hr/>
 <h2>目录</h2>
@@ -4157,9 +4156,23 @@ finger.disconnect()
 </tr>
 </tbody></table>
 <p align="center">
-<img alt="控制算法界面" src="./assets/dualArmRobot_pictures_707501acaee0bdf02739f15425568c18.jpg" width="48%">
-<img alt="双臂力反馈界面" src="./assets/dualArmRobot_pictures_abd5ed0d356370d251c7430e3a55edc7.jpg" width="48%">
+<img alt="控制算法界面" src="./assets/dualArmRobot_1.dm_abb_desktop_arm_media_pictures_707501acaee0bdf02739f15425568c18.jpg" width="48%">
+<img alt="双臂力反馈界面" src="./assets/dualArmRobot_1.dm_abb_desktop_arm_media_pictures_abd5ed0d356370d251c7430e3a55edc7.jpg" width="48%">
 </img></img></p>
+<hr/>
+<h2>功能演示</h2>
+<h3>VLA 控制</h3>
+<p><video autoplay="" loop="" muted="" playsinline="" src="./assets/VLA控制.mp4" style="max-width:100%;border-radius:0.5rem;" width="80%"></video></p>
+<h3>主从控制</h3>
+<p><video autoplay="" loop="" muted="" playsinline="" src="./assets/主从控制.mp4" style="max-width:100%;border-radius:0.5rem;" width="80%"></video></p>
+<h3>拖拽示教</h3>
+<p><video autoplay="" loop="" muted="" playsinline="" src="./assets/拖拽示教.mp4" style="max-width:100%;border-radius:0.5rem;" width="80%"></video></p>
+<h3>搭配三指夹爪移动水瓶</h3>
+<p><video autoplay="" loop="" muted="" playsinline="" src="./assets/搭配三指夹爪移动水瓶.mp4" style="max-width:100%;border-radius:0.5rem;" width="80%"></video></p>
+<h3>搭配灵巧手操作屏幕</h3>
+<p><video autoplay="" loop="" muted="" playsinline="" src="./assets/搭配灵巧手操作屏幕.mp4" style="max-width:100%;border-radius:0.5rem;" width="80%"></video></p>
+<h3>视觉追踪人手移动</h3>
+<p><video autoplay="" loop="" muted="" playsinline="" src="./assets/视觉追踪人手移动.mp4" style="max-width:100%;border-radius:0.5rem;" width="80%"></video></p>
 <hr/>
 <h2>系统架构</h2>
 <pre><code class="language-mermaid">flowchart LR
@@ -4214,8 +4227,8 @@ finger.disconnect()
 </tr>
 </tbody></table>
 <p align="center">
-<img alt="轨迹规划界面" src="./assets/dualArmRobot_pictures_f3015f73cadd926fb34236dbb9d51c55.jpg" width="48%">
-<img alt="DM-ABB 机械臂 CAD 侧视图" src="./assets/dualArmRobot_pictures_Snipaste_2026-05-24_20-34-19.jpg" width="40%">
+<img alt="轨迹规划界面" src="./assets/dualArmRobot_1.dm_abb_desktop_arm_media_pictures_f3015f73cadd926fb34236dbb9d51c55.jpg" width="48%">
+<img alt="DM-ABB 机械臂 CAD 侧视图" src="./assets/dualArmRobot_1.dm_abb_desktop_arm_media_pictures_Snipaste_2026-05-24_20-34-19.jpg" width="40%">
 </img></img></p>
 <hr/>
 <h2>上位机软件</h2>
@@ -4421,9 +4434,9 @@ finger.disconnect()
 <p><img alt="柔性布料操作系统概述" src="./assets/SoftEmbodiedPolicy_media_system_overview.svg"/></p>
 <h3>效果展示</h3>
 <p><strong>双臂柔性上筒子布（我方方案）</strong></p>
-<p><video autoplay loop muted playsinline style="max-width:100%;border-radius:0.5rem;" src="./assets/demo_bimanual_tubing.mp4"/></p>
+<p><img alt="双臂柔性上筒子布演示" src="https://github.com/SuppartWang/software-algorithm/releases/download/media-assets-2025/demo_bimanual_tubing_v2.gif"/></p>
 <p><strong>桶装布料上料（对比方案）</strong></p>
-<p><video autoplay loop muted playsinline style="max-width:100%;border-radius:0.5rem;" src="./assets/demo_barrel_feeding.mp4"/></p>
+<p><img alt="桶装布料上料演示" src="https://github.com/SuppartWang/software-algorithm/releases/download/media-assets-2025/demo_barrel_feeding_v2.gif"/></p>
 <h2>0、环境安装</h2>
 <pre><code class="language-bash"># 仓库克隆
 git 
